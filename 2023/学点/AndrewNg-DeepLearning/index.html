@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="看着吴恩达老师的网课稍微用自己的理解来记一记东西~非常业余只供看乐子 Concepts Structured Data : Refers to the data that each of the features has a very well defined meaning. Unstructured Data : audio,raw audio or images where you may">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndrewNg-DeepLearning">
+<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/">
+<meta property="og:site_name" content="Gamer&#39;s Play">
+<meta property="og:description" content="看着吴恩达老师的网课稍微用自己的理解来记一记东西~非常业余只供看乐子 Concepts Structured Data : Refers to the data that each of the features has a very well defined meaning. Unstructured Data : audio,raw audio or images where you may">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-12T10:11:33.379Z">
+<meta property="article:modified_time" content="2023-09-09T08:41:38.598Z">
+<meta property="article:author" content="Gamer">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>AndrewNg-DeepLearning | Gamer's Play</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Gamer's Play</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A man of freedom.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gamer">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gamer's Play">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AndrewNg-DeepLearning
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-12 18:11:33" itemprop="dateCreated datePublished" datetime="2023-07-12T18:11:33+08:00">2023-07-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-09-09 16:41:38" itemprop="dateModified" datetime="2023-09-09T16:41:38+08:00">2023-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>看着吴恩达老师的网课稍微用自己的理解来记一记东西~非常业余只供看乐子</p>
+<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ul>
+<li>Structured Data : Refers to the data that each of the features has a very well defined meaning.</li>
+<li>Unstructured Data : audio,raw audio or images where you may want to recognize what’s in the image or text. And the features might be the pixel values(像素值) in an image.What should be paid attention to is that humans are really good at interpret unstructing data,as a word or a text can be regarded as a form of unstructured data.</li>
+<li>piont: deal with a huge amount of data.Especially “labled data”</li>
+<li>algorithm innovation(data computation): transform sigmoid to RELU function(help computation),more convient for bigger nn trains and trying your new idea,improving your efficiency.</li>
+</ul>
+<h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><ul>
+<li>The dimension of feature vector:the number of elements.n&#x3D;num*row*col(of the matrixes);m refers to the number of examples we have in total;</li>
+<li>create a matrix (nx,m);python:X.shape;Y.shape(1,m)</li>
+<li>We assume that the parameters(参数) of logistic regression will be w an nx-dimensional vector.</li>
+<li>you can use the following function to get a estimated value:<br>$$<br>\widehat{y}&#x3D;\sigma(wx+b)<br>$$</li>
+<li><strong>Loss Function:</strong> Logistic Rsgression lost function,we can find the local optima(best solution).You can assume y equals to a certain value like 1 or 0,then see what value we hope the $\widehat{y}$ be.<br>$$<br>L(\widehat{y},y)&#x3D;-(ylog\widehat{y}+(1-y)log(1-\widehat{y}))<br>$$</li>
+<li><strong>Cost Function:</strong> It is the additive sum of every loss of the predictive value,and it measures how well the parameters w and b are doing. We should find apprioate w and b to make the J(w,b) as small as possible.<br>$$<br>J(w,b) &#x3D; \frac{1}{m}\sum L(\widehat{y}^{(i)},y^{(i)})<br>$$<br>Interpret:<br>First, we want to minimum the cost function J(w,b).<br>Second, we’re supposed to maximum the minus L, for we always want the max through the maximum likehood estimition.<br>Then we assume that our model were IID(identically independently distributed).<br>$$y &#x3D; 1 : p(y|x) &#x3D; \widehat{y}$$<br>$$y &#x3D; 0 : p(y|x) &#x3D; 1 - \widehat{y}$$<br>We mix the two function together:<br>$$p(y|x) &#x3D;  \widehat{y}^y + (1-\widehat{y})^{(1-y)}$$<br>log the both side we get the -L.</li>
+</ul>
+<h3 id="Use-the-gradient-descent-algorithm"><a href="#Use-the-gradient-descent-algorithm" class="headerlink" title="Use the gradient descent algorithm"></a>Use the gradient descent algorithm</h3><ul>
+<li>to train the w and b,get the best result;</li>
+<li>progress:as you should know that J(w,b) is a convex(凹函数),so we’re supposed to find the minus,at least the local minus. so we repeat:<br>$$<br>w&#x3D;w-\alpha \frac{\delta J(w,b)}{\delta w}<br>$$</li>
+</ul>
+<h3 id="Implement-gradient-for-logistic-regression"><a href="#Implement-gradient-for-logistic-regression" class="headerlink" title="Implement gradient for logistic regression"></a>Implement gradient for logistic regression</h3><ul>
+<li>three core formulas:<br>$$z &#x3D; w^Tx+b$$<br>$$\widehat{y} &#x3D; a &#x3D; \sigma(z)$$<br>$$L(a,y) &#x3D; -(ylog(a)+(1-y)log(1-a))$$</li>
+<li>the number of fearures equals to the unmber of w(i),and only a sigle b.We compute the loss based on a sigle example.</li>
+<li>Caculate:<br>$$<br>dz &#x3D; a - y , db &#x3D; dz<br>$$<br>then you cancompute $w_1,w_2$….the same way as the former<br>$$dw_1 &#x3D; x_1dz,w_1 &#x3D; w_1 - \alpha dw<br>$$</li>
+</ul>
+<h4 id="for-the-m-examples-make-a-for-loop"><a href="#for-the-m-examples-make-a-for-loop" class="headerlink" title="for the m examples,make a for loop"></a>for the m examples,make a for loop</h4><ul>
+<li>you add every value up,include $J,w_i,z_i,dz_i$,then you get the additive sum of $j,dw_i,b$,then &#x2F;m.<br>$$w_i &#x3D; w_i - \alpha dw_i<br>$$<br>$$b &#x3D; b - \alpha db$$</li>
+</ul>
+<h3 id="Vectorization"><a href="#Vectorization" class="headerlink" title="Vectorization"></a>Vectorization</h3><ul>
+<li>use special command so that you can accelarate your efficiency.for loop is too slow. </li>
+<li>feature: transform the for loop compute to the special matrix algorithm,so we can call out numpy to perform better.Second you can achieve work out all the results at a sigle time through transform the vector to the matrix.</li>
+</ul>
+<h3 id="broadcasting-in-Python"><a href="#broadcasting-in-Python" class="headerlink" title="broadcasting in Python"></a>broadcasting in Python</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cal = A.sum(axis = <span class="number">0</span>) <span class="comment"># to sum vertically, 1 means sum horizontally</span></span><br><span class="line">percentage = <span class="number">100</span>*A/(cal.reshape(<span class="number">1</span>,<span class="number">4</span>)) <span class="comment"># make sure that the shape is you want</span></span><br></pre></td></tr></table></figure>
+<p>In fact, Python can automatically transforms the matrix too suit the compute, by copying vertically or horizontally.<br>You can read NumPy documention.</p>
+<h4 id="Do-not-use-rank-1-arries"><a href="#Do-not-use-rank-1-arries" class="headerlink" title="Do not use rank 1 arries"></a>Do not use rank 1 arries</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.random.dandn(<span class="number">5</span>) <span class="comment"># to create a special arry ranking 1</span></span><br><span class="line">a.shape = (<span class="number">5</span>,) <span class="comment"># rank = 1, behavior differently from vector</span></span><br></pre></td></tr></table></figure>
+<h4 id="instead-do-this"><a href="#instead-do-this" class="headerlink" title="instead  do this"></a>instead  do this</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = np.random,randn(<span class="number">5</span>,<span class="number">1</span>) <span class="comment"># column vector</span></span><br><span class="line">a = np.random.randn(<span class="number">1</span>,<span class="number">5</span>) <span class="comment"># row vector</span></span><br><span class="line">assert(a.shape == (<span class="number">5</span>,<span class="number">1</span>)) <span class="comment"># to confirm the shape</span></span><br><span class="line">a = a.reshape((<span class="number">1</span>,<span class="number">5</span>)) <span class="comment"># to ensure its behavior</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><h3 id="Overview-amp-Representation"><a href="#Overview-amp-Representation" class="headerlink" title="Overview&amp;Representation"></a>Overview&amp;Representation</h3><ul>
+<li>input layer -&gt; hinden layer -&gt; output layer</li>
+<li>we call the input layer the zero layer, according to that role to define the number of layer.</li>
+<li></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/%E5%AD%A6%E7%82%B9/codenote/" rel="prev" title="codenote">
+      <i class="fa fa-chevron-left"></i> codenote
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/%E7%8E%A9%E7%8E%A9/%E9%AB%98%E6%A0%A1%E7%A7%91%E5%AD%A6%E8%90%A5%E6%97%A5%E8%AE%B0/" rel="next" title="高校科学营日记">
+      高校科学营日记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basics"><span class="nav-number">2.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">2.1.</span> <span class="nav-text">Logistic Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-the-gradient-descent-algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Use the gradient descent algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-gradient-for-logistic-regression"><span class="nav-number">2.3.</span> <span class="nav-text">Implement gradient for logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-the-m-examples-make-a-for-loop"><span class="nav-number">2.3.1.</span> <span class="nav-text">for the m examples,make a for loop</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vectorization"><span class="nav-number">2.4.</span> <span class="nav-text">Vectorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#broadcasting-in-Python"><span class="nav-number">2.5.</span> <span class="nav-text">broadcasting in Python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-not-use-rank-1-arries"><span class="nav-number">2.5.1.</span> <span class="nav-text">Do not use rank 1 arries</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#instead-do-this"><span class="nav-number">2.5.2.</span> <span class="nav-text">instead  do this</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Network"><span class="nav-number">3.</span> <span class="nav-text">Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview-amp-Representation"><span class="nav-number">3.1.</span> <span class="nav-text">Overview&amp;Representation</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gamer</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gamer</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

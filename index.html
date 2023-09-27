@@ -96,7 +96,7 @@
       <h1 class="site-title">Gamer's Play</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">A man of freedom.</p>
+      <p class="site-subtitle" itemprop="description">你知道人生最要紧的事就是快乐不停</p>
   </div>
 
   <div class="site-nav-right">
@@ -180,7 +180,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -323,7 +323,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-09-21 15:48:24" itemprop="dateModified" datetime="2023-09-21T15:48:24+08:00">2023-09-21</time>
+                <time title="Modified: 2023-09-27 11:49:01" itemprop="dateModified" datetime="2023-09-27T11:49:01+08:00">2023-09-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -331,7 +331,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -369,6 +369,64 @@
 <h1 id="ComboBox"><a href="#ComboBox" class="headerlink" title="ComboBox"></a>ComboBox</h1><h2 id="访问QComboBox的列表项"><a href="#访问QComboBox的列表项" class="headerlink" title="访问QComboBox的列表项"></a>访问QComboBox的列表项</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int currentlndex()：返回当前项的序号，第一个项的序号为<span class="number">0</span>。</span><br><span class="line"><span class="title class_">QString</span> currentText()：返回当前项的文本</span><br><span class="line"><span class="title class_">QVariant</span> currentData(int role = <span class="title class_">Qt</span><span class="symbol">:</span><span class="symbol">:UserRole</span>)：返回当前项的关联数据</span><br><span class="line"><span class="title class_">QString</span> itemText(int index) 返回指定索引号的项的文本</span><br><span class="line"><span class="title class_">QVariant</span> itemData(int index, int role = <span class="title class_">Qt</span>%<span class="symbol">:UserRole</span>) 返回指定索引号的项的关联数据。</span><br><span class="line">int count()：返回项的个数。</span><br></pre></td></tr></table></figure>
 <h2 id="槽函数"><a href="#槽函数" class="headerlink" title="槽函数"></a>槽函数</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.reco_comboBox.currentIndexChanged.connect(</span><br><span class="line">    <span class="symbol">lambda:</span> <span class="variable language_">self</span>.model_init(<span class="variable language_">self</span>.reco_comboBox.currentIndex()))</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#model_init函数的实现的核心代码</span></span><br><span class="line"><span class="comment"># 加载相关参数，并初始化模型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">model_init</span>(<span class="params"><span class="variable language_">self</span>,tag</span>):</span><br><span class="line">    <span class="keyword">if</span> tag == <span class="number">1</span>:   <span class="comment">#当下拉框选中&quot;1&quot;触发事件</span></span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    代码省略</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
+<h1 id="QCheckBox"><a href="#QCheckBox" class="headerlink" title="QCheckBox"></a>QCheckBox</h1><ol>
+<li>常用方法</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>setChecked()</code></td>
+<td>设置复选框的状态，True为选中，False为取消选中复选框</td>
+</tr>
+<tr>
+<td><code>setText()</code></td>
+<td>设置复选框的显示文本</td>
+</tr>
+<tr>
+<td><code>text()</code></td>
+<td>返回复选框的显示文本</td>
+</tr>
+<tr>
+<td><code>isChecked()</code></td>
+<td>检查复选框是否被选中</td>
+</tr>
+<tr>
+<td><code>setCheckState()</code></td>
+<td>设置复选框的勾选状态：2为选中（Checked）；1为半选中（ParticallyChecked）；0为没有选中（Unchecked）</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>常用信号</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>clicked(bool)</code></td>
+<td>鼠标左键被按下，一直按着或者释放时，或者快捷键被按着或者释放时触发该信号</td>
+</tr>
+<tr>
+<td><code>pressed()</code></td>
+<td>当鼠标指针在按钮上并按下左键时触发该信号，一直按着或者按下并释放都会产生</td>
+</tr>
+<tr>
+<td><code>released()</code></td>
+<td>鼠标左键被释放时触发</td>
+</tr>
+<tr>
+<td><code>toggled(checked)</code></td>
+<td>checkable设置为True时，状态发生改变时触发信号</td>
+</tr>
+</tbody></table>
 <h1 id="RadioButton"><a href="#RadioButton" class="headerlink" title="RadioButton"></a>RadioButton</h1><p>[]一个很不错的教程](<a target="_blank" rel="noopener" href="https://blog.51cto.com/techfanyi/6540034">https://blog.51cto.com/techfanyi/6540034</a>)</p>
 <ol>
 <li>单选框默认开启自动互斥（autoExclusive）。如果启用了自动互斥，属于同一个父部件的单选框的行为就和属于一个互斥按钮组的一样。如果你需要为属于同一父部件的单选框设置多个互斥按钮组，把它们加入QButtonGroup中。</li>
@@ -379,10 +437,7 @@
 <li>调用append方法可以向文本浏览框中添加文本<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.textBrowser.append(<span class="string">&quot;Hello World!&quot;</span>) </span><br></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="QFileDialog"><a href="#QFileDialog" class="headerlink" title="QFileDialog"></a>QFileDialog</h1><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/832236">教程</a>获取文件夹路径，对话框获取文件</p>
-<h1 id="QTestLine"><a href="#QTestLine" class="headerlink" title="QTestLine"></a>QTestLine</h1><ol>
-<li><code>placeholderText</code>用于输入前的提示显示文字</li>
-</ol>
-<h2 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h2><ol>
+<h1 id="QTestLine"><a href="#QTestLine" class="headerlink" title="QTestLine"></a>QTestLine</h1><h2 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h2><ol>
 <li><p>QLineEdit.text()：返回输入框的当前文本。</p>
 </li>
 <li><p>QLineEdit.addAction(Action,QLineEdit.ActionPosition)：添加动作到文本输入栏，上面已经举过例子了。</p>
@@ -409,7 +464,7 @@
 </li>
 <li><p>QLineEdit.setValidator()：设置输入框的验证器，将限制任意可能输入的文本</p>
 </li>
-<li><p>QLineEdit.setPlaceholderText(str)：该属性包含行编辑的占位符文本。只要行编辑为空，设置此属性将使行编辑显示一个灰色的占位符文本。</p>
+<li><p><code>placeholderText</code>用于输入前的提示显示文字该属性包含行编辑的占位符文本。只要行编辑为空，设置此属性将使行编辑显示一个灰色的占位符文本。</p>
 </li>
 </ol>
 <p>通常情况下，即使具有焦点，空行编辑也会显示占位符文本。但是，如果内容是水平居中的，则行编辑具有焦点时，占位符文本不会显示在光标下方。默认情况下，该属性包含一个空字符串。</p>
@@ -419,8 +474,7 @@
 <li><p>QLineEdit.setInputMask()：设置掩码，效果就是我们演示视频中的License输入。</p>
 </li>
 </ol>
-<p>二、信号</p>
-<ol>
+<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><ol>
 <li><p>selectionChanged() ：只要选择改变这个信号就会被发射。</p>
 </li>
 <li><p>cursorPositionChanged(int old, int new) ：只要光标移动，这个信号就会发射。前面的位置old，新的位置是new。</p>
@@ -434,8 +488,7 @@
 <li><p>textEdited(str) ：无论何时编辑文本都会发出此信号。文本参数是新文本。与textChanged()不同，当以编程方式更改文本时，不会发出此信号，例如通过调用setText()。</p>
 </li>
 </ol>
-<p>三、函数</p>
-<ol>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ol>
 <li><p>clear() ：清除输入框内容</p>
 </li>
 <li><p>copy()：如果echoMode()是Normal，将选中的文本复制到剪贴板。</p>
@@ -467,7 +520,7 @@
 </ol>
 <h2 id="TabWidget-Setting"><a href="#TabWidget-Setting" class="headerlink" title="TabWidget Setting"></a>TabWidget Setting</h2><ul>
 <li><strong>修改表头</strong>：<code>CurrentTabText</code></li>
-<li></li>
+<li>修改是否可选：<code>setTabEnabled(int index, bool enable)</code></li>
 </ul>
 <h2 id="QlineEdit"><a href="#QlineEdit" class="headerlink" title="QlineEdit"></a>QlineEdit</h2><ul>
 <li><code>.setPlaceholderText(&quot;&quot;)</code>:提示输入内容</li>
@@ -482,10 +535,12 @@
 <li>pyuid生成代码</li>
 <li>添加连接函数，注意menu用<code>triggered</code> button用<code>clicked</code><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#添加换页槽函数</span></span><br><span class="line">       <span class="variable language_">self</span>.actionRadiomic.triggered.connect(<span class="variable language_">self</span>.display1)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">display1</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">           <span class="variable language_">self</span>.stackedWidget.setCurrentIndex(<span class="number">1</span>)</span><br><span class="line">   <span class="comment">#注意页码子控件一般是从0开始，1为第二页，默认初始显示0</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="PyQt5的QSS美化"><a href="#PyQt5的QSS美化" class="headerlink" title="PyQt5的QSS美化"></a>PyQt5的QSS美化</h1><h2 id="qtawesome使用总结"><a href="#qtawesome使用总结" class="headerlink" title="qtawesome使用总结"></a>qtawesome使用总结</h2><ol>
+<h1 id="PyQt5的QSS美化"><a href="#PyQt5的QSS美化" class="headerlink" title="PyQt5的QSS美化"></a>PyQt5的QSS美化</h1><h2 id="一些主题"><a href="#一些主题" class="headerlink" title="一些主题"></a>一些主题</h2><p><a href="">一个很简单的有重定义边框的主题</a></p>
+<h2 id="qtawesome使用总结"><a href="#qtawesome使用总结" class="headerlink" title="qtawesome使用总结"></a>qtawesome使用总结</h2><ol>
 <li>展示图标库<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="对某个控件的所有子控件进行集体美化"><a href="#对某个控件的所有子控件进行集体美化" class="headerlink" title="对某个控件的所有子控件进行集体美化"></a>对某个控件的所有子控件进行集体美化</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.left_widget.setStyleSheet(<span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">            QPushButton&#123;border:none;color:white;padding-left:5px;</span></span><br><span class="line"><span class="string">                    height:35px;</span></span><br><span class="line"><span class="string">                    font-size:15px;</span></span><br><span class="line"><span class="string">                    padding-right:10px;&#125;</span></span><br><span class="line"><span class="string">            QPushButton#left_label&#123;</span></span><br><span class="line"><span class="string">                border:none;</span></span><br><span class="line"><span class="string">                border-bottom:1px solid white;</span></span><br><span class="line"><span class="string">                font-size:20px;</span></span><br><span class="line"><span class="string">                font-weight:700;</span></span><br><span class="line"><span class="string">                font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">            QWidget#left_widget&#123;</span></span><br><span class="line"><span class="string">                background:Gray;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">                border-top:1px solid white;</span></span><br><span class="line"><span class="string">                border-bottom:1px solid white;</span></span><br><span class="line"><span class="string">                border-left:1px solid white;</span></span><br><span class="line"><span class="string">                border-top-left-radius:10px;</span></span><br><span class="line"><span class="string">                border-bottom-left-radius:10px;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">            QPushButton#left_button:hover&#123; color:white;</span></span><br><span class="line"><span class="string">                    border:2px solid #F3F3F5;</span></span><br><span class="line"><span class="string">                    border-radius:15px;</span></span><br><span class="line"><span class="string">                    background:black;&#125;</span></span><br><span class="line"><span class="string">        &#x27;</span><span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="QTabWidget样式"><a href="#QTabWidget样式" class="headerlink" title="QTabWidget样式"></a>QTabWidget样式</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/设置内容区域边框</span></span><br><span class="line"><span class="regexp">QTabWidget::pane&#123;</span></span><br><span class="line"><span class="regexp">	border:none;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/标题栏左侧间距</span></span><br><span class="line"><span class="regexp">QTabWidget::tab-bar &#123;</span></span><br><span class="line"><span class="regexp">    left: 1px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">QTabBar::tab &#123;</span></span><br><span class="line"><span class="regexp">    background: #051322;</span></span><br><span class="line"><span class="regexp">	color:#7F8997;</span></span><br><span class="line"><span class="regexp">    border: 2px;</span></span><br><span class="line"><span class="regexp">    border-top-left-radius: 10px;</span></span><br><span class="line"><span class="regexp">    border-top-right-radius: 10px;</span></span><br><span class="line"><span class="regexp">    min-width: 200px;</span></span><br><span class="line"><span class="regexp">	min-height: 35px;</span></span><br><span class="line"><span class="regexp">    padding: 2px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">QTabBar::tab:selected&#123;</span></span><br><span class="line"><span class="regexp">    background-color: white;</span></span><br><span class="line"><span class="regexp">	color:#001330;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">QTabBar::tab:first&#123; </span></span><br><span class="line"><span class="regexp">	min-width: 35px;</span></span><br><span class="line"><span class="regexp">	background-color: #2489F2;</span></span><br><span class="line"><span class="regexp">	border-top-left-radius: 3px;</span></span><br><span class="line"><span class="regexp">    border-top-right-radius: 3px;</span></span><br><span class="line"><span class="regexp">	background-image: url(:/</span><span class="title class_">Resources</span>/image/homepage.png);</span><br><span class="line">	background-<span class="symbol">position:</span> center;</span><br><span class="line">	background-<span class="symbol">repeat:</span> no-repeat;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QTabBar</span><span class="symbol">:</span><span class="symbol">:tab</span><span class="symbol">:first</span><span class="symbol">:hover</span>&#123; </span><br><span class="line">	min-<span class="symbol">width:</span> 35px;</span><br><span class="line">	background-<span class="symbol">color:</span> <span class="comment">#2489F2;</span></span><br><span class="line">	border-top-left-<span class="symbol">radius:</span> 3px;</span><br><span class="line">    border-top-right-<span class="symbol">radius:</span> 3px;</span><br><span class="line">	background-<span class="symbol">image:</span> url(<span class="symbol">:/Resources/image/homepage_hover</span>.png);</span><br><span class="line">	background-<span class="symbol">position:</span> center;</span><br><span class="line">	background-<span class="symbol">repeat:</span> no-repeat;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QTabBar</span><span class="symbol">:</span><span class="symbol">:close-button</span>&#123; </span><br><span class="line">	border-<span class="symbol">image:</span> url(<span class="symbol">:/Resources/image/close</span>.png);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QTabBar</span><span class="symbol">:</span><span class="symbol">:close-button</span><span class="symbol">:hover</span>&#123;</span><br><span class="line">	border-<span class="symbol">image:</span> url(<span class="symbol">:/Resources/image/close_hover</span>.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="QComboBox"><a href="#QComboBox" class="headerlink" title="QComboBox"></a>QComboBox</h2><h3 id="指定下拉箭头图片自定义，图片文件为name-png"><a href="#指定下拉箭头图片自定义，图片文件为name-png" class="headerlink" title="指定下拉箭头图片自定义，图片文件为name.png"></a>指定下拉箭头图片自定义，图片文件为name.png</h3><ol>
 <li>所有的下拉箭头<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">QConboBox</span><span class="symbol">:drop-down</span>&#123;<span class="symbol">image:</span>url(name.png)&#125;</span><br></pre></td></tr></table></figure></li>
 <li>指定ID的下拉箭头<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">QComboBox</span><span class="comment">#myQComboBox::drop-down &#123;image：url（dropdown.png）&#125;</span></span><br></pre></td></tr></table></figure></li>
@@ -497,9 +552,11 @@
 <h2 id="MainWindow：直接在retranslateUi后边设置"><a href="#MainWindow：直接在retranslateUi后边设置" class="headerlink" title="MainWindow：直接在retranslateUi后边设置"></a>MainWindow：直接在retranslateUi后边设置</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#MainWindow.setWindowOpacity(0.9) # 设置窗口透明度</span></span><br><span class="line"><span class="title class_">MainWindow</span>.setAttribute(<span class="title class_">QtCore</span>.<span class="title class_">Qt</span>.WA_TranslucentBackground) <span class="comment"># 设置窗口背景透明</span></span><br><span class="line"><span class="comment">#MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint) # 隐藏边框</span></span><br><span class="line">pe = <span class="title class_">QPalette</span>()</span><br><span class="line"><span class="title class_">MainWindow</span>.setAutoFillBackground(<span class="title class_">True</span>)</span><br><span class="line">pe.setColor(<span class="title class_">QPalette</span>.<span class="title class_">Window</span>,<span class="title class_">Qt</span>.lightGray)  <span class="comment">#设置背景色</span></span><br><span class="line"><span class="comment">#pe.setColor(QPalette.Background,Qt.blue)</span></span><br><span class="line"><span class="title class_">MainWindow</span>.setPalette(pe)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Ui</span>_MainWindow3.setWindowTitle(<span class="string">&quot;语音识别&quot;</span>)        </span><br><span class="line"><span class="title class_">Ui</span>_MainWindow3.setWindowIcon(<span class="title class_">QIcon</span>(<span class="string">&#x27;Amg.jpg&#x27;</span>)) <span class="comment">#设置图标,可以用图片，也可以用qtawesome</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="PushButton：直接在初始setup后设置"><a href="#PushButton：直接在初始setup后设置" class="headerlink" title="PushButton：直接在初始setup后设置"></a>PushButton：直接在初始setup后设置</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置按钮前的图标</span></span><br><span class="line">        spin_icon = qtawesome.icon(<span class="string">&#x27;fa5s.microphone-alt&#x27;</span>, color=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">        <span class="comment">#图标名参考示例格式，以及qtawesome的readme中对于库的提示来写，格式就是 库.图标名</span></span><br><span class="line">        <span class="variable language_">self</span>.pushButton.setIcon(spin_icon)<span class="comment">#设置图标</span></span><br><span class="line">        <span class="variable language_">self</span>.pushButton.setIconSize(<span class="title class_">QtCore</span>.<span class="title class_">QSize</span>(<span class="number">50</span>,<span class="number">50</span>))<span class="comment">#需要导入库from PyQt5.QtCore import QSize</span></span><br><span class="line">        <span class="variable language_">self</span>.pushButton.setStyleSheet(<span class="string">&#x27;&#x27;</span><span class="string">&#x27;QPushButton&#123;background-color: rgb(70, 70, 70);</span></span><br><span class="line"><span class="string">                                        color: rgb(255, 255, 255);&#125;</span></span><br><span class="line"><span class="string">        QPushButton:hover&#123;color:white;</span></span><br><span class="line"><span class="string">                    border:2px solid #F3F3F5;</span></span><br><span class="line"><span class="string">                    border-radius:35px;</span></span><br><span class="line"><span class="string">                    background:darkGray;&#125;&#x27;</span><span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
+<h3 id="将最大化最小化按钮设置为像苹果的三个点点"><a href="#将最大化最小化按钮设置为像苹果的三个点点" class="headerlink" title="将最大化最小化按钮设置为像苹果的三个点点"></a>将最大化最小化按钮设置为像苹果的三个点点</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> gui_view(<span class="title class_">QWidget</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">      <span class="variable language_">super</span>(gui_view, <span class="variable language_">self</span>).__init__()</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">self</span>.resize(<span class="number">500</span>, <span class="number">350</span>)</span><br><span class="line">      <span class="variable language_">self</span>.setWindowFlags(<span class="title class_">Qt</span>.<span class="title class_">FramelessWindowHint</span>)  <span class="comment"># 去边框</span></span><br><span class="line">      <span class="comment"># # self.setAttribute(Qt.WA_TranslucentBackground)  # 设置窗口背景透明</span></span><br><span class="line"></span><br><span class="line">      button_red = <span class="title class_">QPushButton</span>(<span class="variable language_">self</span>)</span><br><span class="line">      button_red.move(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line">      button_red.setFixedSize(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line">      button_red.setStyleSheet(<span class="string">&quot;QPushButton&#123;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;    background:#CE0000;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;    color:white;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;    box-shadow: 1px 1px 3px;border-radius: 10px;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;QPushButton:hover&#123;                    \n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;    background:red;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;QPushButton:pressed&#123;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;    border: 1px solid #3C3C3C!important;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;    background:black;\n&quot;</span></span><br><span class="line">                                       <span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line">      button_red.clicked.connect(<span class="variable language_">self</span>.quit_button)</span><br><span class="line"></span><br><span class="line">      button_orange = <span class="title class_">QPushButton</span>(<span class="variable language_">self</span>)</span><br><span class="line">      button_orange.move(<span class="number">50</span>, <span class="number">20</span>)</span><br><span class="line">      button_orange.setFixedSize(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line">      button_orange.setStyleSheet(<span class="string">&quot;QPushButton&#123;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;    background:orange;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;    color:white;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;    box-shadow: 1px 1px 3px;border-radius: 10px;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;QPushButton:hover&#123;                    \n&quot;</span></span><br><span class="line">                               <span class="string">&quot;    background:yellow;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;QPushButton:pressed&#123;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;    border: 1px solid #3C3C3C!important;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;    background:black;\n&quot;</span></span><br><span class="line">                               <span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">      button_green = <span class="title class_">QPushButton</span>(<span class="variable language_">self</span>)</span><br><span class="line">      button_green.move(<span class="number">80</span>, <span class="number">20</span>)</span><br><span class="line">      button_green.setFixedSize(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line">      button_green.setStyleSheet(<span class="string">&quot;QPushButton&#123;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;    background:green;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;    color:white;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;    box-shadow: 1px 1px 3px;border-radius: 10px;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;QPushButton:hover&#123;                    \n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;    background:#08BF14;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;&#125;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;QPushButton:pressed&#123;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;    border: 1px solid #3C3C3C!important;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;    background:black;\n&quot;</span></span><br><span class="line">                                  <span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">quit_button</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">      quit()</span><br></pre></td></tr></table></figure>
+<p>最小化</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">QPushButton</span>&#123;</span><br><span class="line">    <span class="symbol">background:</span><span class="comment">#6C6C6C;</span></span><br><span class="line">    <span class="symbol">color:</span>white;</span><br><span class="line">    box-<span class="symbol">shadow:</span> 1px 1px 3px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>);font-<span class="symbol">size:</span>16px;border-<span class="symbol">radius:</span> 8px;font-<span class="symbol">family:</span> 微软雅黑;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QPushButton</span><span class="symbol">:hover</span>&#123;                    </span><br><span class="line">    <span class="symbol">background:</span><span class="comment">#9D9D9D;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QPushButton</span><span class="symbol">:pressed</span>&#123;</span><br><span class="line">    <span class="symbol">border:</span> 1px solid <span class="comment">#3C3C3C!important;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关闭</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">QPushButton</span>&#123;</span><br><span class="line">    <span class="symbol">background:</span><span class="comment">#CE0000;</span></span><br><span class="line">    <span class="symbol">color:</span>white;</span><br><span class="line">    box-<span class="symbol">shadow:</span> 1px 1px 3px rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>);font-<span class="symbol">size:</span>16px;border-<span class="symbol">radius:</span> 8px;font-<span class="symbol">family:</span> 微软雅黑;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QPushButton</span><span class="symbol">:hover</span>&#123;                    </span><br><span class="line">    <span class="symbol">background:</span><span class="comment">#FF2D2D;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">QPushButton</span><span class="symbol">:pressed</span>&#123;</span><br><span class="line">    <span class="symbol">border:</span> 1px solid <span class="comment">#3C3C3C!important;</span></span><br><span class="line">    <span class="symbol">background:</span><span class="comment">#AE0000;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -551,7 +608,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -624,7 +681,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -712,7 +769,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-09-21 16:20:22" itemprop="dateModified" datetime="2023-09-21T16:20:22+08:00">2023-09-21</time>
+                <time title="Modified: 2023-09-26 23:13:03" itemprop="dateModified" datetime="2023-09-26T23:13:03+08:00">2023-09-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -720,7 +777,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -745,7 +802,8 @@
 <h2 id="with上下文打开（推荐）"><a href="#with上下文打开（推荐）" class="headerlink" title="with上下文打开（推荐）"></a><code>with</code>上下文打开（推荐）</h2><p>操作完成后无需通过<code>close()</code>关闭文件，并且安全系数更高</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import codecs</span><br><span class="line">with codecs.open(<span class="string">&#x27;your_file.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;utf-8&#x27;</span>) as <span class="symbol">f:</span></span><br><span class="line">    f.write(<span class="string">&#x27;WellDone!&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="对yaml文件进行操作"><a href="#对yaml文件进行操作" class="headerlink" title="对yaml文件进行操作"></a>对<code>yaml</code>文件进行操作</h2><h3 id="yaml语法"><a href="#yaml语法" class="headerlink" title="yaml语法"></a><code>yaml</code>语法</h3><ul>
+<h2 id="对yaml文件进行操作"><a href="#对yaml文件进行操作" class="headerlink" title="对yaml文件进行操作"></a>对<code>yaml</code>文件进行操作</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0871ac68726d">ymal文件操作的一个简单小教程</a></p>
+<h3 id="yaml语法"><a href="#yaml语法" class="headerlink" title="yaml语法"></a><code>yaml</code>语法</h3><ul>
 <li>支持的数据类型：<br>字典、列表、字符串、布尔值、整数、浮点数、Null、时间等</li>
 <li>基本语法规则：</li>
 </ul>
@@ -757,8 +815,12 @@
 <li>数组前加有 “-” 符号，符号与值之间需用空格分隔</li>
 <li>None值可用null 和 ~ 表示</li>
 <li>多组数据之间使用3横杠—分割</li>
-<li><code>#</code>表示注释，但不能在一段代码的行末尾加 #注释，否则会报错</li>
+<li><code>#</code>表示注释，但不能在一段代码的行末尾加注释，否则会报错</li>
 </ol>
+<h3 id="第三方库PyYAML"><a href="#第三方库PyYAML" class="headerlink" title="第三方库PyYAML"></a>第三方库<code>PyYAML</code></h3><h4 id="读取-x2F-写入后各类型对应的格式"><a href="#读取-x2F-写入后各类型对应的格式" class="headerlink" title="读取&#x2F;写入后各类型对应的格式"></a>读取&#x2F;写入后各类型对应的格式</h4><h4 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h4><ul>
+<li>打开后首先加入<code> yaml.dump(data=mydata, stream=f,allow_unicode=True)</code>防止写入的中文乱码</li>
+<li>多组数据写入<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line"></span><br><span class="line">apiData1 = &#123;</span><br><span class="line">   <span class="string">&quot;page&quot;</span>: <span class="number">1</span>,</span><br><span class="line">   <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;地址&quot;</span>,</span><br><span class="line">   <span class="string">&quot;data&quot;</span>: [&#123;</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;学校&quot;</span></span><br><span class="line">   &#125;, &#123;</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;公寓&quot;</span></span><br><span class="line">   &#125;, &#123;</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;流动人口社区&quot;</span></span><br><span class="line">   &#125;],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apiData2 = &#123;</span><br><span class="line">   <span class="string">&quot;page&quot;</span>: <span class="number">2</span>,</span><br><span class="line">   <span class="string">&quot;msg&quot;</span>: <span class="string">&quot;地址&quot;</span>,</span><br><span class="line">   <span class="string">&quot;data&quot;</span>: [&#123;</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;酒店&quot;</span></span><br><span class="line">   &#125;, &#123;</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;医院&quot;</span></span><br><span class="line">   &#125;, &#123;</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;养老院&quot;</span></span><br><span class="line">   &#125;],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">with open(<span class="string">&#x27;./writeYamlData.yml&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) as <span class="symbol">f:</span></span><br><span class="line">   yaml.dump_all(documents=[apiData1, apiData2], stream=f, allow_unicode=<span class="title class_">True</span>)<span class="comment">#若希望写入单组数据，使用dump</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -817,7 +879,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -892,7 +954,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%A9%E7%8E%A9/" itemprop="url" rel="index"><span itemprop="name">玩玩</span></a>
+                  <a href="/something/%E7%8E%A9%E7%8E%A9/" itemprop="url" rel="index"><span itemprop="name">玩玩</span></a>
                 </span>
             </span>
 
@@ -966,7 +1028,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -1074,7 +1136,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
                 </span>
             </span>
 
@@ -1187,7 +1249,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/something/">
         <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>

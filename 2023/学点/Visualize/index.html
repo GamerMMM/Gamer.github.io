@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/ffavicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Seaborn详解seaborn，各种类型的图样！Seaborn基本是一个建立于Matplotlib基础上的一个2D绘图库。Seaborn创建在Python核心可视化库Matplotlib的基础上，它旨在作为补充，而不是替代，但是，Seaborn具有一些非常重要的函数。让无涯教程在这里看到其中的一些。函数有助于：  内置用于设置matplotlib图形样式的主题 可视化单变量和双变量数据 拟合并可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visualize">
+<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/Visualize/">
+<meta property="og:site_name" content="Gamer&#39;s Play">
+<meta property="og:description" content="Seaborn详解seaborn，各种类型的图样！Seaborn基本是一个建立于Matplotlib基础上的一个2D绘图库。Seaborn创建在Python核心可视化库Matplotlib的基础上，它旨在作为补充，而不是替代，但是，Seaborn具有一些非常重要的函数。让无涯教程在这里看到其中的一些。函数有助于：  内置用于设置matplotlib图形样式的主题 可视化单变量和双变量数据 拟合并可">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-25T09:01:58.000Z">
+<meta property="article:modified_time" content="2023-11-02T12:56:53.098Z">
+<meta property="article:author" content="Gamer">
+<meta property="article:tag" content="数据处理">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/Visualize/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Visualize | Gamer's Play</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Gamer's Play</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">你知道人生最要紧的事就是快乐不停</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-ghost fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-star-of-david fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cube fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-readme fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/Visualize/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gamer">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gamer's Play">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Visualize
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-10-25 17:01:58" itemprop="dateCreated datePublished" datetime="2023-10-25T17:01:58+08:00">2023-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-11-02 20:56:53" itemprop="dateModified" datetime="2023-11-02T20:56:53+08:00">2023-11-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42676511/article/details/125178293?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169822574316800185874963%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169822574316800185874963&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-125178293-null-null.142%5Ev96%5Epc_search_result_base3&utm_term=seaborn&spm=1018.2226.3001.4187">详解seaborn，各种类型的图样！</a><br>Seaborn基本是一个建立于Matplotlib基础上的一个2D绘图库。Seaborn创建在Python核心可视化库Matplotlib的基础上，它旨在作为补充，而不是替代，但是，Seaborn具有一些非常重要的函数。让无涯教程在这里看到其中的一些。函数有助于：</p>
+<ul>
+<li>内置用于设置matplotlib图形样式的主题</li>
+<li>可视化单变量和双变量数据</li>
+<li>拟合并可视化线性回归模型</li>
+<li>绘制统计时间序列数据</li>
+<li>Seaborn与NumPy和Pandas数据结构配合良好</li>
+<li>它带有用于为Matplotlib图形设置样式的内置主题</li>
+</ul>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="导入库-amp-数据集"><a href="#导入库-amp-数据集" class="headerlink" title="导入库&amp;数据集"></a>导入库&amp;数据集</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line">import seaborn as sb</span><br><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
+<ol>
+<li>默认情况下数据集作为Pandas DataFrame加载<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=sb.load_dataset(<span class="string">&#x27;tips&#x27;</span>)</span><br><span class="line">print df.head() <span class="comment">#可以输出列表</span></span><br></pre></td></tr></table></figure></li>
+<li>查看可用数据集：<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print sb.get_dataset_names()</span><br></pre></td></tr></table></figure></li>
+<li>DataFrame以矩形网络的形式存储数据，每一行都包含一个值，每一列都是一个向量，用于保存特定变量的数据。<br>行不需要包含相同数据类型的值！数字字符逻辑都可以。</li>
+</ol>
+<h3 id="简单的呈现代码！"><a href="#简单的呈现代码！" class="headerlink" title="简单的呈现代码！"></a>简单的呈现代码！</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sinplot</span>(<span class="params">flip=<span class="number">1</span></span>):</span><br><span class="line">   x=np.linspace(<span class="number">0</span>, <span class="number">14</span>, <span class="number">100</span>)</span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>): </span><br><span class="line">      plt.plot(x, np.sin(x + i * .<span class="number">5</span>) * (<span class="number">7</span> - i) * flip)</span><br><span class="line"><span class="comment">#sb.set() #更改为Seaborn的默认值，背景上会有灰色的网格，不加就是纯白色背景</span></span><br><span class="line">sb.displot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>Seaborn带有自定义主题和高级页面，用于自定义和控制外观。<br>注释后是默认Matplotlib图，注释前是Seaborn默认图。</p>
+<h4 id="displot-amp-histplot"><a href="#displot-amp-histplot" class="headerlink" title="displot &amp; histplot"></a><code>displot &amp; histplot</code></h4><p><a target="_blank" rel="noopener" href="https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751">一个对于displot&amp;histplot呈现方式的官方文档说明</a></p>
+<ul>
+<li><code>displot</code>可以呈现直方图(histogram)和有层理的核密度估计图(KDE kernel density estimate)，y轴是密度</li>
+<li><code>histplot</code>会展现一个更标准的计数直方图，y轴是计数</li>
+<li>默认情况下，<code>distplot</code> 使用 Freedman-Diaconis 规则，但显示的条形图不超过 50 个。<code>histplot</code> 完全将二进制选择委托给 numpy 的 “自动 “默认设置，它可以根据数据特征使用不同的参考规则，并且可以在大型数据集中选择非常窄的条形宽度。您可能需要指定上限（bins&#x3D;50），以完全重现以前的图表。</li>
+<li>状态设置参考：<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hist</code></td>
+<td>bool</td>
+<td>是否使用直方图</td>
+</tr>
+<tr>
+<td><code>xlabel</code>&#x2F;<code>ylabel</code></td>
+<td>str</td>
+<td>x，y的坐标含义</td>
+</tr>
+<tr>
+<td><code>kde</code></td>
+<td>bool</td>
+<td>是否启用核心密度估计，可以让直方图和曲线比较好地耦合，但是如果想要更好就写入<code>stat = &quot;density&quot;</code>;kde曲线会溢出直方图，只覆盖histplot中数据地实际范围，更宽的范围展示可以使用<code>kde_kws = dict(cut=3)</code></td>
+</tr>
+<tr>
+<td><code>rug</code></td>
+<td>bool</td>
+<td>是否添加底部阴影</td>
+</tr>
+<tr>
+<td><code>stat</code></td>
+<td>density</td>
+<td>纵轴默认为count 设定后为密度</td>
+</tr>
+<tr>
+<td><code>common_norm </code></td>
+<td>cool</td>
+<td>若为True，则直方图高度显示频率而非计数</td>
+</tr>
+<tr>
+<td>&#96;&#96;</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li>一种直方图与曲线更好拟合的方法<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sns.histplot(</span><br><span class="line">    df[<span class="string">&quot;flipper_length_mm&quot;</span>], kde=<span class="title class_">True</span>,</span><br><span class="line">    stat=<span class="string">&quot;density&quot;</span>, kde_kws=dict(cut=<span class="number">3</span>),</span><br><span class="line">    alpha=.<span class="number">4</span>, edgecolor=(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, .<span class="number">4</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="kdeplot"><a href="#kdeplot" class="headerlink" title="kdeplot"></a>kdeplot</h4><ul>
+<li>状态设置参考：<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>shade</code></td>
+<td>bool</td>
+<td>是否添加曲线下阴影</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="界面样式设置"><a href="#界面样式设置" class="headerlink" title="界面样式设置"></a>界面样式设置</h2><h3 id="整体图的操作"><a href="#整体图的操作" class="headerlink" title="整体图的操作"></a>整体图的操作</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>代码</th>
+<th>可设定值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主题样式</td>
+<td><code>.setstyle()</code></td>
+<td>(双引号引出)darkgrid&#x2F;whitegrid&#x2F;dark&#x2F;white&#x2F;ticks</td>
+</tr>
+<tr>
+<td>刻度删除</td>
+<td><code>sb.despine()</code></td>
+<td></td>
+</tr>
+<tr>
+<td>缩放绘图元素、控制图比例</td>
+<td><code>set_context</code></td>
+<td>四个用于上下文的预设模板，基于相对大小，上下文命名：paper&#x2F;notebook&#x2F;talk&#x2F;poster</td>
+</tr>
+<tr>
+<td>自定义样式</td>
+<td>传参给<code>set_style()</code></td>
+<td>print(sb.axes_style)</td>
+</tr>
+<tr>
+<td>输出如下：</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;axes.axisbelow&#x27;</span>     : <span class="title class_">False</span>,</span><br><span class="line"><span class="string">&#x27;axes.edgecolor&#x27;</span>      : <span class="string">&#x27;white&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;axes.facecolor&#x27;</span>      : <span class="string">&#x27;#EAEAF2&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;axes.grid&#x27;</span>           : <span class="title class_">True</span>,</span><br><span class="line"><span class="string">&#x27;axes.labelcolor&#x27;</span>     : <span class="string">&#x27;.15&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;axes.linewidth&#x27;</span>      : <span class="number">0.0</span>,</span><br><span class="line"><span class="string">&#x27;figure.facecolor&#x27;</span>    : <span class="string">&#x27;white&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;font.family&#x27;</span>         : [u<span class="string">&#x27;sans-serif&#x27;</span>],</span><br><span class="line"><span class="string">&#x27;font.sans-serif&#x27;</span>     : [u<span class="string">&#x27;Arial&#x27;</span>, u<span class="string">&#x27;Liberation  </span></span><br><span class="line"><span class="string">                        Sans&#x27;</span>, u<span class="string">&#x27;Bitstream Vera Sans&#x27;</span>, u<span class="string">&#x27;sans-serif&#x27;</span>],</span><br><span class="line"><span class="string">&#x27;grid.color&#x27;</span>          : <span class="string">&#x27;white&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;grid.linestyle&#x27;</span>      : u<span class="string">&#x27;-&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;image.cmap&#x27;</span>          : u<span class="string">&#x27;Greys&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;legend.frameon&#x27;</span>      : <span class="title class_">False</span>,</span><br><span class="line"><span class="string">&#x27;legend.numpoints&#x27;</span>    : <span class="number">1</span>,</span><br><span class="line"><span class="string">&#x27;legend.scatterpoints&#x27;</span>: <span class="number">1</span>,</span><br><span class="line"><span class="string">&#x27;lines.solid_capstyle&#x27;</span>: u<span class="string">&#x27;round&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;text.color&#x27;</span>          : <span class="string">&#x27;.15&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;xtick.color&#x27;</span>         : <span class="string">&#x27;.15&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;xtick.direction&#x27;</span>     : u<span class="string">&#x27;out&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;xtick.major.size&#x27;</span>    : <span class="number">0.0</span>,</span><br><span class="line"><span class="string">&#x27;xtick.minor.size&#x27;</span>    : <span class="number">0.0</span>,</span><br><span class="line"><span class="string">&#x27;ytick.color&#x27;</span>         : <span class="string">&#x27;.15&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;ytick.direction&#x27;</span>     : u<span class="string">&#x27;out&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;ytick.major.size&#x27;</span>    : <span class="number">0.0</span>,</span><br><span class="line"><span class="string">&#x27;ytick.minor.size&#x27;</span>    : <span class="number">0.0</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sb.set_style(<span class="string">&quot;darkgrid&quot;</span>, &#123;<span class="string">&#x27;axes.axisbelow&#x27;</span>: <span class="title class_">False</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="调色板"><a href="#调色板" class="headerlink" title="调色板"></a>调色板</h3><ol>
+<li><code>color_palette()</code>可以直接为绘图赋予颜色并添加更多的美学价值<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seaborn.color_palette(palette=<span class="title class_">None</span>, n_colors=<span class="title class_">None</span>, desat=<span class="title class_">None</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><code>n_colors</code>是调色板的颜色数，如果为None，则默认值取决于如何制定调色板，默认状态下为六种颜色。</li>
+<li><code>desat</code>指每种颜色去饱和的比例。</li>
+<li>返回值是RGB元组的列表</li>
+<li>现成调色板：<code>Deep``muted``bright``pastel``dark``colorblind</code></li>
+</ul>
+<ol start="2">
+<li><code>seaborn.palplot()</code>将调色板绘制为水平阵列。</li>
+</ol>
+<h4 id="定性调色板"><a href="#定性调色板" class="headerlink" title="定性调色板"></a>定性调色板</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">current_palette=sb.color_palette()</span><br><span class="line">sb.palplot(current_palette) <span class="comment">#用于水平绘制颜色阵列</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p> 默认会看到六种颜色，可以给<code>n_color</code>传参来查看所需颜色的数量</p>
+<h4 id="顺序调色板"><a href="#顺序调色板" class="headerlink" title="顺序调色板"></a>顺序调色板</h4><p><strong>顺序图适合于表示范围内从相对较低值到较高值的数据分布</strong><br>给color参数上加一个“s”会绘制顺序图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">current_palette=sb.color_palette()</span><br><span class="line">sb.palplot(sb.color_palette(&quot;Greens&quot;))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="分散调色板"><a href="#分散调色板" class="headerlink" title="分散调色板"></a>分散调色板</h4><p>不同的调色板使用两种不同的颜色，每种颜色代表值从任一方向上的公共点变化。<br>假定绘制范围为-1到1的数据，值-1到0代表一种颜色，0到+1代表另一种颜色。<br>默认情况下，值从零开始居中，您可以通过传递值来使用参数中心来控制它。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">current_palette=sb.color_palette()</span><br><span class="line">sb.palplot(sb.color_palette(<span class="string">&quot;BrBG&quot;</span>, <span class="number">7</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>其中7表示调色板上有七种颜色。</p>
+<h4 id="设置默认调色板"><a href="#设置默认调色板" class="headerlink" title="设置默认调色板"></a>设置默认调色板</h4><p>函数 <code>color_palette()</code>具有一个名为 <code>set_palette()</code>的函数。<br> <code>set_palette()</code>和 <code>color_palette()</code>的参数相同，但默认的Matplotlib参数已更改，因此调色板可用于所有绘图</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sinplot</span>(<span class="params">flip=<span class="number">1</span></span>):</span><br><span class="line">   x=np.linspace(<span class="number">0</span>, <span class="number">14</span>, <span class="number">100</span>)</span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">      plt.plot(x, np.sin(x + i * .<span class="number">5</span>) * (<span class="number">7</span> - i) * flip)</span><br><span class="line"></span><br><span class="line">import seaborn as sb</span><br><span class="line">sb.set_style(<span class="string">&quot;white&quot;</span>)</span><br><span class="line">sb.set_palette(<span class="string">&quot;husl&quot;</span>)</span><br><span class="line">sinplot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="绘制单变量分布"><a href="#绘制单变量分布" class="headerlink" title="绘制单变量分布"></a>绘制单变量分布</h4><p>seaborn可以帮助理解数据的单变量分布<br><code>seaborn.sidtplot()</code>提供最快查看单变量分布的方法，可以绘制适合数据和密度估计的直方图。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>data</code></td>
+<td>一维数组或列表</td>
+</tr>
+<tr>
+<td><code>bins</code></td>
+<td><code>hist bins</code>的规格</td>
+</tr>
+<tr>
+<td><code>hist</code></td>
+<td>bool</td>
+</tr>
+<tr>
+<td><code>kde</code></td>
+<td>bool</td>
+</tr>
+</tbody></table>
+<h1 id="matplotlib画入pyqt5"><a href="#matplotlib画入pyqt5" class="headerlink" title="matplotlib画入pyqt5"></a>matplotlib画入pyqt5</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from <span class="title class_">PyQt5</span>.<span class="title class_">QtWidgets</span> import <span class="title class_">QApplication</span>, <span class="title class_">QMainWindow</span>, <span class="title class_">QVBoxLayout</span>, <span class="title class_">QWidget</span></span><br><span class="line">from matplotlib.backends.backend_qt5agg import <span class="title class_">FigureCanvasQTAgg</span> as <span class="title class_">FigureCanvas</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MatplotlibWindow</span>(<span class="title class_">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">        <span class="variable language_">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.setWindowTitle(<span class="string">&#x27;Matplotlib in PyQt&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建Matplotlib图形</span></span><br><span class="line">        <span class="variable language_">self</span>.figure = plt.figure()</span><br><span class="line">        <span class="variable language_">self</span>.canvas = <span class="title class_">FigureCanvas</span>(<span class="variable language_">self</span>.figure)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个垂直布局并将Matplotlib图形添加到其中</span></span><br><span class="line">        layout = <span class="title class_">QVBoxLayout</span>()</span><br><span class="line">        layout.addWidget(<span class="variable language_">self</span>.canvas)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个QWidget并将布局设置为其主布局</span></span><br><span class="line">        main_widget = <span class="title class_">QWidget</span>(<span class="variable language_">self</span>)</span><br><span class="line">        main_widget.setLayout(layout)</span><br><span class="line">        <span class="variable language_">self</span>.setCentralWidget(main_widget)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个Matplotlib子图</span></span><br><span class="line">        <span class="variable language_">self</span>.ax = <span class="variable language_">self</span>.figure.add_subplot(<span class="number">111</span>)</span><br><span class="line">        <span class="variable language_">self</span>.ax.set_title(<span class="string">&#x27;Matplotlib in PyQt&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 绘制一个简单的图形</span></span><br><span class="line">        <span class="variable language_">self</span>.ax.plot([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">10</span>, <span class="number">5</span>, <span class="number">20</span>, <span class="number">8</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 更新Matplotlib图形</span></span><br><span class="line">        <span class="variable language_">self</span>.canvas.draw()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = <span class="title class_">QApplication</span>(sys.argv)</span><br><span class="line">    window = <span class="title class_">MatplotlibWindow</span>()</span><br><span class="line">    window.show()</span><br><span class="line">    sys.exit(app.exec_())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="tag"># 数据处理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/%E5%AD%A6%E7%82%B9/%E8%A7%A3%E5%89%96%E7%94%9F%E7%90%86%E5%AD%A6%E5%90%8D%E8%AF%8D&%E7%AE%80%E7%AD%94/" rel="prev" title="解剖生理学名词&解答">
+      <i class="fa fa-chevron-left"></i> 解剖生理学名词&解答
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/%E5%AD%A6%E7%82%B9/Radiomics/" rel="next" title="Radiomics">
+      Radiomics <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Seaborn"><span class="nav-number">1.</span> <span class="nav-text">Seaborn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E9%97%A8"><span class="nav-number">1.1.</span> <span class="nav-text">入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93-amp-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">导入库&amp;数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%91%88%E7%8E%B0%E4%BB%A3%E7%A0%81%EF%BC%81"><span class="nav-number">1.1.2.</span> <span class="nav-text">简单的呈现代码！</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#displot-amp-histplot"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">displot &amp; histplot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kdeplot"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">kdeplot</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E6%A0%B7%E5%BC%8F%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">界面样式设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E5%9B%BE%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">整体图的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%89%B2%E6%9D%BF"><span class="nav-number">1.2.2.</span> <span class="nav-text">调色板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%80%A7%E8%B0%83%E8%89%B2%E6%9D%BF"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">定性调色板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%B0%83%E8%89%B2%E6%9D%BF"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">顺序调色板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%95%A3%E8%B0%83%E8%89%B2%E6%9D%BF"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">分散调色板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E8%B0%83%E8%89%B2%E6%9D%BF"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">设置默认调色板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">绘制单变量分布</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matplotlib%E7%94%BB%E5%85%A5pyqt5"><span class="nav-number">2.</span> <span class="nav-text">matplotlib画入pyqt5</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gamer</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-shield-dog"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gamer.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

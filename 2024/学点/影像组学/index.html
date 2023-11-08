@@ -20,20 +20,27 @@
     var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="时间复杂度探讨一个算法的实现以及其性能，表示程序运行答题时间。f(n)指的是一般数据下运行时间的上界，并非一定是最坏情况，所以要注意：  数据用例不同时时间复杂度不同。 时间复杂度不同时，不同输入数据规模下性能也会有差异（就是函数问题）；O是数据量级非常大的情况下表现出的时间复杂度，所以经常会忽略常数项，所以说决定算法并不是只考虑复杂度越低越好还要综合数据规模 化简：只保留最高次（考虑n很大况）">
+  <meta name="description" content="一个对比AI影像和传统影像的论文，介绍各自的特征深度学习简单直接自动化，大力出奇迹；影像组学步步为营靠人工，识珠靠慧眼。两种方法本质上都依赖大数据，都可以划分为图像预处理、特征筛选和特征建模三个阶段。 传统影像组学方法上，影像组学提取传统的图像特征，包括形状、灰度、纹理等，采用传统统计（模式识别）模型来分类和预测，如支持向量机、随机森林、XGBoost等；Overview AI影像组学Deep F">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codenote">
-<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/codenote/">
+<meta property="og:title" content="影像组学">
+<meta property="og:url" content="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/">
 <meta property="og:site_name" content="Gamer&#39;s Play">
-<meta property="og:description" content="时间复杂度探讨一个算法的实现以及其性能，表示程序运行答题时间。f(n)指的是一般数据下运行时间的上界，并非一定是最坏情况，所以要注意：  数据用例不同时时间复杂度不同。 时间复杂度不同时，不同输入数据规模下性能也会有差异（就是函数问题）；O是数据量级非常大的情况下表现出的时间复杂度，所以经常会忽略常数项，所以说决定算法并不是只考虑复杂度越低越好还要综合数据规模 化简：只保留最高次（考虑n很大况）">
+<meta property="og:description" content="一个对比AI影像和传统影像的论文，介绍各自的特征深度学习简单直接自动化，大力出奇迹；影像组学步步为营靠人工，识珠靠慧眼。两种方法本质上都依赖大数据，都可以划分为图像预处理、特征筛选和特征建模三个阶段。 传统影像组学方法上，影像组学提取传统的图像特征，包括形状、灰度、纹理等，采用传统统计（模式识别）模型来分类和预测，如支持向量机、随机森林、XGBoost等；Overview AI影像组学Deep F">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-12T08:13:51.932Z">
-<meta property="article:modified_time" content="2023-07-12T15:07:14.805Z">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-f6a1971f7bd966f887c80a6b6afdce53_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-0e0f70828404e5f5726e06d034bee348_1440w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-5d2b1d2feeaedce0ff8e73abb6e0d944_1440w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-9c5310d71e5e428662db1243f000b615_1440w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-558358a40a38f506aa5588d0e33a777c_1440w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-59d63f7881800e9147150a997646d6f4_1440w.webp">
+<meta property="article:published_time" content="2024-10-29T14:30:01.000Z">
+<meta property="article:modified_time" content="2023-11-08T14:56:47.131Z">
 <meta property="article:author" content="Gamer">
-<meta property="article:tag" content="代码随想录">
+<meta property="article:tag" content="影像组学">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic4.zhimg.com/v2-f6a1971f7bd966f887c80a6b6afdce53_r.jpg">
 
-<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/codenote/">
+<link rel="canonical" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/">
 
 
 <script id="page-configurations">
@@ -46,7 +53,7 @@
   };
 </script>
 
-  <title>codenote | Gamer's Play</title>
+  <title>影像组学 | Gamer's Play</title>
   
 
 
@@ -162,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/codenote/">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          codenote
+          影像组学
         </h1>
 
         <div class="post-meta">
@@ -184,10 +191,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-07-12 16:13:51 / Modified: 23:07:14" itemprop="dateCreated datePublished" datetime="2023-07-12T16:13:51+08:00">2023-07-12</time>
+              <time title="Created: 2024-10-29 22:30:01" itemprop="dateCreated datePublished" datetime="2024-10-29T22:30:01+08:00">2024-10-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-11-08 22:56:47" itemprop="dateModified" datetime="2023-11-08T22:56:47+08:00">2023-11-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -209,15 +222,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>探讨一个算法的实现以及其性能，表示程序运行答题时间。<br>f(n)指的是<strong>一般数据下</strong>运行时间的上界，并非一定是最坏情况，所以要注意：</p>
-<ul>
-<li>数据用例不同时时间复杂度不同。</li>
-<li>时间复杂度不同时，不同输入数据规模下性能也会有差异（就是函数问题）；O是数据量级非常大的情况下表现出的时间复杂度，所以经常会忽略常数项，所以说决定算法并不是只考虑复杂度越低越好还要综合<strong>数据规模</strong></li>
-<li>化简：只保留最高次（考虑n很大况）</li>
-<li>注意考虑全面’每次操作’的内涵 eg.字符串比较，有字符串自身长度m，排序后比较比直接比较更优</li>
-<li>递归的时间复杂度：递归次数*递归中的操作次数；[tips]在递归中要少调用自身函数，建议单独把要调用的函数抽取出来，可以减少时间复杂度(下例时间复杂度n&#x2F;2)<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int function4(int x, int n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> x;</span><br><span class="line">    int t = function4(x, n / <span class="number">2</span>);<span class="regexp">//</span> 这里相对于function3，是把这个递归操作抽取出来</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> t * t * x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<strong>补充：空间复杂度</strong><br>空间复杂度是程序运行时占用内存的大小，不是exe文件本身大小</li>
-</ul>
+        <p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/ielx7/7433213/8657419/08657645.pdf?tag=1">一个对比AI影像和传统影像的论文，介绍各自的特征</a><br>深度学习简单直接自动化，大力出奇迹；影像组学步步为营靠人工，识珠靠慧眼。两种方法本质上都依赖大数据，都可以划分为图像预处理、特征筛选和特征建模三个阶段。</p>
+<h1 id="传统影像组学"><a href="#传统影像组学" class="headerlink" title="传统影像组学"></a>传统影像组学</h1><p>方法上，影像组学提取传统的图像特征，包括形状、灰度、纹理等，采用传统统计（模式识别）模型来分类和预测，如支持向量机、随机森林、XGBoost等；<br><strong>Overview</strong><br><img src="https://pic4.zhimg.com/v2-f6a1971f7bd966f887c80a6b6afdce53_r.jpg" alt="Img"></p>
+<h1 id="AI影像组学"><a href="#AI影像组学" class="headerlink" title="AI影像组学"></a>AI影像组学</h1><p><strong>Deep Feature——用深度网络来提取特征</strong></p>
+<h2 id="Pure-DL直接使用Autoencoder来提取特征，然后直接进行分类。"><a href="#Pure-DL直接使用Autoencoder来提取特征，然后直接进行分类。" class="headerlink" title="Pure DL直接使用Autoencoder来提取特征，然后直接进行分类。"></a><a target="_blank" rel="noopener" href="http://devinderkumar.com/slides/crv_2015.pdf">Pure DL</a>直接使用Autoencoder来提取特征，然后直接进行分类。</h2><p>采用LIDC中已经标记（分割）好的肺结节病灶区域作为ROI，对ROI的最小包围矩形区域进行尺寸归一化，然后输入一个5层Autoencoder网络进行特征编码，对Autoencoder网络进行训练。之后，使用训练优化完成后的5层网络中的第4层网络输出，共200个特征向量，输入一个二值分类树，区分肺结节良恶性。<br><img src="https://pic1.zhimg.com/80/v2-0e0f70828404e5f5726e06d034bee348_1440w.webp" alt="Img"><br>但是这种方法准确度有待考量。</p>
+<h2 id="！DL-Tr可以预测生存周期"><a href="#！DL-Tr可以预测生存周期" class="headerlink" title="！DL+Tr可以预测生存周期"></a>！<a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/28871110/">DL+Tr</a>可以预测生存周期</h2><p>在传统的影像组学三大件（形状、灰度、纹理）之上，又添加了来自于深度学习网络的深度特征（Deep Feature）。所使用的深度学习网络包含5个卷积层和3个全连接层。倒数第二个（full7）和倒数第三个（full6）全连接层的输出，共8192个特征，与其他影像组学特征一起输入预测模型，来预测多形性成胶质细胞瘤患者的生存周期<br><img src="https://pic1.zhimg.com/80/v2-5d2b1d2feeaedce0ff8e73abb6e0d944_1440w.webp" alt="Img"></p>
+<h2 id="！DRL"><a href="#！DRL" class="headerlink" title="！DRL"></a>！<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-017-05848-2">DRL</a></h2><p>直接采用CNN网络的输出作为特征，连接传统的分类器（预测器）进行分类和预测。作者在MR多模态影像上，测试和验证了DLR预测低级别胶质瘤突变分级的准确性。下方依次给出的是整体流程图，以及将DLR与传统影像组学方法的特异性、敏感性等对比、ROC对比。从对比可以看出，DLR方法在各项指标中几乎全面胜出。并且，对比中发现，采用多模态影像，并且对特征进行进一步筛选，得到的各项指标是最高的。<br><img src="https://pic2.zhimg.com/80/v2-9c5310d71e5e428662db1243f000b615_1440w.webp" alt="Img"><br><img src="https://pic1.zhimg.com/80/v2-558358a40a38f506aa5588d0e33a777c_1440w.webp" alt="Img"><br><img src="https://pic1.zhimg.com/80/v2-59d63f7881800e9147150a997646d6f4_1440w.webp" alt="Img"></p>
+<h1 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h1><p>深度学习并没有完全取代影像组学。主要的原因还是数据集规模的限制。</p>
+<p>深度学习能够大幅提高分类或预测模型的准确性，但这是有代价的。相比影像组学，深度学习方法需要更多的训练数据。但影像组学所研究的问题往往是某种肿瘤的分期或分型，或者是预后生存率，此类问题的训练数据（Grand Truth数据）收集成本是非常高昂的，一般需要病理或术后随访来进行验证。因此，训练数据集的规模通常数量级在几百，与深度学习常见的数千、上万级数据集相差很远。</p>
+<p>可以采用深度学习中普遍采用的数据增强手段（Data Augmented）了。这在一定程度上弥补了数据缺口。而数据增强在传统的影像组学中是无法采用的。</p>
 
     </div>
 
@@ -227,7 +240,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" rel="tag"># 代码随想录</a>
+              <a href="/tags/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/" rel="tag"># 影像组学</a>
           </div>
 
         
@@ -235,11 +248,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/" rel="next" title="AndrewNg-DeepLearning">
-      AndrewNg-DeepLearning <i class="fa fa-chevron-right"></i>
+    <a href="/2023/%E5%AD%A6%E7%82%B9/Radiomics/" rel="prev" title="Radiomics">
+      <i class="fa fa-chevron-left"></i> Radiomics
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -298,7 +311,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">传统影像组学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AI%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6"><span class="nav-number">2.</span> <span class="nav-text">AI影像组学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pure-DL%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8Autoencoder%E6%9D%A5%E6%8F%90%E5%8F%96%E7%89%B9%E5%BE%81%EF%BC%8C%E7%84%B6%E5%90%8E%E7%9B%B4%E6%8E%A5%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">Pure DL直接使用Autoencoder来提取特征，然后直接进行分类。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%81DL-Tr%E5%8F%AF%E4%BB%A5%E9%A2%84%E6%B5%8B%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F"><span class="nav-number">2.2.</span> <span class="nav-text">！DL+Tr可以预测生存周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%81DRL"><span class="nav-number">2.3.</span> <span class="nav-text">！DRL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E8%80%85%E6%AF%94%E8%BE%83"><span class="nav-number">3.</span> <span class="nav-text">二者比较</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="PyradiomicsFeaturesFirst Order Statistics(19) Energy 灰度，比如CT值，MRI中的信号强度 Total Energy 考虑体积灰度 Entropy 熵，图片混乱度（灰度取值的丰富程度，越大信息量越大） Minimum&#x2F;Maximum&#x2F;Mean&#x2F;Median最小&#x2F;最大&#x2F;平均&#x2F;中位灰度值 一">
+  <meta name="description" content="BasicsConvolutions Conv layers consist of a set of filters, which you can think of as just 2d matrices of numbers.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Radiomics">
-<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/Radiomics/">
+<meta property="og:title" content="CNN">
+<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/">
 <meta property="og:site_name" content="Gamer&#39;s Play">
-<meta property="og:description" content="PyradiomicsFeaturesFirst Order Statistics(19) Energy 灰度，比如CT值，MRI中的信号强度 Total Energy 考虑体积灰度 Entropy 熵，图片混乱度（灰度取值的丰富程度，越大信息量越大） Minimum&#x2F;Maximum&#x2F;Mean&#x2F;Median最小&#x2F;最大&#x2F;平均&#x2F;中位灰度值 一">
+<meta property="og:description" content="BasicsConvolutions Conv layers consist of a set of filters, which you can think of as just 2d matrices of numbers.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-10-31T14:33:39.000Z">
-<meta property="article:modified_time" content="2023-11-02T12:38:13.854Z">
+<meta property="article:published_time" content="2023-11-20T10:18:13.000Z">
+<meta property="article:modified_time" content="2023-11-20T13:35:00.234Z">
 <meta property="article:author" content="Gamer">
-<meta property="article:tag" content="Radiomics">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/Radiomics/">
+<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Radiomics | Gamer's Play</title>
+  <title>CNN | Gamer's Play</title>
   
 
 
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/Radiomics/">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Radiomics
+          CNN
         </h1>
 
         <div class="post-meta">
@@ -184,16 +184,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2023-10-31 22:33:39" itemprop="dateCreated datePublished" datetime="2023-10-31T22:33:39+08:00">2023-10-31</time>
+              <time title="Created: 2023-11-20 18:18:13 / Modified: 21:35:00" itemprop="dateCreated datePublished" datetime="2023-11-20T18:18:13+08:00">2023-11-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-02 20:38:13" itemprop="dateModified" datetime="2023-11-02T20:38:13+08:00">2023-11-02</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -215,18 +209,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Pyradiomics"><a href="#Pyradiomics" class="headerlink" title="Pyradiomics"></a>Pyradiomics</h1><h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><h3 id="First-Order-Statistics-19"><a href="#First-Order-Statistics-19" class="headerlink" title="First Order Statistics(19)"></a>First Order Statistics(19)</h3><ol>
-<li>Energy 灰度，比如CT值，MRI中的信号强度</li>
-<li>Total Energy 考虑体积灰度</li>
-<li>Entropy 熵，图片混乱度（灰度取值的丰富程度，越大信息量越大）</li>
-<li>Minimum&#x2F;Maximum&#x2F;Mean&#x2F;Median最小&#x2F;最大&#x2F;平均&#x2F;中位灰度值</li>
-<li>一些统计学概念特征</li>
-</ol>
-<ul>
-<li>10th&#x2F;90th percentile 所给数集中超过其10%&#x2F;90%的数</li>
-<li>Interquartile Range 四分位距 75百分数-25百分数</li>
-<li>Standard Deviation 标准差（反映一个数据集的离散程度：波动性）</li>
-<li>Skewness偏度，统计数据分布偏斜方向和程度</li>
+        <h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="Convolutions"><a href="#Convolutions" class="headerlink" title="Convolutions"></a>Convolutions</h2><ul>
+<li>Conv layers consist of a set of <strong>filters</strong>, which you can think of as just 2d matrices of numbers.</li>
 </ul>
 
     </div>
@@ -237,7 +221,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Radiomics/" rel="tag"># Radiomics</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
           </div>
 
         
@@ -246,8 +230,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/%E5%AD%A6%E7%82%B9/Visualize/" rel="prev" title="Visualize">
-      <i class="fa fa-chevron-left"></i> Visualize
+    <a href="/2023/%E5%AD%A6%E7%82%B9/%E6%B3%8C%E5%B0%BF%E7%B3%BB%E7%BB%9F/" rel="prev" title="泌尿系统">
+      <i class="fa fa-chevron-left"></i> 泌尿系统
     </a></div>
       <div class="post-nav-item">
     <a href="/2024/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/" rel="next" title="影像组学">
@@ -311,7 +295,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyradiomics"><span class="nav-number">1.</span> <span class="nav-text">Pyradiomics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Features"><span class="nav-number">1.1.</span> <span class="nav-text">Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Order-Statistics-19"><span class="nav-number">1.1.1.</span> <span class="nav-text">First Order Statistics(19)</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basics"><span class="nav-number">1.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolutions"><span class="nav-number">1.1.</span> <span class="nav-text">Convolutions</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -325,7 +309,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -338,7 +322,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

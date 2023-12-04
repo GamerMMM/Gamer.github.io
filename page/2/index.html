@@ -157,6 +157,131 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gamer">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gamer's Play">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/" class="post-title-link" itemprop="url">AndrewNg-DeepLearning</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-12 18:11:33" itemprop="dateCreated datePublished" datetime="2023-07-12T18:11:33+08:00">2023-07-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-10-11 16:59:55" itemprop="dateModified" datetime="2023-10-11T16:59:55+08:00">2023-10-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看着吴恩达老师的网课稍微用自己的理解来记一记东西~非常业余只供看乐子</p>
+<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><ul>
+<li>Structured Data : Refers to the data that each of the features has a very well defined meaning.</li>
+<li>Unstructured Data : audio,raw audio or images where you may want to recognize what’s in the image or text. And the features might be the pixel values(像素值) in an image.What should be paid attention to is that humans are really good at interpret unstructing data,as a word or a text can be regarded as a form of unstructured data.</li>
+<li>piont: deal with a huge amount of data.Especially “labled data”</li>
+<li>algorithm innovation(data computation): transform sigmoid to RELU function(help computation),more convient for bigger nn trains and trying your new idea,improving your efficiency.</li>
+<li>Label : things you’re going to predict.</li>
+<li>Feature : </li>
+<li>Example : labened&#x2F;unlabeled(features only) ;</li>
+<li>model : </li>
+<li>training :</li>
+<li>inference :</li>
+<li>overfitting ；</li>
+<li>convergence :</li>
+<li>parameter :</li>
+<li>hyperparameter :</li>
+<li>模型训练的一次迭代（一次梯度更新）</li>
+</ul>
+<h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><h3 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h3><ul>
+<li>The dimension of feature vector:the number of elements.n&#x3D;num*row*col(of the matrixes);m refers to the number of examples we have in total;</li>
+<li>create a matrix (nx,m);python:X.shape;Y.shape(1,m)</li>
+<li>We assume that the parameters(参数) of logistic regression will be w an nx-dimensional vector.</li>
+<li>you can use the following function to get a estimated value:<br>$$<br>\widehat{y}&#x3D;\sigma(wx+b)<br>$$</li>
+<li><strong>Loss Function:</strong> Logistic Rsgression lost function,we can find the local optima(best solution).You can assume y equals to a certain value like 1 or 0,then see what value we hope the $\widehat{y}$ be.<br>$$<br>L(\widehat{y},y)&#x3D;-(ylog\widehat{y}+(1-y)log(1-\widehat{y}))<br>$$</li>
+<li><strong>Cost Function:</strong> It is the additive sum of every loss of the predictive value,and it measures how well the parameters w and b are doing. We should find apprioate w and b to make the J(w,b) as small as possible.<br>$$<br>J(w,b) &#x3D; \frac{1}{m}\sum L(\widehat{y}^{(i)},y^{(i)})<br>$$<br>Interpret:<br>First, we want to minimum the cost function J(w,b).<br>Second, we’re supposed to maximum the minus L, for we always want the max through the maximum likehood estimition.<br>Then we assume that our model were IID(identically independently distributed).<br>$$y &#x3D; 1 : p(y|x) &#x3D; \widehat{y}$$<br>$$y &#x3D; 0 : p(y|x) &#x3D; 1 - \widehat{y}$$<br>We mix the two function together:<br>$$p(y|x) &#x3D;  \widehat{y}^y + (1-\widehat{y})^{(1-y)}$$<br>log the both side we get the -L.</li>
+</ul>
+<h3 id="Use-the-gradient-descent-algorithm"><a href="#Use-the-gradient-descent-algorithm" class="headerlink" title="Use the gradient descent algorithm"></a>Use the gradient descent algorithm</h3><ul>
+<li>to train the w and b,get the best result;</li>
+<li>progress:as you should know that J(w,b) is a convex(凹函数),so we’re supposed to find the minus,at least the local minus. so we repeat:<br>$$<br>w&#x3D;w-\alpha \frac{\delta J(w,b)}{\delta w}<br>$$</li>
+</ul>
+<h3 id="Implement-gradient-for-logistic-regression"><a href="#Implement-gradient-for-logistic-regression" class="headerlink" title="Implement gradient for logistic regression"></a>Implement gradient for logistic regression</h3><ul>
+<li>three core formulas:<br>$$z &#x3D; w^Tx+b$$<br>$$\widehat{y} &#x3D; a &#x3D; \sigma(z)$$<br>$$L(a,y) &#x3D; -(ylog(a)+(1-y)log(1-a))$$</li>
+<li>the number of fearures equals to the unmber of w(i),and only a sigle b.We compute the loss based on a sigle example.</li>
+<li>Caculate:<br>$$<br>dz &#x3D; a - y , db &#x3D; dz<br>$$<br>then you cancompute $w_1,w_2$….the same way as the former<br>$$dw_1 &#x3D; x_1dz,w_1 &#x3D; w_1 - \alpha dw<br>$$</li>
+</ul>
+<h4 id="for-the-m-examples-make-a-for-loop"><a href="#for-the-m-examples-make-a-for-loop" class="headerlink" title="for the m examples,make a for loop"></a>for the m examples,make a for loop</h4><ul>
+<li>you add every value up,include $J,w_i,z_i,dz_i$,then you get the additive sum of $j,dw_i,b$,then &#x2F;m.<br>$$w_i &#x3D; w_i - \alpha dw_i<br>$$<br>$$b &#x3D; b - \alpha db$$</li>
+</ul>
+<h3 id="Vectorization"><a href="#Vectorization" class="headerlink" title="Vectorization"></a>Vectorization</h3><ul>
+<li>use special command so that you can accelarate your efficiency.for loop is too slow. </li>
+<li>feature: transform the for loop compute to the special matrix algorithm,so we can call out numpy to perform better.Second you can achieve work out all the results at a sigle time through transform the vector to the matrix.</li>
+</ul>
+<h3 id="broadcasting-in-Python"><a href="#broadcasting-in-Python" class="headerlink" title="broadcasting in Python"></a>broadcasting in Python</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cal = A.sum(axis = <span class="number">0</span>) <span class="comment"># to sum vertically, 1 means sum horizontally</span></span><br><span class="line">percentage = <span class="number">100</span>*A/(cal.reshape(<span class="number">1</span>,<span class="number">4</span>)) <span class="comment"># make sure that the shape is you want</span></span><br></pre></td></tr></table></figure>
+<p>In fact, Python can automatically transforms the matrix too suit the compute, by copying vertically or horizontally.<br>You can read NumPy documention.</p>
+<h4 id="Do-not-use-rank-1-arries"><a href="#Do-not-use-rank-1-arries" class="headerlink" title="Do not use rank 1 arries"></a>Do not use rank 1 arries</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.random.dandn(<span class="number">5</span>) <span class="comment"># to create a special arry ranking 1</span></span><br><span class="line">a.shape = (<span class="number">5</span>,) <span class="comment"># rank = 1, behavior differently from vector</span></span><br></pre></td></tr></table></figure>
+<h4 id="instead-do-this"><a href="#instead-do-this" class="headerlink" title="instead  do this"></a>instead  do this</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = np.random,randn(<span class="number">5</span>,<span class="number">1</span>) <span class="comment"># column vector</span></span><br><span class="line">a = np.random.randn(<span class="number">1</span>,<span class="number">5</span>) <span class="comment"># row vector</span></span><br><span class="line">assert(a.shape == (<span class="number">5</span>,<span class="number">1</span>)) <span class="comment"># to confirm the shape</span></span><br><span class="line">a = a.reshape((<span class="number">1</span>,<span class="number">5</span>)) <span class="comment"># to ensure its behavior</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><h3 id="Overview-amp-Representation"><a href="#Overview-amp-Representation" class="headerlink" title="Overview&amp;Representation"></a>Overview&amp;Representation</h3><ul>
+<li>input layer -&gt; hinden layer -&gt; output layer</li>
+<li>we call the input layer the zero layer, according to that role to define the number of layer.</li>
+<li></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/codenote/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -298,7 +423,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -311,7 +436,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

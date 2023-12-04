@@ -64,16 +64,17 @@
       </tags>
   </entry>
   <entry>
-    <title>BrainTumor_Apps</title>
-    <url>/2023/%E5%AD%A6%E7%82%B9/BrainTumor/</url>
-    <content><![CDATA[<h1 id="3Dslicer有关参数"><a href="#3Dslicer有关参数" class="headerlink" title="3Dslicer有关参数"></a>3Dslicer有关参数</h1><p>Dicom - 上传有关CT映像文件 可以选择单张也可以选择文件夹<br>Volumes - 密度调整<br>1.可以改动窗宽窗位<br>2.每个部位跳出特定创维<br>Markups - 长度角度曲线等数值测量的工具集</p>
-<p>第一版：可以加入路径打开照片</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">from <span class="title class_">PyQt5</span> import <span class="title class_">QtCore</span>, <span class="title class_">QtGui</span>, <span class="title class_">QtWidgets</span></span><br><span class="line">from <span class="title class_">PyQt5</span>.<span class="title class_">QtWidgets</span> import *</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">from <span class="title class_">PyNii</span> import <span class="title class_">MyFigure</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Ui</span>_Dialog(object):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setupUi</span>(<span class="params"><span class="variable language_">self</span>, <span class="title class_">Dialog</span></span>):</span><br><span class="line">        <span class="comment">#创建窗口</span></span><br><span class="line">        <span class="title class_">Dialog</span>.setObjectName(<span class="string">&quot;特征提取&quot;</span>)</span><br><span class="line">        <span class="title class_">Dialog</span>.resize(<span class="number">1405</span>, <span class="number">995</span>)</span><br><span class="line">        <span class="variable language_">self</span>.pushButton = <span class="title class_">QtWidgets</span>.<span class="title class_">QPushButton</span>(<span class="title class_">Dialog</span>)</span><br><span class="line">        <span class="variable language_">self</span>.pushButton.setGeometry(<span class="title class_">QtCore</span>.<span class="title class_">QRect</span>(<span class="number">970</span>, <span class="number">740</span>, <span class="number">150</span>, <span class="number">46</span>))</span><br><span class="line">        <span class="variable language_">self</span>.pushButton.setObjectName(<span class="string">&quot;pushButton&quot;</span>)</span><br><span class="line">        <span class="comment">#图片显示区域</span></span><br><span class="line">        <span class="variable language_">self</span>.graphicsView = <span class="title class_">QtWidgets</span>.<span class="title class_">QGraphicsView</span>(<span class="title class_">Dialog</span>)</span><br><span class="line">        <span class="variable language_">self</span>.graphicsView.setGeometry(<span class="title class_">QtCore</span>.<span class="title class_">QRect</span>(<span class="number">660</span>, <span class="number">190</span>, <span class="number">721</span>, <span class="number">451</span>))</span><br><span class="line">        <span class="variable language_">self</span>.graphicsView.setObjectName(<span class="string">&quot;graphicsView&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.layoutWidget = <span class="title class_">QtWidgets</span>.<span class="title class_">QWidget</span>(<span class="title class_">Dialog</span>)</span><br><span class="line">        <span class="variable language_">self</span>.layoutWidget.setGeometry(<span class="title class_">QtCore</span>.<span class="title class_">QRect</span>(<span class="number">30</span>, <span class="number">50</span>, <span class="number">601</span>, <span class="number">351</span>))</span><br><span class="line">        <span class="variable language_">self</span>.layoutWidget.setObjectName(<span class="string">&quot;layoutWidget&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayout = <span class="title class_">QtWidgets</span>.<span class="title class_">QVBoxLayout</span>(<span class="variable language_">self</span>.layoutWidget)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayout.setContentsMargins(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayout.setObjectName(<span class="string">&quot;verticalLayout&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.label1 = <span class="title class_">QLabel</span>()</span><br><span class="line">        <span class="variable language_">self</span>.label1.setText(<span class="string">&quot;   &quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label1.setFixedSize(<span class="number">721</span>, <span class="number">451</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label1.move(<span class="number">660</span>, <span class="number">190</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#左侧下拉栏显示区域</span></span><br><span class="line">        <span class="variable language_">self</span>.comboBox = <span class="title class_">QtWidgets</span>.<span class="title class_">QComboBox</span>(<span class="variable language_">self</span>.layoutWidget)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setCurrentText(<span class="string">&quot;选择上传区域&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setObjectName(<span class="string">&quot;comboBox&quot;</span>)</span><br><span class="line">        icon = <span class="title class_">QtGui</span>.<span class="title class_">QIcon</span>.fromTheme(<span class="string">&quot;11&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.addItem(icon, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayout.addWidget(<span class="variable language_">self</span>.comboBox)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2 = <span class="title class_">QtWidgets</span>.<span class="title class_">QComboBox</span>(<span class="variable language_">self</span>.layoutWidget)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.setObjectName(<span class="string">&quot;comboBox_2&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.addItem(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayout.addWidget(<span class="variable language_">self</span>.comboBox_2)</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.raise_()</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.raise_()</span><br><span class="line">        <span class="variable language_">self</span>.pushButton_2 = <span class="title class_">QtWidgets</span>.<span class="title class_">QPushButton</span>(<span class="title class_">Dialog</span>)</span><br><span class="line">        <span class="variable language_">self</span>.pushButton_2.setGeometry(<span class="title class_">QtCore</span>.<span class="title class_">QRect</span>(<span class="number">30</span>, <span class="number">680</span>, <span class="number">601</span>, <span class="number">46</span>))</span><br><span class="line">        <span class="variable language_">self</span>.pushButton_2.setObjectName(<span class="string">&quot;pushButton_2&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.retranslateUi(<span class="title class_">Dialog</span>)</span><br><span class="line">        <span class="title class_">QtCore</span>.<span class="title class_">QMetaObject</span>.connectSlotsByName(<span class="title class_">Dialog</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">retranslateUi</span>(<span class="params"><span class="variable language_">self</span>, <span class="title class_">Dialog</span></span>):</span><br><span class="line">        _translate = <span class="title class_">QtCore</span>.<span class="title class_">QCoreApplication</span>.translate</span><br><span class="line">        <span class="title class_">Dialog</span>.setWindowTitle(_translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;Dialog&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.pushButton.setText(_translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;上传图片&quot;</span>))</span><br><span class="line">        <span class="comment"># 绑定函数</span></span><br><span class="line">        <span class="variable language_">self</span>.pushButton.clicked.connect(<span class="variable language_">self</span>.open_image)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setToolTip(_translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;选择上传的图像体与分割&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setWhatsThis(_translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;选择上传的图像体与分割&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setItemText(<span class="number">0</span>, _translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;选择上传区域&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setItemText(<span class="number">1</span>, _translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;整张图片&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox.setItemText(<span class="number">2</span>, _translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;已选择的感兴趣区域&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.setItemText(<span class="number">0</span>, _translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;自定义特征提取方式&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.setItemText(<span class="number">1</span>, _translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;手动提取&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.comboBox_2.setItemText(<span class="number">2</span>, _translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;参数文件提取&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.pushButton_2.setText(_translate(<span class="string">&quot;Dialog&quot;</span>, <span class="string">&quot;应用&quot;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">open_image</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">        imgName, imgType = <span class="title class_">QFileDialog</span>.getOpenFileName(<span class="title class_">None</span>, <span class="string">&quot;打开图片&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;*.jpg;;*.nii;;All Files(*)&quot;</span>)</span><br><span class="line">        <span class="string">&#x27;&#x27;</span><span class="string">&#x27;上面一行代码是弹出选择文件的对话框，第一个参数固定，第二个参数是打开后右上角显示的内容</span></span><br><span class="line"><span class="string">            第三个参数是对话框显示时默认打开的目录，&quot;.&quot; 代表程序运行目录</span></span><br><span class="line"><span class="string">            第四个参数是限制可打开的文件类型。</span></span><br><span class="line"><span class="string">            返回参数 imgName为G:/xxxx/xxx.jpg，imgType为*.jpg。	</span></span><br><span class="line"><span class="string">            此时相当于获取到了文件地址 </span></span><br><span class="line"><span class="string">        &#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">        imgName_cv2 = cv2.imread(imgName)</span><br><span class="line">        im0 = cv2.cvtColor(imgName_cv2, cv2.<span class="variable constant_">COLOR_RGB2BGR</span>)</span><br><span class="line">            <span class="comment"># 这里使用cv2把这张图片读取进来，也可以用QtGui.QPixmap方式。然后由于cv2读取的跟等下显示的RGB顺序不一样，所以需要转换一下顺序</span></span><br><span class="line">        showImage = <span class="title class_">QtGui</span>.<span class="title class_">QImage</span>(im0, im0.shape[<span class="number">1</span>], im0.shape[<span class="number">0</span>], <span class="number">3</span> * im0.shape[<span class="number">1</span>], <span class="title class_">QtGui</span>.<span class="title class_">QImage</span>.<span class="title class_">Format</span>_RGB888)</span><br><span class="line">        <span class="variable language_">self</span>.label1.setPixmap(<span class="title class_">QtGui</span>.<span class="title class_">QPixmap</span>.fromImage(showImage))</span><br><span class="line">            <span class="comment"># 然后这个时候就可以显示一张图片了。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <title>CNN</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/CNN/</url>
+    <content><![CDATA[<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="Convolutions"><a href="#Convolutions" class="headerlink" title="Convolutions"></a>Convolutions</h2><ul>
+<li>Conv layers consist of a set of <strong>filters</strong>, which you can think of as just 2d matrices of numbers.</li>
+</ul>
+]]></content>
       <categories>
         <category>学点</category>
       </categories>
       <tags>
-        <tag>脑肿瘤图像分析</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -183,6 +184,8 @@
 <h1 id="Scroll-Area"><a href="#Scroll-Area" class="headerlink" title="Scroll Area"></a>Scroll Area</h1><p>设置 ScrollAreaWidgetContents 的minimumSize属性，只有窗口大小小于这个值的时候，滑块才生效。<br>实际上相当于scrollArea内部创建了一个子区域，如果子区域大于最外区域，则出现滑块，如果只想出现一边有滑块，没有的那一边建议子块的最小值设置为0</p>
 <h1 id="ComboBox"><a href="#ComboBox" class="headerlink" title="ComboBox"></a>ComboBox</h1><h2 id="访问QComboBox的列表项"><a href="#访问QComboBox的列表项" class="headerlink" title="访问QComboBox的列表项"></a>访问QComboBox的列表项</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int currentlndex()：返回当前项的序号，第一个项的序号为<span class="number">0</span>。</span><br><span class="line"><span class="title class_">QString</span> currentText()：返回当前项的文本</span><br><span class="line"><span class="title class_">QVariant</span> currentData(int role = <span class="title class_">Qt</span><span class="symbol">:</span><span class="symbol">:UserRole</span>)：返回当前项的关联数据</span><br><span class="line"><span class="title class_">QString</span> itemText(int index) 返回指定索引号的项的文本</span><br><span class="line"><span class="title class_">QVariant</span> itemData(int index, int role = <span class="title class_">Qt</span>%<span class="symbol">:UserRole</span>) 返回指定索引号的项的关联数据。</span><br><span class="line">int count()：返回项的个数。</span><br></pre></td></tr></table></figure>
 <h2 id="槽函数"><a href="#槽函数" class="headerlink" title="槽函数"></a>槽函数</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">self</span>.reco_comboBox.currentIndexChanged.connect(</span><br><span class="line">    <span class="symbol">lambda:</span> <span class="variable language_">self</span>.model_init(<span class="variable language_">self</span>.reco_comboBox.currentIndex()))</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#model_init函数的实现的核心代码</span></span><br><span class="line"><span class="comment"># 加载相关参数，并初始化模型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">model_init</span>(<span class="params"><span class="variable language_">self</span>,tag</span>):</span><br><span class="line">    <span class="keyword">if</span> tag == <span class="number">1</span>:   <span class="comment">#当下拉框选中&quot;1&quot;触发事件</span></span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    代码省略</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="QSlider"><a href="#QSlider" class="headerlink" title="QSlider"></a>QSlider</h1><h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">/*horizontal ：水平<span class="title class_">QSlider</span>*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">QSlider::groove:horizontal &#123;</span></span><br><span class="line"><span class="regexp">border: 0px solid #bbb;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span>*<span class="number">1</span>.滑动过的槽设计参数*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">QSlider::sub-page:horizontal &#123;</span></span><br><span class="line"><span class="regexp"> /</span>*槽颜色*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">background: rgb(90,49,255);</span></span><br><span class="line"><span class="regexp"> /</span>*外环区域倒圆角度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border-radius: 2px;</span></span><br><span class="line"><span class="regexp"> /</span>*上遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-top:8px;</span></span><br><span class="line"><span class="regexp"> /</span>*下遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-bottom:8px;</span></span><br><span class="line"><span class="regexp">/</span>*width在这里无效，不写即可*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span>*<span class="number">2</span>.未滑动过的槽设计参数*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">QSlider::add-page:horizontal &#123;</span></span><br><span class="line"><span class="regexp">/</span>*槽颜色*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">background: rgb(255,255, 255);</span></span><br><span class="line"><span class="regexp">/</span>*外环大小0px就是不显示，默认也是<span class="number">0</span>*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border: 0px solid #777;</span></span><br><span class="line"><span class="regexp">/</span>*外环区域倒圆角度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border-radius: 2px;</span></span><br><span class="line"><span class="regexp"> /</span>*上遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-top:9px;</span></span><br><span class="line"><span class="regexp"> /</span>*下遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-bottom:9px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"> </span></span><br><span class="line"><span class="regexp">/</span>*<span class="number">3</span>.平时滑动的滑块设计参数*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">QSlider::handle:horizontal &#123;</span></span><br><span class="line"><span class="regexp">/</span>*滑块颜色*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">background: rgb(193,204,208);</span></span><br><span class="line"><span class="regexp">/</span>*滑块的宽度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">width: 5px;</span></span><br><span class="line"><span class="regexp">/</span>*滑块外环为1px，再加颜色*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border: 1px solid rgb(193,204,208);</span></span><br><span class="line"><span class="regexp"> /</span>*滑块外环倒圆角度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border-radius: 2px; </span></span><br><span class="line"><span class="regexp"> /</span>*上遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-top:6px;</span></span><br><span class="line"><span class="regexp"> /</span>*下遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-bottom:6px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span>*<span class="number">4</span>.手动拉动时显示的滑块设计参数*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">QSlider::handle:horizontal:hover &#123;</span></span><br><span class="line"><span class="regexp">/</span>*滑块颜色*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">background: rgb(193,204,208);</span></span><br><span class="line"><span class="regexp">/</span>*滑块的宽度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">width: 10px;</span></span><br><span class="line"><span class="regexp">/</span>*滑块外环为1px，再加颜色*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border: 1px solid rgb(193,204,208);</span></span><br><span class="line"><span class="regexp"> /</span>*滑块外环倒圆角度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">border-radius: 5px; </span></span><br><span class="line"><span class="regexp"> /</span>*上遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-top:4px;</span></span><br><span class="line"><span class="regexp"> /</span>*下遮住区域高度*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">margin-bottom:4px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br></pre></td></tr></table></figure>
 
 <h1 id="QCheckBox"><a href="#QCheckBox" class="headerlink" title="QCheckBox"></a>QCheckBox</h1><ol>
 <li>常用方法</li>
@@ -431,30 +434,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Radiomics</title>
-    <url>/2023/%E5%AD%A6%E7%82%B9/Radiomics/</url>
-    <content><![CDATA[<h1 id="Pyradiomics"><a href="#Pyradiomics" class="headerlink" title="Pyradiomics"></a>Pyradiomics</h1><h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><h3 id="First-Order-Statistics-19"><a href="#First-Order-Statistics-19" class="headerlink" title="First Order Statistics(19)"></a>First Order Statistics(19)</h3><ol>
-<li>Energy 灰度，比如CT值，MRI中的信号强度</li>
-<li>Total Energy 考虑体积灰度</li>
-<li>Entropy 熵，图片混乱度（灰度取值的丰富程度，越大信息量越大）</li>
-<li>Minimum&#x2F;Maximum&#x2F;Mean&#x2F;Median最小&#x2F;最大&#x2F;平均&#x2F;中位灰度值</li>
-<li>一些统计学概念特征</li>
-</ol>
-<ul>
-<li>10th&#x2F;90th percentile 所给数集中超过其10%&#x2F;90%的数</li>
-<li>Interquartile Range 四分位距 75百分数-25百分数</li>
-<li>Standard Deviation 标准差（反映一个数据集的离散程度：波动性）</li>
-<li>Skewness偏度，统计数据分布偏斜方向和程度</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学点</category>
-      </categories>
-      <tags>
-        <tag>Radiomics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Visualize</title>
     <url>/2023/%E5%AD%A6%E7%82%B9/Visualize/</url>
     <content><![CDATA[<h1 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a>Seaborn</h1><p><a href="https://blog.csdn.net/qq_42676511/article/details/125178293?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169822574316800185874963%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169822574316800185874963&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-125178293-null-null.142%5Ev96%5Epc_search_result_base3&utm_term=seaborn&spm=1018.2226.3001.4187">详解seaborn，各种类型的图样！</a><br>Seaborn基本是一个建立于Matplotlib基础上的一个2D绘图库。Seaborn创建在Python核心可视化库Matplotlib的基础上，它旨在作为补充，而不是替代，但是，Seaborn具有一些非常重要的函数。让无涯教程在这里看到其中的一些。函数有助于：</p>
@@ -644,6 +623,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Tensorflow官网留存</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/Tensorflow%E5%AE%98%E7%BD%91%E7%95%99%E5%AD%98/</url>
+    <content><![CDATA[<p>建立模型并调用：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">build_model</span>():</span><br><span class="line">  model = keras.<span class="title class_">Sequential</span>([</span><br><span class="line">    layers.<span class="title class_">Dense</span>(<span class="number">64</span>, activation=<span class="string">&#x27;relu&#x27;</span>, input_shape=[len(train_dataset.keys())]),</span><br><span class="line">    layers.<span class="title class_">Dense</span>(<span class="number">64</span>, activation=<span class="string">&#x27;relu&#x27;</span>),</span><br><span class="line">    layers.<span class="title class_">Dense</span>(<span class="number">1</span>)</span><br><span class="line">  ])</span><br><span class="line"></span><br><span class="line">  optimizer = tf.keras.optimizers.<span class="title class_">RMSprop</span>(<span class="number">0.001</span>)</span><br><span class="line"></span><br><span class="line">  model.compile(loss=<span class="string">&#x27;mse&#x27;</span>,</span><br><span class="line">                optimizer=optimizer,</span><br><span class="line">                metrics=[<span class="string">&#x27;mae&#x27;</span>, <span class="string">&#x27;mse&#x27;</span>])</span><br><span class="line">  <span class="keyword">return</span> model</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model = build_model()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+  </entry>
+  <entry>
     <title>codenote</title>
     <url>/2023/%E5%AD%A6%E7%82%B9/codenote/</url>
     <content><![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>探讨一个算法的实现以及其性能，表示程序运行答题时间。<br>f(n)指的是<strong>一般数据下</strong>运行时间的上界，并非一定是最坏情况，所以要注意：</p>
@@ -661,6 +651,190 @@
       </categories>
       <tags>
         <tag>代码随想录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>泌尿系统</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/%E6%B3%8C%E5%B0%BF%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<font face="微软雅黑">
+
+<h1 id="泌尿系统的组成-amp-各器官的功能"><a href="#泌尿系统的组成-amp-各器官的功能" class="headerlink" title="泌尿系统的组成&amp;各器官的功能"></a><font color=#2a83a2>泌尿系统的组成&amp;各器官的功能</font></h1><h2 id="肾脏：产生尿液"><a href="#肾脏：产生尿液" class="headerlink" title="肾脏：产生尿液"></a>肾脏：产生尿液</h2><h3 id="肾单位：肾小体-肾小管"><a href="#肾单位：肾小体-肾小管" class="headerlink" title="肾单位：肾小体+肾小管"></a>肾单位：肾小体+肾小管</h3><ol>
+<li>浅表肾单位（皮质）</li>
+<li>球旁肾单位（髓质）：</li>
+</ol>
+<ul>
+<li>深、大、少</li>
+<li><font color=#59b9c6> 髓袢长：与<strong>浓缩尿液</strong>的主要功能相适应 </font></li>
+</ul>
+<h4 id="肾小体的结构特点"><a href="#肾小体的结构特点" class="headerlink" title="肾小体的结构特点"></a><font color=#2a83a2>肾小体的结构特点</font></h4><h3 id="球旁器的组成"><a href="#球旁器的组成" class="headerlink" title="球旁器的组成"></a><font color=#2a83a2>球旁器的组成</font></h3><ol>
+<li>球旁细胞：位于<strong>入球小动脉</strong>中膜内的<strong>平滑肌</strong>细胞<br>分泌肾素&amp;分泌颗粒</li>
+<li><strong>球外系膜细胞</strong><br><strong>收缩&amp;吞噬</strong></li>
+<li>致密斑<br><strong>远曲小管起始部的上皮细胞</strong><br>感受小管液中钠离子浓度变化，并传达给球旁细胞：</li>
+</ol>
+<ul>
+<li>调控肾素分泌</li>
+<li>调控肾小球滤过率</li>
+</ul>
+<h3 id="肾脏的血流特点"><a href="#肾脏的血流特点" class="headerlink" title=" 肾脏的血流特点 "></a><font color=#89c3eb> 肾脏的血流特点 </font></h3><ol>
+<li>血流速度快，流量大</li>
+<li>血压较高</li>
+<li>血流量稳定</li>
+<li>血液到达血管球的速度快</li>
+<li><strong>形成两级毛细血管网</strong></li>
+</ol>
+<h1 id="泌尿生理"><a href="#泌尿生理" class="headerlink" title="泌尿生理"></a><font color=#2a83a2>泌尿生理</font></h1><h1 id="肾小体的滤过功能及其影响因素；有效滤过压"><a href="#肾小体的滤过功能及其影响因素；有效滤过压" class="headerlink" title="肾小体的滤过功能及其影响因素；有效滤过压"></a>肾小体的滤过功能及其影响因素；有效滤过压</h1><h1 id="滤过膜的结构和功能"><a href="#滤过膜的结构和功能" class="headerlink" title="滤过膜的结构和功能"></a>滤过膜的结构和功能</h1><h1 id="熟悉尿液的重吸收和浓缩"><a href="#熟悉尿液的重吸收和浓缩" class="headerlink" title="熟悉尿液的重吸收和浓缩"></a>熟悉尿液的重吸收和浓缩</h1><h1 id="泌尿功能的调节"><a href="#泌尿功能的调节" class="headerlink" title="泌尿功能的调节"></a>泌尿功能的调节</h1><h2 id="ADH抗利尿激素"><a href="#ADH抗利尿激素" class="headerlink" title="ADH抗利尿激素"></a>ADH抗利尿激素</h2><ul>
+<li>下丘脑视上核产生，储存于脑垂体</li>
+<li></li>
+</ul>
+<h3 id="ANH血液稀释"><a href="#ANH血液稀释" class="headerlink" title="ANH血液稀释"></a>ANH血液稀释</h3><h2 id="醛固酮"><a href="#醛固酮" class="headerlink" title="醛固酮"></a>醛固酮</h2><p><strong>调节远曲小管、集合管对钠重吸收的主要物质是醛固酮</strong><br><font color=#89c3eb>肾素-血管紧张素-醛固酮系统</font></p>
+<h1 id="了解尿液排放的控制"><a href="#了解尿液排放的控制" class="headerlink" title="了解尿液排放的控制"></a><font color=#2a83a2>了解尿液排放的控制</font></h1><ul>
+<li>尿道内外括约肌</li>
+<li>排尿反射受脑的高级中枢控制，意识可抑制&#x2F;促进排尿反射</li>
+<li>膀胱与尿道的神经支配</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>神经</th>
+<th>盆部</th>
+<th>腹下部</th>
+<th>阴部</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>传入感知</td>
+<td>膀胱充胀</td>
+<td>膀胱痛</td>
+<td>尿道</td>
+</tr>
+<tr>
+<td>传出</td>
+<td>副交感神经</td>
+<td>交感神经</td>
+<td>躯体神经</td>
+</tr>
+<tr>
+<td>作用效果</td>
+<td>逼尿肌收缩，外括约肌舒张，排尿</td>
+<td>逼尿肌舒张，外括约肌收缩，阻尿</td>
+<td><strong>尿道外括约肌收缩，意识控制</strong></td>
+</tr>
+</tbody></table>
+<h2 id="排尿反射的过程"><a href="#排尿反射的过程" class="headerlink" title="排尿反射的过程"></a>排尿反射的过程</h2></font>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>生医</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>影像组学</title>
+    <url>/2024/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/</url>
+    <content><![CDATA[<p><a href="https://ieeexplore.ieee.org/ielx7/7433213/8657419/08657645.pdf?tag=1">一个对比AI影像和传统影像的论文，介绍各自的特征</a><br>深度学习简单直接自动化，大力出奇迹；影像组学步步为营靠人工，识珠靠慧眼。两种方法本质上都依赖大数据，都可以划分为图像预处理、特征筛选和特征建模三个阶段。</p>
+<h1 id="传统影像组学"><a href="#传统影像组学" class="headerlink" title="传统影像组学"></a>传统影像组学</h1><p>方法上，影像组学提取传统的图像特征，包括形状、灰度、纹理等，采用传统统计（模式识别）模型来分类和预测，如支持向量机、随机森林、XGBoost等；<br><strong>Overview</strong><br><img src="https://pic4.zhimg.com/v2-f6a1971f7bd966f887c80a6b6afdce53_r.jpg" alt="Img"></p>
+<h1 id="AI影像组学"><a href="#AI影像组学" class="headerlink" title="AI影像组学"></a>AI影像组学</h1><h2 id="深度学习人工智能模型"><a href="#深度学习人工智能模型" class="headerlink" title="深度学习人工智能模型"></a>深度学习人工智能模型</h2><p><a href="https://zhuanlan.zhihu.com/p/459735826">放射组学基于人工智能治疗预后</a><br>DL方法基于深度神经网络进行模式识别，模式识别通常包括一系列可训练的非线性操作，称为层，每个层将输入数据转换为便于模式识别的表示。随着越来越多的层对输入数据应用转换，这些数据越来越多地抽象为深层特征表示。由此产生的深层特征最终可以由网络的最后一层转化为所需的输出，例如治疗结果的可能性或肿瘤的分子亚型。深度学习是一个广泛的、技术性的、动态发展的领域。我们简要介绍了基于预测的AI影像学中最常见的主题，并对深层神经网络的类型、常用框架、解决数据局限性的方法进行了更详细的补充讨论。所有这些问题在别的研究中都有综述。</p>
+<h2 id="VGG实现特征提取"><a href="#VGG实现特征提取" class="headerlink" title="VGG实现特征提取"></a>VGG实现特征提取</h2><h3 id="常用代码-amp-注解"><a href="#常用代码-amp-注解" class="headerlink" title="常用代码&amp;注解"></a>常用代码&amp;注解</h3><h4 id="查看模型结构"><a href="#查看模型结构" class="headerlink" title="查看模型结构"></a>查看模型结构</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看模型整体结构</span></span><br><span class="line">structure = torch.nn.<span class="title class_">Sequential</span>(*list(vgg_model.children())[<span class="symbol">:</span>])</span><br><span class="line">print(structure)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 查看模型各部分名称</span></span><br><span class="line">print(<span class="string">&#x27;模型各部分名称&#x27;</span>, vgg_model._modules.keys())</span><br></pre></td></tr></table></figure>
+<p>运行后可知：</p>
+<ul>
+<li><p>vgg19整体结构分为三大部分：</p>
+<ul>
+<li>‘features’：上面输出的VGG19模型结构中的第一个Sequential，包含（0）-（36）层；</li>
+<li>‘avgpool’：VGG19模型结构的第二个部分AdaptiveAvgPool2d；</li>
+<li>‘classifier’：VGG19模型结构的最后一个部分Sequential，包含（0）-（6）层。注意其中Linear特征维度是1000，其余均为4096.</li>
+</ul>
+</li>
+</ul>
+<h4 id="修改模型结构"><a href="#修改模型结构" class="headerlink" title="修改模型结构"></a>修改模型结构</h4><ol>
+<li><p>可以获取各个部分，切割层数</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取vgg19模型的第一个Sequential, 也就是features部分.</span></span><br><span class="line">features = torch.nn.<span class="title class_">Sequential</span>(*list(vgg_model.children())[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">&#x27;features of vgg19: &#x27;</span>, features)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 获取vgg19模型的最后一个Sequential, 也就是classifier部分.</span></span><br><span class="line">classifier = torch.nn.<span class="title class_">Sequential</span>(*list(vgg_model.children())[-<span class="number">1</span>])</span><br><span class="line">print(<span class="string">&#x27;classifier of vgg19: &#x27;</span>, classifier)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 在获取到最后一个classifier部分的基础上, 再切割模型, 去掉最后一层.</span></span><br><span class="line">new_classifier = torch.nn.<span class="title class_">Sequential</span>(*list(vgg_model.children())[-<span class="number">1</span>][<span class="symbol">:</span><span class="number">6</span>])</span><br><span class="line">print(<span class="string">&#x27;new_classifier: &#x27;</span>, new_classifier)</span><br></pre></td></tr></table></figure></li>
+<li><p>用new_classifier替换vgg19原始模型中的分类器( classifier )部分，就得到了输出维度是4096的VGG19模型</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torchvision.models as models</span><br><span class="line">from torchvision import transforms</span><br><span class="line">from <span class="variable constant_">PIL</span> import <span class="title class_">Image</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 获取vgg19原始模型, 输出图像维度是1000.</span></span><br><span class="line">vgg_model_1000 = models.vgg19(pretrained=<span class="title class_">True</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 下面三行代码功能是:得到修改后的vgg19模型.</span></span><br><span class="line"><span class="comment"># 具体实现是: 去掉vgg19原始模型的第三部分classifier的最后一个全连接层, </span></span><br><span class="line"><span class="comment"># 用新的分类器替换原始vgg19的分类器，使输出维度是4096.</span></span><br><span class="line">vgg_model_4096 = models.vgg19(pretrained=<span class="title class_">True</span>)</span><br><span class="line">new_classifier = torch.nn.<span class="title class_">Sequential</span>(*list(vgg_model_4096.children())[-<span class="number">1</span>][<span class="symbol">:</span><span class="number">6</span>])</span><br><span class="line">vgg_model_4096.classifier = new_classifier</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 获取和处理图像</span></span><br><span class="line">image_dir = <span class="string">&#x27;/mnt/image_test.jpg&#x27;</span></span><br><span class="line">im = <span class="title class_">Image</span>.open(image_dir)</span><br><span class="line">trans = transforms.<span class="title class_">Compose</span>([</span><br><span class="line">        transforms.<span class="title class_">Resize</span>((<span class="number">224</span>, <span class="number">224</span>)),</span><br><span class="line">        transforms.<span class="title class_">ToTensor</span>(),</span><br><span class="line">        transforms.<span class="title class_">Normalize</span>(mean=[<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>], std=[<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line">])</span><br><span class="line">im = trans(im)</span><br><span class="line">im.unsqueeze_(dim=<span class="number">0</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 使用vgg19得到图像特征.</span></span><br><span class="line"><span class="comment"># 原始vgg19模型</span></span><br><span class="line">image_feature_1000 = vgg_model_1000(im).data[<span class="number">0</span>]</span><br><span class="line">print(<span class="string">&#x27;dim of vgg_model_1000: &#x27;</span>, image_feature_1000.shape)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 修改后的vgg19模型</span></span><br><span class="line">image_feature_4096 = vgg_model_4096(im).data[<span class="number">0</span>]</span><br><span class="line">print(<span class="string">&#x27;dim of vgg_model_4096: &#x27;</span>, image_feature_4096.shape)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简化版本：只需要原始vgg19模型的第一个部分features部分的输出结果.但是只适用于联网加载的vgg19模型（即设置了pretrained&#x3D;True的模型），不适用于使用了本地vgg19模型的vgg_model</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取vgg19原始模型的features部分的前34个结构, 得到新的vgg_model模型.</span></span><br><span class="line">vgg_model = models.vgg19(pretrained=<span class="title class_">True</span>).features[<span class="symbol">:</span><span class="number">34</span>]</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 但是下面的代码只能得到classifier部分的前40个, </span></span><br><span class="line"><span class="comment"># 而不能得到包含features及avgpool及classifier的一共前40个结构.</span></span><br><span class="line"><span class="comment"># 所以这个方法不能实现输出4096维度图像特征的目标．</span></span><br><span class="line"><span class="comment"># vgg_model = models.vgg19(pretrained=True).classifier[:40]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一些小tips</p>
+<ol>
+<li>修改特征类型 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">    把<span class="string">`VGG16_Weights.IMAGENET1K_FEATURES`</span></span><br><span class="line">改成<span class="string">`VGG16_Weights.IMAGENET1K_V1`</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="用于预测的卷积神经网络"><a href="#用于预测的卷积神经网络" class="headerlink" title="用于预测的卷积神经网络"></a>用于预测的卷积神经网络</h2><p>在放射学中，大多数基于DL的生物标记物应用都使用卷积神经网络从成像数据得出预测（图3a）。<strong>卷积神经网络是神经网络的一种特殊形式，用于学习图像的空间特征</strong>，并且由于它们在诊断任务中的表现，受到了广泛的关注。在几项引人注目的研究中，基于CNN的模型在诊断胸片和CT以及数字乳房X光摄影方面甚至超过了专业的人类专家。正如CNN已被证明能够学习指示恶性肿瘤的图像特征一样，越来越多的研究表明，它们可以根据与预后、风险和分子特征相关的肿瘤性质的细微差异对患者进行分型（图3a）。当使用患者结果数据进行训练时，CNN的卷积层可以学会识别反映预后的新成像表型。CNN可以应用于2D或3D输入，并且可以使用多个输入，以便从图像类型的组合中学习，例如<strong>多参数或动态MRI扫描</strong>。大量的CNN结构可以选择来用于基于AI的生物标记物研究（补充表2）。补充框2中进一步详细讨论了它们的原理和优势。<br><img src="https://pic3.zhimg.com/80/v2-0d05d6872495dc94b788d526756f9c2e_1440w.webp" alt="Img"></p>
+<ul>
+<li><p>用于预测的卷积神经网络（CNN）模型示例。输入图像或体积通过CNN层，CNN层执行操作并将其转换为目标输出向量。卷积层是将成像数据转换为深度特征表示的一组操作。每个过滤器通过图像，并与非线性激活函数配对，以强调特定任务感兴趣的视觉模式。随着更多的卷积层层叠，CNN可以在图像中学习到更复杂的视觉模式。在整个CNN分类器中，深度特征通过池化操作定期聚合。经过卷积层和池化层处理后，深度特征表示最终被展平为向量。接下来，完全连接的层将这些CNN衍生的图像特征转换为对应于目标输出的向量。这些模型可用于预测治疗反应、预测、肿瘤亚型和生物标志物的分类以及生理值的预测。</p>
+</li>
+<li><p>全卷积神经网络是一种CNN类型，只包含产生图像输出的卷积层，如肿瘤位置图。</p>
+</li>
+<li><p>完全连接的网络可以根据非图像数据进行训练，如影像组学特征和临床变量。</p>
+</li>
+<li><p>当对模型进行结果预测训练时，对大量数据的需求可能会存在局限性，在这种情况下，可行的患者数据可能比诊断研究更加有限。幸运的是，尽管训练数据很少，但有几种方法可以利用神经网络的优势。例如，<strong>迁移学习，其中针对一个模式识别任务训练的模型被重新调整用途以执行新任务，经常用于在训练数据大幅减少的情况下实现强大的CNN性能</strong>其他方法可用于处理有限或有缺陷的训练数据。</p>
+</li>
+</ul>
+<h2 id="一些论文"><a href="#一些论文" class="headerlink" title="一些论文"></a>一些论文</h2><h3 id="一个特征提取网络的介绍"><a href="#一个特征提取网络的介绍" class="headerlink" title="一个特征提取网络的介绍"></a><a href="https://blog.csdn.net/cc1609130201/article/details/130921342?ops_request_misc=&request_id=&biz_id=102&utm_term=MRIVGG-Net&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-130921342.142%5Ev96%5Epc_search_result_base3&spm=1018.2226.3001.4187">一个特征提取网络的介绍</a></h3><p><strong>Deep Feature——用深度网络来提取特征</strong></p>
+<h3 id="Pure-DL直接使用Autoencoder来提取特征，然后直接进行分类。"><a href="#Pure-DL直接使用Autoencoder来提取特征，然后直接进行分类。" class="headerlink" title="Pure DL直接使用Autoencoder来提取特征，然后直接进行分类。"></a><a href="http://devinderkumar.com/slides/crv_2015.pdf">Pure DL</a>直接使用Autoencoder来提取特征，然后直接进行分类。</h3><p>采用LIDC中已经标记（分割）好的肺结节病灶区域作为ROI，对ROI的最小包围矩形区域进行尺寸归一化，然后输入一个5层Autoencoder网络进行特征编码，对Autoencoder网络进行训练。之后，使用训练优化完成后的5层网络中的第4层网络输出，共200个特征向量，输入一个二值分类树，区分肺结节良恶性。<br><img src="https://pic1.zhimg.com/80/v2-0e0f70828404e5f5726e06d034bee348_1440w.webp" alt="Img"><br>但是这种方法准确度有待考量。</p>
+<h3 id="！DL-Tr可以预测生存周期"><a href="#！DL-Tr可以预测生存周期" class="headerlink" title="！DL+Tr可以预测生存周期"></a>！<a href="https://pubmed.ncbi.nlm.nih.gov/28871110/">DL+Tr</a>可以预测生存周期</h3><p>在传统的影像组学三大件（形状、灰度、纹理）之上，又添加了来自于深度学习网络的深度特征（Deep Feature）。所使用的深度学习网络包含5个卷积层和3个全连接层。倒数第二个（full7）和倒数第三个（full6）全连接层的输出，共8192个特征，与其他影像组学特征一起输入预测模型，来预测多形性成胶质细胞瘤患者的生存周期<br><img src="https://pic1.zhimg.com/80/v2-5d2b1d2feeaedce0ff8e73abb6e0d944_1440w.webp" alt="Img"></p>
+<h3 id="！DRL"><a href="#！DRL" class="headerlink" title="！DRL"></a>！<a href="https://www.nature.com/articles/s41598-017-05848-2">DRL</a></h3><p>直接采用CNN网络的输出作为特征，连接传统的分类器（预测器）进行分类和预测。作者在MR多模态影像上，测试和验证了DLR预测低级别胶质瘤突变分级的准确性。下方依次给出的是整体流程图，以及将DLR与传统影像组学方法的特异性、敏感性等对比、ROC对比。从对比可以看出，DLR方法在各项指标中几乎全面胜出。并且，对比中发现，采用多模态影像，并且对特征进行进一步筛选，得到的各项指标是最高的。<br><img src="https://pic2.zhimg.com/80/v2-9c5310d71e5e428662db1243f000b615_1440w.webp" alt="Img"><br><img src="https://pic1.zhimg.com/80/v2-558358a40a38f506aa5588d0e33a777c_1440w.webp" alt="Img"><br><img src="https://pic1.zhimg.com/80/v2-59d63f7881800e9147150a997646d6f4_1440w.webp" alt="Img"></p>
+<h3 id="VGG-16-Architecture-for-MRI-Brain-Tumor-Image-Classification"><a href="#VGG-16-Architecture-for-MRI-Brain-Tumor-Image-Classification" class="headerlink" title="VGG-16 Architecture for MRI Brain Tumor Image Classification"></a><a href="https://link.springer.com/chapter/10.1007/978-981-19-8338-2_26">VGG-16 Architecture for MRI Brain Tumor Image Classification</a></h3><ul>
+<li>初始阶段是对样本图像进行预处理，然后使用池化层进行过滤，使用卷积层进行特征提取，最后使用架构模型的 FC 层进行分类。来自分子脑肿瘤数据库（REpository of Molecular BRAin Neoplasia DaTa，REMBRANDT）的核磁共振图像使用了预先训练好的模型架构，如视觉几何组（VGG）VGG-19、VGG-16、Inception-V3、Inception-V2、残差网络（ResNet）ResNet-18 和 ResNet-50。</li>
+<li>The use of DL and TL methods to diagnose and classify brain tumors using MRI brain images has been proved to be a promising methodology.<strong>contains many CNN designs, including ResNet,Inception, and VGG networks.</strong></li>
+<li>Figure 2 illustrates the CNN model’s architecture for brain tumor categorization.<img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-981-19-8338-2_26/MediaObjects/518611_1_En_26_Fig2_HTML.png?as=webp" alt="Img"><ul>
+<li>从大脑图像中提取的深度特征被输入到设计的具有预训练特征的 CNN 模型中。**(GoogleNet)Inception-v2、Inception-V3、ResNet-18 [14]、ResNet-50 VGG-19 和 VGG-16 是本研究中使用的六个预训练 CNN 模型**。</li>
+<li>最初，VGG-16 和 VGG-19 架构模型都将核磁共振成像脑图像作为输入。深度特征从网络的卷积层和最大池化层提取。随着深度的增加，分类误差也随之减少，直到达到 19 层时，分类误差才趋于饱和。研究人员还验证了深度在图形表示法中的重要性。</li>
+<li>CNN performs better in larger datasets than the smaller ones. When it is not possible to produce a big training dataset, TL can be utilized.</li>
+</ul>
+</li>
+<li>Conclusion: 具有 16 个网络层的 <strong>VGG-16</strong> 架构在将 MR 脑图像分类为肿瘤或正常图像方面提供了更高的准确度、精确度、F1 分数和召回率。</li>
+</ul>
+<h1 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h1><p>深度学习并没有完全取代影像组学。主要的原因还是数据集规模的限制。</p>
+<p>深度学习能够大幅提高分类或预测模型的准确性，但这是有代价的。相比影像组学，深度学习方法需要更多的训练数据。但影像组学所研究的问题往往是某种肿瘤的分期或分型，或者是预后生存率，此类问题的训练数据（Grand Truth数据）收集成本是非常高昂的，一般需要病理或术后随访来进行验证。因此，训练数据集的规模通常数量级在几百，与深度学习常见的数千、上万级数据集相差很远。</p>
+<p>可以采用深度学习中普遍采用的数据增强手段（Data Augmented）了。这在一定程度上弥补了数据缺口。而数据增强在传统的影像组学中是无法采用的。</p>
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>影像组学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象的Python</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84Python/</url>
+    <content><![CDATA[<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="一个简单的小例子"><a href="#一个简单的小例子" class="headerlink" title="一个简单的小例子"></a>一个简单的小例子</h2><ol>
+<li>通过函数，传入可变参数，最后输出值return是字典，不需要传入的参数是预设的。</li>
+<li>自动给相同类型属性的变量赋值</li>
+<li>实体，属性，功能….<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">attack_vals = &#123;</span><br><span class="line">    <span class="string">&quot;A&quot;</span><span class="symbol">:</span><span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;B&quot;</span><span class="symbol">:</span><span class="number">50</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dog</span>(<span class="params">name,d_type</span>)<span class="symbol">:</span><span class="comment">#传参的模板</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span><span class="symbol">:name</span>,</span><br><span class="line">        <span class="string">&quot;d_type&quot;</span><span class="symbol">:d_type</span>,</span><br><span class="line">        <span class="string">&quot;attack_val&quot;</span><span class="symbol">:</span><span class="number">30</span>,</span><br><span class="line">        <span class="string">&quot;life_val&quot;</span><span class="symbol">:</span><span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">#自动给相同类型属性的变量赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dog_bite</span>(<span class="params">person_obj</span>) <span class="comment">#编辑对象的特定动作，绑定不出错儿~</span></span><br><span class="line">        person_obj[<span class="string">&quot;life_val&quot;</span>] -= data[<span class="string">&quot;attack_val&quot;</span>] <span class="comment">#执行动作</span></span><br><span class="line">    <span class="comment">#由于data就是在这个函数里定义的，所以直接调用data就可以</span></span><br><span class="line">    <span class="comment">#将函数定义在“狗”的内部，避免被错误地调用</span></span><br><span class="line">    data[<span class="string">&quot;bite&quot;</span>] = dog_bite</span><br><span class="line">    <span class="comment">#确保外部可以顺利调用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> d_type <span class="keyword">in</span> <span class="symbol">attack_vals:</span></span><br><span class="line">        data[attack_val] = attack_vals[d_type]</span><br><span class="line">    <span class="symbol">else:</span></span><br><span class="line">        data[attack_val] = <span class="number">15</span> <span class="comment">#给没有名字的一个默认值</span></span><br><span class="line">    <span class="keyword">return</span> data <span class="comment">#输出字典类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以此类推可以生成多个实体</span></span><br><span class="line">d1 = dog(<span class="string">&quot;lym&quot;</span>,<span class="string">&quot;A&quot;</span>)</span><br><span class="line">d1[<span class="string">&quot;bite&quot;</span>](person) <span class="comment">#调用dog_bite函数</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="面向过程-amp-面向对象"><a href="#面向过程-amp-面向对象" class="headerlink" title="面向过程 &amp; 面向对象"></a>面向过程 &amp; 面向对象</h2><h3 id="面向过程编程-Procedural-Programming"><a href="#面向过程编程-Procedural-Programming" class="headerlink" title="面向过程编程(Procedural Programming)"></a>面向过程编程(Procedural Programming)</h3><ul>
+<li>top-down language，程序从上到下一步步执行，解决问题（分解问题思想）</li>
+<li>简单的小脚本，可扩展性差</li>
+</ul>
+<h3 id="面向对象编程-Object-oriented-Programming"><a href="#面向对象编程-Object-oriented-Programming" class="headerlink" title="面向对象编程(Object-oriented Programming)"></a>面向对象编程(Object-oriented Programming)</h3><h4 id="class-类"><a href="#class-类" class="headerlink" title="class : 类"></a><code>class</code> : 类</h4><ol>
+<li>首字母大写+驼峰命名法；</li>
+<li><strong>属性</strong>：类中的变量；<br>属性只能通过实例来调用<code>实例.属性</code>；</li>
+</ol>
+<ul>
+<li>类下直接定义的属性：公共属性，每一个实例会共享这个值。<br>公共属性可以直接在外部修改，对单独的实例进行修改就可以~</li>
+<li><strong>初始化方法\构造方法\构造函数</strong>：<br>实例化时会自动执行，进行一些初始化工作。</li>
+</ul>
+<ol>
+<li>用于构造一些私有化属性（传到参数里）；<br>实例属性只被实例享有，不会存到类里，调用报错。<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="symbol">A:</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"><span class="variable language_">self</span>,attribute1,attribute2</span>):</span><br><span class="line">        <span class="comment">#如果真正把属性传到实例，要把两个值和实例绑定：</span></span><br><span class="line">        <span class="variable language_">self</span>.a1 = attribute1</span><br><span class="line">        <span class="variable language_">self</span>.a2 = attribute2</span><br><span class="line">        <span class="comment">#在本函数中可以直接调用，不加实例；</span></span><br><span class="line">        <span class="comment">#外部调用attribute1，2时调用方式与公共相同相同；</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化时传入参数：</span></span><br><span class="line">exm = A(attA,attB)</span><br></pre></td></tr></table></figure></li>
+<li></li>
+<li><strong>方法</strong>： 类中的函数、功能；<br><code>self</code>： 代表实例本身,必须是方法中第一个参数；</li>
+<li>实例化：将类变为实体</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>Python 面向对象</tag>
       </tags>
   </entry>
   <entry>
@@ -735,66 +909,20 @@
 <h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><h3 id="简述呼吸屏障（呼吸膜）的构成及功能"><a href="#简述呼吸屏障（呼吸膜）的构成及功能" class="headerlink" title="简述呼吸屏障（呼吸膜）的构成及功能"></a><strong>简述呼吸屏障（呼吸膜）的构成及功能</strong></h3><h3 id="简述鼻旁窦的组成及功能"><a href="#简述鼻旁窦的组成及功能" class="headerlink" title="简述鼻旁窦的组成及功能"></a>简述鼻旁窦的组成<strong>及功能</strong></h3><p>鼻旁窦由四部分组成：额窦、筛窦、蝶窦、上颌窦</p>
 <h3 id="氧气如何由肺运输至组织细胞处，二氧化碳如何由组织细胞处运输至肺脏"><a href="#氧气如何由肺运输至组织细胞处，二氧化碳如何由组织细胞处运输至肺脏" class="headerlink" title="氧气如何由肺运输至组织细胞处，二氧化碳如何由组织细胞处运输至肺脏"></a>氧气如何由肺运输至组织细胞处，二氧化碳如何由组织细胞处运输至肺脏</h3><p>氧气在肺泡中由氧分压高的肺泡内通过呼吸膜进入氧分压低的毛细血管中，与血液中的血红蛋白结合，成为氧合血红蛋白，到组织细胞处时，又进入氧分压低的组织细胞中。</p>
 <h3 id="呼吸全过程由哪几个环节组成"><a href="#呼吸全过程由哪几个环节组成" class="headerlink" title="呼吸全过程由哪几个环节组成"></a>呼吸全过程由哪几个环节组成</h3><p>膈肌&amp;肋间外肌收缩 -&gt; 肺内气压降低，小于外界大气压 -&gt; 气体入肺 -&gt; 空气进入肺泡进行肺换气，氧气进入血液，二氧化碳进入肺 -&gt; 膈肌&amp;肋间外肌舒张 -&gt; 肺内气压升高，大于外界大气压 -&gt; 气体出肺</p>
+<h1 id="总结小问题"><a href="#总结小问题" class="headerlink" title="总结小问题"></a>总结小问题</h1><h2 id="肝脏病变？"><a href="#肝脏病变？" class="headerlink" title="肝脏病变？"></a>肝脏病变？</h2><ol>
+<li>血浆胶体渗透压异常 - 白蛋白</li>
+<li>血液运输功能下降 - 球蛋白</li>
+<li>凝血功能障碍 - 纤维蛋白原</li>
+</ol>
+<h2 id="肾脏病变？"><a href="#肾脏病变？" class="headerlink" title="肾脏病变？"></a>肾脏病变？</h2><ol>
+<li>贫血（红细胞丢失）</li>
+</ol>
 ]]></content>
       <categories>
         <category>学点</category>
       </categories>
       <tags>
         <tag>生医</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象的Python</title>
-    <url>/2023/%E5%AD%A6%E7%82%B9/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84Python/</url>
-    <content><![CDATA[<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="一个简单的小例子"><a href="#一个简单的小例子" class="headerlink" title="一个简单的小例子"></a>一个简单的小例子</h2><ol>
-<li>通过函数，传入可变参数，最后输出值return是字典，不需要传入的参数是预设的。</li>
-<li>自动给相同类型属性的变量赋值</li>
-<li>实体，属性，功能….<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">attack_vals = &#123;</span><br><span class="line">    <span class="string">&quot;A&quot;</span><span class="symbol">:</span><span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;B&quot;</span><span class="symbol">:</span><span class="number">50</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dog</span>(<span class="params">name,d_type</span>)<span class="symbol">:</span><span class="comment">#传参的模板</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span><span class="symbol">:name</span>,</span><br><span class="line">        <span class="string">&quot;d_type&quot;</span><span class="symbol">:d_type</span>,</span><br><span class="line">        <span class="string">&quot;attack_val&quot;</span><span class="symbol">:</span><span class="number">30</span>,</span><br><span class="line">        <span class="string">&quot;life_val&quot;</span><span class="symbol">:</span><span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">#自动给相同类型属性的变量赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dog_bite</span>(<span class="params">person_obj</span>) <span class="comment">#编辑对象的特定动作，绑定不出错儿~</span></span><br><span class="line">        person_obj[<span class="string">&quot;life_val&quot;</span>] -= data[<span class="string">&quot;attack_val&quot;</span>] <span class="comment">#执行动作</span></span><br><span class="line">    <span class="comment">#由于data就是在这个函数里定义的，所以直接调用data就可以</span></span><br><span class="line">    <span class="comment">#将函数定义在“狗”的内部，避免被错误地调用</span></span><br><span class="line">    data[<span class="string">&quot;bite&quot;</span>] = dog_bite</span><br><span class="line">    <span class="comment">#确保外部可以顺利调用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> d_type <span class="keyword">in</span> <span class="symbol">attack_vals:</span></span><br><span class="line">        data[attack_val] = attack_vals[d_type]</span><br><span class="line">    <span class="symbol">else:</span></span><br><span class="line">        data[attack_val] = <span class="number">15</span> <span class="comment">#给没有名字的一个默认值</span></span><br><span class="line">    <span class="keyword">return</span> data <span class="comment">#输出字典类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以此类推可以生成多个实体</span></span><br><span class="line">d1 = dog(<span class="string">&quot;lym&quot;</span>,<span class="string">&quot;A&quot;</span>)</span><br><span class="line">d1[<span class="string">&quot;bite&quot;</span>](person) <span class="comment">#调用dog_bite函数</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="面向过程-amp-面向对象"><a href="#面向过程-amp-面向对象" class="headerlink" title="面向过程 &amp; 面向对象"></a>面向过程 &amp; 面向对象</h2><h3 id="面向过程编程-Procedural-Programming"><a href="#面向过程编程-Procedural-Programming" class="headerlink" title="面向过程编程(Procedural Programming)"></a>面向过程编程(Procedural Programming)</h3><ul>
-<li>top-down language，程序从上到下一步步执行，解决问题（分解问题思想）</li>
-<li>简单的小脚本，可扩展性差</li>
-</ul>
-<h3 id="面向对象编程-Object-oriented-Programming"><a href="#面向对象编程-Object-oriented-Programming" class="headerlink" title="面向对象编程(Object-oriented Programming)"></a>面向对象编程(Object-oriented Programming)</h3><h4 id="class-类"><a href="#class-类" class="headerlink" title="class : 类"></a><code>class</code> : 类</h4><ol>
-<li>首字母大写+驼峰命名法；</li>
-<li><strong>属性</strong>：类中的变量；<br>属性只能通过实例来调用<code>实例.属性</code>；</li>
-</ol>
-<ul>
-<li>类下直接定义的属性：公共属性，每一个实例会共享这个值。<br>公共属性可以直接在外部修改，对单独的实例进行修改就可以~</li>
-<li><strong>初始化方法\构造方法\构造函数</strong>：<br>实例化时会自动执行，进行一些初始化工作。</li>
-</ul>
-<ol>
-<li>用于构造一些私有化属性（传到参数里）；<br>实例属性只被实例享有，不会存到类里，调用报错。<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="symbol">A:</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"><span class="variable language_">self</span>,attribute1,attribute2</span>):</span><br><span class="line">        <span class="comment">#如果真正把属性传到实例，要把两个值和实例绑定：</span></span><br><span class="line">        <span class="variable language_">self</span>.a1 = attribute1</span><br><span class="line">        <span class="variable language_">self</span>.a2 = attribute2</span><br><span class="line">        <span class="comment">#在本函数中可以直接调用，不加实例；</span></span><br><span class="line">        <span class="comment">#外部调用attribute1，2时调用方式与公共相同相同；</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#实例化时传入参数：</span></span><br><span class="line">exm = A(attA,attB)</span><br></pre></td></tr></table></figure></li>
-<li></li>
-<li><strong>方法</strong>： 类中的函数、功能；<br><code>self</code>： 代表实例本身,必须是方法中第一个参数；</li>
-<li>实例化：将类变为实体</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学点</category>
-      </categories>
-      <tags>
-        <tag>Python 面向对象</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>影像组学</title>
-    <url>/2024/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/</url>
-    <content><![CDATA[<p><a href="https://ieeexplore.ieee.org/ielx7/7433213/8657419/08657645.pdf?tag=1">一个对比AI影像和传统影像的论文，介绍各自的特征</a><br>深度学习简单直接自动化，大力出奇迹；影像组学步步为营靠人工，识珠靠慧眼。两种方法本质上都依赖大数据，都可以划分为图像预处理、特征筛选和特征建模三个阶段。</p>
-<h1 id="传统影像组学"><a href="#传统影像组学" class="headerlink" title="传统影像组学"></a>传统影像组学</h1><p>方法上，影像组学提取传统的图像特征，包括形状、灰度、纹理等，采用传统统计（模式识别）模型来分类和预测，如支持向量机、随机森林、XGBoost等；<br><strong>Overview</strong><br><img src="https://pic4.zhimg.com/v2-f6a1971f7bd966f887c80a6b6afdce53_r.jpg" alt="Img"></p>
-<h1 id="AI影像组学"><a href="#AI影像组学" class="headerlink" title="AI影像组学"></a>AI影像组学</h1><p><strong>Deep Feature——用深度网络来提取特征</strong></p>
-<h2 id="Pure-DL直接使用Autoencoder来提取特征，然后直接进行分类。"><a href="#Pure-DL直接使用Autoencoder来提取特征，然后直接进行分类。" class="headerlink" title="Pure DL直接使用Autoencoder来提取特征，然后直接进行分类。"></a><a href="http://devinderkumar.com/slides/crv_2015.pdf">Pure DL</a>直接使用Autoencoder来提取特征，然后直接进行分类。</h2><p>采用LIDC中已经标记（分割）好的肺结节病灶区域作为ROI，对ROI的最小包围矩形区域进行尺寸归一化，然后输入一个5层Autoencoder网络进行特征编码，对Autoencoder网络进行训练。之后，使用训练优化完成后的5层网络中的第4层网络输出，共200个特征向量，输入一个二值分类树，区分肺结节良恶性。<br><img src="https://pic1.zhimg.com/80/v2-0e0f70828404e5f5726e06d034bee348_1440w.webp" alt="Img"><br>但是这种方法准确度有待考量。</p>
-<h2 id="！DL-Tr可以预测生存周期"><a href="#！DL-Tr可以预测生存周期" class="headerlink" title="！DL+Tr可以预测生存周期"></a>！<a href="https://pubmed.ncbi.nlm.nih.gov/28871110/">DL+Tr</a>可以预测生存周期</h2><p>在传统的影像组学三大件（形状、灰度、纹理）之上，又添加了来自于深度学习网络的深度特征（Deep Feature）。所使用的深度学习网络包含5个卷积层和3个全连接层。倒数第二个（full7）和倒数第三个（full6）全连接层的输出，共8192个特征，与其他影像组学特征一起输入预测模型，来预测多形性成胶质细胞瘤患者的生存周期<br><img src="https://pic1.zhimg.com/80/v2-5d2b1d2feeaedce0ff8e73abb6e0d944_1440w.webp" alt="Img"></p>
-<h2 id="！DRL"><a href="#！DRL" class="headerlink" title="！DRL"></a>！<a href="https://www.nature.com/articles/s41598-017-05848-2">DRL</a></h2><p>直接采用CNN网络的输出作为特征，连接传统的分类器（预测器）进行分类和预测。作者在MR多模态影像上，测试和验证了DLR预测低级别胶质瘤突变分级的准确性。下方依次给出的是整体流程图，以及将DLR与传统影像组学方法的特异性、敏感性等对比、ROC对比。从对比可以看出，DLR方法在各项指标中几乎全面胜出。并且，对比中发现，采用多模态影像，并且对特征进行进一步筛选，得到的各项指标是最高的。<br><img src="https://pic2.zhimg.com/80/v2-9c5310d71e5e428662db1243f000b615_1440w.webp" alt="Img"><br><img src="https://pic1.zhimg.com/80/v2-558358a40a38f506aa5588d0e33a777c_1440w.webp" alt="Img"><br><img src="https://pic1.zhimg.com/80/v2-59d63f7881800e9147150a997646d6f4_1440w.webp" alt="Img"></p>
-<h1 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h1><p>深度学习并没有完全取代影像组学。主要的原因还是数据集规模的限制。</p>
-<p>深度学习能够大幅提高分类或预测模型的准确性，但这是有代价的。相比影像组学，深度学习方法需要更多的训练数据。但影像组学所研究的问题往往是某种肿瘤的分期或分型，或者是预后生存率，此类问题的训练数据（Grand Truth数据）收集成本是非常高昂的，一般需要病理或术后随访来进行验证。因此，训练数据集的规模通常数量级在几百，与深度学习常见的数千、上万级数据集相差很远。</p>
-<p>可以采用深度学习中普遍采用的数据增强手段（Data Augmented）了。这在一定程度上弥补了数据缺口。而数据增强在传统的影像组学中是无法采用的。</p>
-]]></content>
-      <categories>
-        <category>学点</category>
-      </categories>
-      <tags>
-        <tag>影像组学</tag>
       </tags>
   </entry>
 </search>

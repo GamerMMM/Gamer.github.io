@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CNN</title>
-    <url>/2023/%E5%AD%A6%E7%82%B9/CNN/</url>
-    <content><![CDATA[<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="Convolutions"><a href="#Convolutions" class="headerlink" title="Convolutions"></a>Convolutions</h2><ul>
-<li>Conv layers consist of a set of <strong>filters</strong>, which you can think of as just 2d matrices of numbers.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学点</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DeepLearning</title>
     <url>/2023/%E5%AD%A6%E7%82%B9/AndrewNg-DeepLearning/</url>
     <content><![CDATA[<h1 id="AndrewNg"><a href="#AndrewNg" class="headerlink" title="AndrewNg"></a>AndrewNg</h1><p>看着吴恩达老师的网课稍微用自己的理解来记一记东西~非常业余只供看乐子</p>
@@ -95,16 +81,23 @@
   <entry>
     <title>Java Start!</title>
     <url>/2023/%E5%AD%A6%E7%82%B9/Java%20Start/</url>
-    <content><![CDATA[<h1 id="一点建议"><a href="#一点建议" class="headerlink" title="一点建议"></a>一点建议</h1><h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><ol>
-<li>编写伪代码时，专注于逻辑而非实现</li>
-<li>体现你的变量和函数名称</li>
-</ol>
-<h1 id="一点基本语法"><a href="#一点基本语法" class="headerlink" title="一点基本语法"></a>一点基本语法</h1><ol>
+    <content><![CDATA[<h1 id="一点基本语法"><a href="#一点基本语法" class="headerlink" title="一点基本语法"></a>一点基本语法</h1><ol>
 <li>Java中<code>int</code>和<code>boolean</code>并不是可以兼容的，需要区分</li>
 <li><code>System.out.println</code>输出换行</li>
 <li>将string转换为int：<code>Integer.parseInt(string)</code></li>
 <li>for循环，Cell为被执行的数组<code>for(int i : Cells)</code></li>
 </ol>
+<h2 id="笔记-amp-原则"><a href="#笔记-amp-原则" class="headerlink" title="笔记&amp;原则"></a>笔记&amp;原则</h2><h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><h4 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h4><ol>
+<li>小范围（较短）的变量可以直接赋值给大范围（较长）类型的变量;</li>
+<li>顺序：byte -&gt; short -&gt; int(char) -&gt; long -&gt; float -&gt; double;</li>
+</ol>
+<h4 id="表达式类型的自动转换"><a href="#表达式类型的自动转换" class="headerlink" title="表达式类型的自动转换"></a>表达式类型的自动转换</h4><p>表达式中，小范围的变量会自动提升成大范围；</p>
+<ul>
+<li>最终结果的数据类型由最大数据类型决定</li>
+<li>byte,short,char在表达式中直接提升成int运算：<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">byte a,b;</span><br><span class="line">byte c = a + b;<span class="regexp">//</span>错误</span><br><span class="line">int c = a + b; <span class="regexp">//</span>正确</span><br><span class="line">byte c =(byte) (a + b);<span class="regexp">//</span>正确</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><p>可能出现数据丢失</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>双算符仅计算前，相较于单执行前后，性能更好，使用更多；</p>
 <h2 id="可以删减的数组：ArrayList"><a href="#可以删减的数组：ArrayList" class="headerlink" title="可以删减的数组：ArrayList"></a>可以删减的数组：<code>ArrayList</code></h2><h3 id="询问操作"><a href="#询问操作" class="headerlink" title="询问操作"></a>询问操作</h3><p> |<br>—|—<br>创建 | <code>ArrayList&lt;type&gt; myList = new ArrayList&lt;type&gt;();</code><br>返回元素存在数|<code>int theSize = myList.size();</code><br>查询元素存在性|<code>boolean isIn = myList.contains(s);</code><br>查询元素位置(下标从0开始)|<code>int idx = myList.indexOf(6);</code><br>判断集合是否为空|<code>boolean empty = myList.isEmpty();</code></p>
 <h3 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h3><p> |<br>—|—<br>加入元素，s前可以加int参数指定索引|<code>myList.add(s);</code><br>删除元素|<code>myList.remove(s);</code></p>
 <h3 id="修改操作-1"><a href="#修改操作-1" class="headerlink" title="修改操作"></a>修改操作</h3><h2 id="Math部分包"><a href="#Math部分包" class="headerlink" title="Math部分包"></a><code>Math</code>部分包</h2><table>
@@ -127,12 +120,122 @@
 <h2 id="了解继承"><a href="#了解继承" class="headerlink" title="了解继承"></a>了解继承</h2><ol>
 <li>子类继承父类：集成方法；类的成员：实例变量和方法（可能是覆盖的）</li>
 </ol>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><h1 id="一点建议"><a href="#一点建议" class="headerlink" title="一点建议"></a>一点建议</h1><h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><ol>
+<li>编写伪代码时，专注于逻辑而非实现</li>
+<li>体现你的变量和函数名称</li>
+</ol>
+]]></content>
       <categories>
         <category>学点</category>
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo-Next的写文小技巧</title>
+    <url>/2024/%E5%AD%A6%E7%82%B9/Hexo-Next%E7%9A%84%E5%86%99%E6%96%87%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>有一些tag插件在8以下版本是不能用的，还有一些用markdown完全可以轻松代替，这里不作过多赘述，只是列出来一些笨人觉得有用并且很方便的~<br>以及，本文中的<code>[]</code>只是分割名字，实际用的时候不需要敲出来。</p>
+<h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a><a href="https://theme-next.js.org/docs/tag-plugins/note">Note</a></h1><h2 id="Next配置"><a href="#Next配置" class="headerlink" title="Next配置"></a>Next配置</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bs-callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bs-callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line">  <span class="symbol">style:</span> simple</span><br><span class="line">  <span class="symbol">icons:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line">  <span class="symbol">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">&#123;% note [<span class="keyword">class</span>] [no-icon] [summary] %&#125;</span><br><span class="line"><span class="title class_">Any</span> content (support inline tags too).</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>所有的参数都是自选的</p>
+<ul>
+<li><code>class</code>:Supported values:default（灰色向右箭头） | primary（紫色加号）  | success（绿色对号） | info（蓝色i） | warning（黄色感叹号） | danger（红色减号）.</li>
+<li>[no-icon] : Disable icon in note.</li>
+<li>[summary] : Optional summary of the note.前边会自带一个小三角<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">&#123;% note primary %&#125;</span><br><span class="line"><span class="comment">#### Primary Header</span></span><br><span class="line">**<span class="title class_">Welcome</span>** to [<span class="title class_">Hexo</span>!](<span class="symbol">https:</span>/<span class="regexp">/hexo.io)</span></span><br><span class="line"><span class="regexp">&#123;% endnote %&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Tabs"><a href="#Tabs" class="headerlink" title="Tabs"></a><a href="https://theme-next.js.org/docs/tag-plugins/tabs">Tabs</a></h1><h2 id="Next配置-1"><a href="#Next配置-1" class="headerlink" title="Next配置"></a>Next配置</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">tabs:</span></span><br><span class="line">  <span class="comment"># Make the nav bar of tabs with long content stick to the top.</span></span><br><span class="line">  <span class="symbol">sticky:</span> <span class="literal">false</span></span><br><span class="line">  <span class="symbol">transition:</span></span><br><span class="line">    <span class="symbol">tabs:</span> <span class="literal">false</span></span><br><span class="line">    <span class="symbol">labels:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">&#123;% tabs <span class="title class_">Unique</span> name, [index] %&#125;</span><br><span class="line">&lt;!-- tab [<span class="title class_">Tab</span> caption] [<span class="variable">@icon</span>] --&gt;</span><br><span class="line"><span class="title class_">Any</span> content (support inline tags too).</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>Unique name</code> : Unique name of tabs block tag without comma.<br>Will be used in #id’s as prefix for each tab with their index numbers.<br>If there are whitespaces in name, for generate #id all whitespaces will replaced by dashes.<br>Only for current url of post&#x2F;page must be unique!<br>就是说这个参数是给你的表设一个名字，在本篇文章中仅此一个。如果要单独给某个表格设置名字在Tab caption处设置就可以。</li>
+<li><code>[index]</code> : Index number of active tab.<br>If not specified, first tab (1) will be selected.<br>If index is -1, no tab will be selected. It’s will be something like spoiler.<br>选择初始时显示的表，默认是1，-1是全收缩<br>Optional parameter.</li>
+<li><code>[Tab caption]</code> : Caption of current tab.<br>If not caption specified, unique name with tab index suffix will be used as caption of tab.<br>If not caption specified, but specified icon, caption will empty.<br>给表头单独添加索引，默认是从1编号；-1是不制表；如果是空的，就是name+id<br>Optional parameter.</li>
+<li>[@icon] : Font Awesome icon name.<br>Can be specified with or without space; e.g. ‘Tab caption @icon’ is the same as ‘Tab caption@icon’.<br>@+font的名字，和name之间有没有空格都可以<br>Optional parameter</li>
+</ul>
+<h1 id="Mermaid"><a href="#Mermaid" class="headerlink" title="Mermaid"></a><a href="https://theme-next.js.org/docs/tag-plugins/mermaid">Mermaid</a></h1><h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="hexo设置"><a href="#hexo设置" class="headerlink" title="hexo设置"></a>hexo设置</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">highlight:</span></span><br><span class="line">  <span class="symbol">exclude_languages:</span></span><br><span class="line">    - mermaid</span><br></pre></td></tr></table></figure>
+<h3 id="Next设置"><a href="#Next设置" class="headerlink" title="Next设置"></a>Next设置</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Mermaid tag</span></span><br><span class="line"><span class="symbol">mermaid:</span></span><br><span class="line">  <span class="symbol">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Available themes: default | dark | forest | neutral</span></span><br><span class="line">  <span class="symbol">theme:</span></span><br><span class="line">    <span class="symbol">light:</span> default</span><br><span class="line">    <span class="symbol">dark:</span> dark</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>UI</tag>
+        <tag>hexo</tag>
+        <tag>writing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CNN</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/CNN/</url>
+    <content><![CDATA[<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="Convolutions"><a href="#Convolutions" class="headerlink" title="Convolutions"></a>Convolutions</h2><ul>
+<li>Conv layers consist of a set of <strong>filters</strong>, which you can think of as just 2d matrices of numbers.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo的Next美化教程</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/ITK/</url>
+    <content><![CDATA[<p><a href="https://developer.aliyun.com/article/930218">ITK在cmake上配置的一个非常棒的教程</a><br><a href="https://theme-next.js.org/">在这里放个官方教程的链接先</a><br>文中目录分为两类：<code>site root directory</code>指根目录，也就是点进你的hexo文件夹的第一个目录；<code>Next directory</code>指主题目录，也就是点进Next文件夹后的第一个目录。</p>
+<h1 id="自定义特征"><a href="#自定义特征" class="headerlink" title="自定义特征"></a>自定义特征</h1><h2 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h2><ol>
+<li>favicon:将图标存储于<code>hexo/source/images</code>下,小图标为16*16，中等为32*32</li>
+</ol>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="cc协定设置-creative-commons"><a href="#cc协定设置-creative-commons" class="headerlink" title="cc协定设置(creative commons)"></a>cc协定设置(creative commons)</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">creative_commons:</span></span><br><span class="line">  <span class="symbol">license:</span> by-nc-sa</span><br><span class="line">  <span class="symbol">size:</span> small</span><br><span class="line">  <span class="symbol">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="symbol">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="symbol">language:</span> deed.zh</span><br></pre></td></tr></table></figure>
+<h3 id="页面"><a href="#页面" class="headerlink" title="页面"></a>页面</h3><h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><p>在根目录下执行</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo new page [custom-page-name]</span><br></pre></td></tr></table></figure>
+<h4 id="设置-1"><a href="#设置-1" class="headerlink" title="设置"></a>设置</h4><p>通过设置根目录下的<code>_config.yml</code>管理页面,注意如果path在上文已使用要删去或改成<code>/</code></p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">index_generator:</span></span><br><span class="line">  <span class="symbol">path:</span> archives</span><br><span class="line">  <span class="symbol">per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="symbol">order_by:</span> -date</span><br></pre></td></tr></table></figure>
+
+<h3 id="分类与标签"><a href="#分类与标签" class="headerlink" title="分类与标签"></a>分类与标签</h3><p>tag和categories是相同的操作，改个名就可以，以下以tag为例</p>
+<h4 id="添加标签页"><a href="#添加标签页" class="headerlink" title="添加标签页"></a>添加标签页</h4><ol>
+<li>根目录下执行<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure></li>
+<li>编辑新页面index如下：<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">title:</span> <span class="title class_">Tags</span></span><br><span class="line"><span class="symbol">date:</span> <span class="number">2014</span>-<span class="number">12</span>-<span class="number">22</span> <span class="number">12</span><span class="symbol">:</span><span class="number">39</span><span class="symbol">:</span><span class="number">04</span></span><br><span class="line"><span class="symbol">type:</span> tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
+<li>向next设置界面的<code>menu</code>中加入<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">tags:</span> /tags/ |<span class="params"></span>| fa fa-tags</span><br></pre></td></tr></table></figure></li>
+<li>默认的hexo配置文件会与上方教程冲突，需要在根目录设置文件中将这个设置关闭<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">tag_generator:</span></span><br><span class="line">  <span class="symbol">enable_index_page:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="标签页美化"><a href="#标签页美化" class="headerlink" title="标签页美化"></a>标签页美化</h4><ol>
+<li>修改next设置文件<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">tagcloud:</span></span><br><span class="line">  <span class="symbol">min:</span> <span class="number">12</span> <span class="comment"># Minimun font size in px</span></span><br><span class="line">  <span class="symbol">max:</span> <span class="number">20</span> <span class="comment"># Maxium font size in px</span></span><br><span class="line">  <span class="comment"># 我喜欢小一点字所以设定的字偏小</span></span><br><span class="line">  <span class="symbol">start:</span>  <span class="string">&quot;#476D80&quot;</span><span class="comment"># Start color (hex, rgba, hsla or color keywords)</span></span><br><span class="line">  <span class="symbol">end:</span>  <span class="string">&quot;#98A9A3&quot;</span><span class="comment"># End color (hex, rgba, hsla or color keywords)</span></span><br><span class="line">  <span class="comment">#实际上是字体从小到大会有一个渐变，从start color变到end color，建议start颜色浅于end，会更好看一些，色系与主题周边色系相类似</span></span><br><span class="line">  <span class="symbol">amount:</span> <span class="number">200</span> <span class="comment"># Amount of tags, change it if you have more than 200 tags</span></span><br><span class="line">  <span class="symbol">orderby:</span> name <span class="comment"># Order of tags</span></span><br><span class="line">  <span class="symbol">order:</span> <span class="number">1</span> <span class="comment"># Sort order</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="定义文章标签"><a href="#定义文章标签" class="headerlink" title="定义文章标签"></a>定义文章标签</h4><p>在你文章标题下添加代码</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">tags:</span> [<span class="title class_">Tag1</span>,<span class="title class_">Tag2</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加谷歌日历-Google-Calendar-页"><a href="#添加谷歌日历-Google-Calendar-页" class="headerlink" title="添加谷歌日历(Google Calendar)页"></a>添加谷歌日历(Google Calendar)页</h3><h3 id="动态设置菜单栏"><a href="#动态设置菜单栏" class="headerlink" title="动态设置菜单栏"></a>动态设置菜单栏</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line">  <span class="comment"># 静态区</span></span><br><span class="line">  <span class="symbol">home:</span> / |<span class="params"></span>| fa fa-home</span><br><span class="line">  <span class="symbol">archives:</span> /archives/ |<span class="params"></span>| fa fa-archive</span><br><span class="line">  <span class="comment"># 动态区</span></span><br><span class="line">  <span class="title class_">Docs</span>: <span class="comment">#动态栏名称</span></span><br><span class="line">    <span class="symbol">default:</span> /docs/ |<span class="params"></span>| fa fa-book <span class="comment"># 文件地址+图标，每个子菜单都需要一个默认界面</span></span><br><span class="line">    <span class="comment"># 以下为两个子界面，排列在上方</span></span><br><span class="line">    <span class="title class_">Getting</span> <span class="title class_">Started</span>: <span class="comment">#子界面名称，都是地址+标题</span></span><br><span class="line">      <span class="symbol">default:</span> /getting-started/ |<span class="params"></span>| fa fa-flag</span><br><span class="line">      <span class="title class_">Installation</span>: <span class="regexp">/installation.html || fa fa-download</span></span><br><span class="line"><span class="regexp">      Configuration: /configuration</span>.html |<span class="params"></span>| fa fa-wrench</span><br><span class="line">    <span class="title class_">Third</span> <span class="title class_">Party</span> <span class="title class_">Plugins</span>:</span><br><span class="line">      <span class="symbol">default:</span> /third-party-services/ |<span class="params"></span>| fa fa-puzzle-piece</span><br><span class="line">      <span class="title class_">Math</span> <span class="title class_">Equations</span>: <span class="regexp">/math-equations.html || fa fa-square-root-alt</span></span><br><span class="line"><span class="regexp">      Comment Systems: /comments</span>.html |<span class="params"></span>| fa fa-comment-alt</span><br></pre></td></tr></table></figure>
+
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><h2 id="Fancybox"><a href="#Fancybox" class="headerlink" title="Fancybox"></a>Fancybox</h2><p>展示音频，可以高度自定义的插件</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="symbol">fancybox:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="Busuanzi-Counting-China"><a href="#Busuanzi-Counting-China" class="headerlink" title="Busuanzi Counting(China)"></a>Busuanzi Counting(China)</h2><p>将NexT设置文件中的相关按钮全打开，会在标题下显示本文总浏览量，页末显示网站的访问人数和浏览量</p>
+<h1 id="源代码美化"><a href="#源代码美化" class="headerlink" title="源代码美化"></a>源代码美化</h1><h2 id="修改颜色"><a href="#修改颜色" class="headerlink" title="修改颜色"></a>修改颜色</h2><h3 id="sidebar修改侧边栏字体颜色"><a href="#sidebar修改侧边栏字体颜色" class="headerlink" title="sidebar修改侧边栏字体颜色"></a>sidebar修改侧边栏字体颜色</h3><p><code>next/source/css/_variables/主题名.styl</code>下搜索sidebar<br>第一个是未选择项的颜色，第二个是鼠标高亮，第三个是选择高亮，我的设置如下：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sidebar</span>-nav-color                = <span class="comment">#A9BACB;</span></span><br><span class="line"><span class="variable">$sidebar</span>-nav-hover-color          = <span class="comment">#1e50a2;</span></span><br><span class="line"><span class="variable">$sidebar</span>-highlight                = <span class="comment">#0482B5;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>UI</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kaplan-Meier</title>
+    <url>/2024/uncategorized/Kaplan-Meier/</url>
+    <content><![CDATA[<h1 id="Kapla-Meier法"><a href="#Kapla-Meier法" class="headerlink" title="Kapla-Meier法"></a>Kapla-Meier法</h1><p>是一种刻画数据的非参数生存函数，直接用概率乘法定理估计生存率，但是不能建立数字模型对多个影响因素进行分析。<br>主要思路：<br>$$<br>S(t_i)&#x3D;S(t_{i-1})(1-\frac{d_i}{n_i})<br>$$</p>
+<h2 id="代码：查看总体数据的生存曲线"><a href="#代码：查看总体数据的生存曲线" class="headerlink" title="代码：查看总体数据的生存曲线"></a>代码：查看总体数据的生存曲线</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">10</span>,<span class="number">8</span>)) </span><br><span class="line">kmf = <span class="title class_">KaplanMeierFitter</span>()</span><br><span class="line">kmf.fit(data.tenure,  <span class="comment"># 代表生存时长</span></span><br><span class="line">        event_observed=data.<span class="title class_">Churn</span>,  <span class="comment"># 代表事件的终点</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">kmf.plot_survival_function(at_risk_counts=<span class="title class_">True</span>,ax=ax)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>数据处理</tag>
       </tags>
   </entry>
   <entry>
@@ -390,6 +493,60 @@
       </tags>
   </entry>
   <entry>
+    <title>codenote</title>
+    <url>/2023/%E5%AD%A6%E7%82%B9/codenote/</url>
+    <content><![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>探讨一个算法的实现以及其性能，表示程序运行答题时间。<br>f(n)指的是<strong>一般数据下</strong>运行时间的上界，并非一定是最坏情况，所以要注意：</p>
+<ul>
+<li>数据用例不同时时间复杂度不同。</li>
+<li>时间复杂度不同时，不同输入数据规模下性能也会有差异（就是函数问题）；O是数据量级非常大的情况下表现出的时间复杂度，所以经常会忽略常数项，所以说决定算法并不是只考虑复杂度越低越好还要综合<strong>数据规模</strong></li>
+<li>化简：只保留最高次（考虑n很大况）</li>
+<li>注意考虑全面’每次操作’的内涵 eg.字符串比较，有字符串自身长度m，排序后比较比直接比较更优</li>
+<li>递归的时间复杂度：递归次数*递归中的操作次数；[tips]在递归中要少调用自身函数，建议单独把要调用的函数抽取出来，可以减少时间复杂度(下例时间复杂度n&#x2F;2)<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int function4(int x, int n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> x;</span><br><span class="line">    int t = function4(x, n / <span class="number">2</span>);<span class="regexp">//</span> 这里相对于function3，是把这个递归操作抽取出来</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> t * t * x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<strong>补充：空间复杂度</strong><br>空间复杂度是程序运行时占用内存的大小，不是exe文件本身大小</li>
+</ul>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>内置函数：<code>sort(pbegin,pend);</code></p>
+<h3 id="qsort函数compare"><a href="#qsort函数compare" class="headerlink" title="qsort函数compare"></a>qsort函数<code>compare</code></h3><p>qsort(a,n,bytes(type),compare);</p>
+<ul>
+<li>是相应的数据类型单个变量所占的字节数</li>
+</ul>
+<h4 id="Sort-double-array"><a href="#Sort-double-array" class="headerlink" title="Sort double array"></a>Sort double array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int n;</span><br><span class="line">double a[N];</span><br><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">    double v1 = *((double *)e1);</span><br><span class="line">    double v2 = *((double *)e2);</span><br><span class="line">	<span class="keyword">if</span>(v1 &gt; v2) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(v1 &lt; v2) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">qsort(a, n, sizeof(double), compare);</span><br></pre></td></tr></table></figure>
+<h4 id="Sort-long-long-array"><a href="#Sort-long-long-array" class="headerlink" title="Sort long long array"></a>Sort long long array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int n;</span><br><span class="line">long long a[N];</span><br><span class="line"></span><br><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">    long long v1 = *((const long long *)e1);</span><br><span class="line">    long long v2 = *((const long long *)e2);</span><br><span class="line">	<span class="keyword">if</span>(v1 &gt; v2) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(v1 &lt; v2) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">qsort(a, n, sizeof(long long), compare);</span><br></pre></td></tr></table></figure>
+<h4 id="Sort-array-of-char-array"><a href="#Sort-array-of-char-array" class="headerlink" title="Sort array of char array"></a>Sort array of char array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">char buf[<span class="number">100</span>][<span class="number">105</span>];</span><br><span class="line">int n;</span><br><span class="line"></span><br><span class="line">qsort(buf, n, sizeof(buf[<span class="number">0</span>]), strcmp);</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/ Sort char* array</span></span><br><span class="line"><span class="regexp">char *lines[100];</span></span><br><span class="line"><span class="regexp">int n;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">int compare(const void *p1, const void *p2)</span></span><br><span class="line"><span class="regexp">&#123;</span></span><br><span class="line"><span class="regexp">    char *a = *(char **)p1;</span></span><br><span class="line"><span class="regexp">    char *b = *(char **)p2;</span></span><br><span class="line"><span class="regexp">    return strcmp(a, b);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">qsort(lines, n, sizeof(char *), compare);</span></span><br></pre></td></tr></table></figure>
+<h4 id="Sort-array-of-int-array"><a href="#Sort-array-of-int-array" class="headerlink" title="Sort array of int array"></a>Sort array of int array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int data[<span class="number">100</span>][<span class="number">3</span>];</span><br><span class="line">int n;</span><br><span class="line"></span><br><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">    int *p1 = (int *)e1;</span><br><span class="line">    int *p2 = (int *)e2;</span><br><span class="line">	<span class="keyword">if</span>(p1[<span class="number">0</span>] &gt; p2[<span class="number">0</span>]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(p1[<span class="number">0</span>] &lt; p2[<span class="number">0</span>]) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="regexp">//</span> <span class="title class_">You</span> can use p[<span class="number">1</span>], p[<span class="number">2</span>] as well</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">qsort(buf, n, sizeof(data[<span class="number">0</span>]), compare);</span><br></pre></td></tr></table></figure>
+
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><ol>
+<li>哈希算法&#x2F;哈希函数：将任意长度的二进制值串映射为固定长度的二进制值串的映射规则；<ul>
+<li>其中所依据的目录称为“键”</li>
+<li>存放记录的数组称作散列表(Hash Table)</li>
+</ul>
+</li>
+<li>哈希表是根据关键码的值而直接进行访问的数据结构<ul>
+<li>比方说通过下标(key)访问数组的值时，数组可以视为哈希表,下标与数组存储的值可以成为一个键值对<code>key-value</code>,在jdk中被称为<code>Entry</code></li>
+</ul>
+</li>
+<li>常用于快速判断一个元素是否出现在集合中（提速）</li>
+<li>空间换时间</li>
+</ol>
+<h2 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h2><p>不同数据映射后成为相同的值</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><h4 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h4><p>将冲突的值储存在同一列表当中，再在链表中检索</p>
+<ul>
+<li>适当选择哈希表大小，减小哈希表可以降内存，缩短链表可以减少时间</li>
+</ul>
+<h4 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h4><p>要求:tableSize&gt;dataSize</p>
+<ul>
+<li>寻找空位存放多余数据</li>
+</ul>
+<h2 id="常见的三种哈希结构"><a href="#常见的三种哈希结构" class="headerlink" title="常见的三种哈希结构"></a>常见的三种哈希结构</h2><p>数组、几何、映射</p>
+<h3 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h3>]]></content>
+      <categories>
+        <category>学点</category>
+      </categories>
+      <tags>
+        <tag>codings</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>pyQt5</title>
     <url>/2023/%E5%AD%A6%E7%82%B9/QtDesigner/</url>
     <content><![CDATA[<h1 id="PyQt5报错显示："><a href="#PyQt5报错显示：" class="headerlink" title="PyQt5报错显示："></a>PyQt5报错显示：</h1><ol>
@@ -608,7 +765,8 @@
 <li>pyuid生成代码</li>
 <li>添加连接函数，注意menu用<code>triggered</code> button用<code>clicked</code><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#添加换页槽函数</span></span><br><span class="line">       <span class="variable language_">self</span>.actionRadiomic.triggered.connect(<span class="variable language_">self</span>.display1)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">display1</span>(<span class="params"><span class="variable language_">self</span></span>):</span><br><span class="line">           <span class="variable language_">self</span>.stackedWidget.setCurrentIndex(<span class="number">1</span>)</span><br><span class="line">   <span class="comment">#注意页码子控件一般是从0开始，1为第二页，默认初始显示0</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="PyQt5的QSS美化"><a href="#PyQt5的QSS美化" class="headerlink" title="PyQt5的QSS美化"></a>PyQt5的QSS美化</h1><h2 id="qss调用"><a href="#qss调用" class="headerlink" title="qss调用"></a>qss调用</h2><h3 id="主函数-全局调用"><a href="#主函数-全局调用" class="headerlink" title="主函数 全局调用"></a>主函数 全局调用</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">styleFile = <span class="string">&#x27;./pyqt5/qss/style.qss&#x27;</span></span><br><span class="line">    with open(styleFile, <span class="string">&quot;r&quot;</span>) as <span class="symbol">f:</span></span><br><span class="line">        style = f.read()</span><br><span class="line">    win.setStyleSheet(style)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<h1 id="PyQt5的QSS美化"><a href="#PyQt5的QSS美化" class="headerlink" title="PyQt5的QSS美化"></a>PyQt5的QSS美化</h1><h2 id="样式表调用"><a href="#样式表调用" class="headerlink" title="样式表调用"></a>样式表调用</h2><h3 id="样式表写出，但不显示"><a href="#样式表写出，但不显示" class="headerlink" title="样式表写出，但不显示"></a>样式表写出，但不显示</h3><p>前边的限制用<code>#name</code>加括号，限定对象，在多页切换的工具中要单选出改页面（建议在右侧的工具栏中选择并进行修改）</p>
+<h2 id="qss调用"><a href="#qss调用" class="headerlink" title="qss调用"></a>qss调用</h2><h3 id="主函数-全局调用"><a href="#主函数-全局调用" class="headerlink" title="主函数 全局调用"></a>主函数 全局调用</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">styleFile = <span class="string">&#x27;./pyqt5/qss/style.qss&#x27;</span></span><br><span class="line">    with open(styleFile, <span class="string">&quot;r&quot;</span>) as <span class="symbol">f:</span></span><br><span class="line">        style = f.read()</span><br><span class="line">    win.setStyleSheet(style)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
 <h3 id="设置图片样式表"><a href="#设置图片样式表" class="headerlink" title="设置图片样式表"></a><a href="https://blog.csdn.net/lm_is_dc/article/details/132784648?ops_request_misc=&request_id=&biz_id=102&utm_term=pyqt5%E5%B0%86%E6%8E%A7%E4%BB%B6%E8%83%8C%E6%99%AF%E8%AE%BE%E7%BD%AE%E6%88%90%E5%9B%BE%E7%89%87&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-132784648.142%5Ev94%5EchatsearchT3_1&spm=1018.2226.3001.4187">设置图片样式表</a></h3><p><strong>但是你一定要知道图片要用png格式，只有你能显示出来那个缩略图才说明成功了</strong><br><code>border-image:url(D:/www/xxx/Pytorch/Braintumor/PyQt_test/Img/Hydrogen.jpg);</code></p>
 <h2 id="一些主题"><a href="#一些主题" class="headerlink" title="一些主题"></a>一些主题</h2><p><a href="">一个很简单的有重定义边框的主题</a></p>
 <h3 id="好看的字体加颜色"><a href="#好看的字体加颜色" class="headerlink" title="好看的字体加颜色"></a>好看的字体加颜色</h3><ol>
@@ -671,60 +829,6 @@
       </categories>
       <tags>
         <tag>UI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>codenote</title>
-    <url>/2023/%E5%AD%A6%E7%82%B9/codenote/</url>
-    <content><![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>探讨一个算法的实现以及其性能，表示程序运行答题时间。<br>f(n)指的是<strong>一般数据下</strong>运行时间的上界，并非一定是最坏情况，所以要注意：</p>
-<ul>
-<li>数据用例不同时时间复杂度不同。</li>
-<li>时间复杂度不同时，不同输入数据规模下性能也会有差异（就是函数问题）；O是数据量级非常大的情况下表现出的时间复杂度，所以经常会忽略常数项，所以说决定算法并不是只考虑复杂度越低越好还要综合<strong>数据规模</strong></li>
-<li>化简：只保留最高次（考虑n很大况）</li>
-<li>注意考虑全面’每次操作’的内涵 eg.字符串比较，有字符串自身长度m，排序后比较比直接比较更优</li>
-<li>递归的时间复杂度：递归次数*递归中的操作次数；[tips]在递归中要少调用自身函数，建议单独把要调用的函数抽取出来，可以减少时间复杂度(下例时间复杂度n&#x2F;2)<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int function4(int x, int n) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> x;</span><br><span class="line">    int t = function4(x, n / <span class="number">2</span>);<span class="regexp">//</span> 这里相对于function3，是把这个递归操作抽取出来</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> t * t * x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> t * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<strong>补充：空间复杂度</strong><br>空间复杂度是程序运行时占用内存的大小，不是exe文件本身大小</li>
-</ul>
-<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>内置函数：<code>sort(pbegin,pend);</code></p>
-<h3 id="qsort函数compare"><a href="#qsort函数compare" class="headerlink" title="qsort函数compare"></a>qsort函数<code>compare</code></h3><p>qsort(a,n,bytes(type),compare);</p>
-<ul>
-<li>是相应的数据类型单个变量所占的字节数</li>
-</ul>
-<h4 id="Sort-double-array"><a href="#Sort-double-array" class="headerlink" title="Sort double array"></a>Sort double array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int n;</span><br><span class="line">double a[N];</span><br><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">    double v1 = *((double *)e1);</span><br><span class="line">    double v2 = *((double *)e2);</span><br><span class="line">	<span class="keyword">if</span>(v1 &gt; v2) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(v1 &lt; v2) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">qsort(a, n, sizeof(double), compare);</span><br></pre></td></tr></table></figure>
-<h4 id="Sort-long-long-array"><a href="#Sort-long-long-array" class="headerlink" title="Sort long long array"></a>Sort long long array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int n;</span><br><span class="line">long long a[N];</span><br><span class="line"></span><br><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">    long long v1 = *((const long long *)e1);</span><br><span class="line">    long long v2 = *((const long long *)e2);</span><br><span class="line">	<span class="keyword">if</span>(v1 &gt; v2) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(v1 &lt; v2) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">qsort(a, n, sizeof(long long), compare);</span><br></pre></td></tr></table></figure>
-<h4 id="Sort-array-of-char-array"><a href="#Sort-array-of-char-array" class="headerlink" title="Sort array of char array"></a>Sort array of char array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">char buf[<span class="number">100</span>][<span class="number">105</span>];</span><br><span class="line">int n;</span><br><span class="line"></span><br><span class="line">qsort(buf, n, sizeof(buf[<span class="number">0</span>]), strcmp);</span><br></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">/<span class="regexp">/ Sort char* array</span></span><br><span class="line"><span class="regexp">char *lines[100];</span></span><br><span class="line"><span class="regexp">int n;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">int compare(const void *p1, const void *p2)</span></span><br><span class="line"><span class="regexp">&#123;</span></span><br><span class="line"><span class="regexp">    char *a = *(char **)p1;</span></span><br><span class="line"><span class="regexp">    char *b = *(char **)p2;</span></span><br><span class="line"><span class="regexp">    return strcmp(a, b);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">qsort(lines, n, sizeof(char *), compare);</span></span><br></pre></td></tr></table></figure>
-<h4 id="Sort-array-of-int-array"><a href="#Sort-array-of-int-array" class="headerlink" title="Sort array of int array"></a>Sort array of int array</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">int data[<span class="number">100</span>][<span class="number">3</span>];</span><br><span class="line">int n;</span><br><span class="line"></span><br><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">    int *p1 = (int *)e1;</span><br><span class="line">    int *p2 = (int *)e2;</span><br><span class="line">	<span class="keyword">if</span>(p1[<span class="number">0</span>] &gt; p2[<span class="number">0</span>]) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(p1[<span class="number">0</span>] &lt; p2[<span class="number">0</span>]) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="regexp">//</span> <span class="title class_">You</span> can use p[<span class="number">1</span>], p[<span class="number">2</span>] as well</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">qsort(buf, n, sizeof(data[<span class="number">0</span>]), compare);</span><br></pre></td></tr></table></figure>
-
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><ol>
-<li>哈希算法&#x2F;哈希函数：将任意长度的二进制值串映射为固定长度的二进制值串的映射规则；<ul>
-<li>其中所依据的目录称为“键”</li>
-<li>存放记录的数组称作散列表(Hash Table)</li>
-</ul>
-</li>
-<li>哈希表是根据关键码的值而直接进行访问的数据结构<ul>
-<li>比方说通过下标(key)访问数组的值时，数组可以视为哈希表,下标与数组存储的值可以成为一个键值对<code>key-value</code>,在jdk中被称为<code>Entry</code></li>
-</ul>
-</li>
-<li>常用于快速判断一个元素是否出现在集合中（提速）</li>
-<li>空间换时间</li>
-</ol>
-<h2 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h2><p>不同数据映射后成为相同的值</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><h4 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h4><p>将冲突的值储存在同一列表当中，再在链表中检索</p>
-<ul>
-<li>适当选择哈希表大小，减小哈希表可以降内存，缩短链表可以减少时间</li>
-</ul>
-<h4 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h4><p>要求:tableSize&gt;dataSize</p>
-<ul>
-<li>寻找空位存放多余数据</li>
-</ul>
-<h2 id="常见的三种哈希结构"><a href="#常见的三种哈希结构" class="headerlink" title="常见的三种哈希结构"></a>常见的三种哈希结构</h2><p>数组、几何、映射</p>
-<h3 id="集合（set）"><a href="#集合（set）" class="headerlink" title="集合（set）"></a>集合（set）</h3>]]></content>
-      <categories>
-        <category>学点</category>
-      </categories>
-      <tags>
-        <tag>codings</tag>
       </tags>
   </entry>
   <entry>
@@ -828,18 +932,6 @@
       </categories>
       <tags>
         <tag>Python 面向对象</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kaplan-Meier</title>
-    <url>/2024/uncategorized/Kaplan-Meier/</url>
-    <content><![CDATA[<h1 id="Kapla-Meier法"><a href="#Kapla-Meier法" class="headerlink" title="Kapla-Meier法"></a>Kapla-Meier法</h1><p>是一种刻画数据的非参数生存函数，直接用概率乘法定理估计生存率，但是不能建立数字模型对多个影响因素进行分析。<br>主要思路：<br>$$<br>S(t_i)&#x3D;S(t_{i-1})(1-\frac{d_i}{n_i})<br>$$</p>
-<h2 id="代码：查看总体数据的生存曲线"><a href="#代码：查看总体数据的生存曲线" class="headerlink" title="代码：查看总体数据的生存曲线"></a>代码：查看总体数据的生存曲线</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">10</span>,<span class="number">8</span>)) </span><br><span class="line">kmf = <span class="title class_">KaplanMeierFitter</span>()</span><br><span class="line">kmf.fit(data.tenure,  <span class="comment"># 代表生存时长</span></span><br><span class="line">        event_observed=data.<span class="title class_">Churn</span>,  <span class="comment"># 代表事件的终点</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">kmf.plot_survival_function(at_risk_counts=<span class="title class_">True</span>,ax=ax)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <tags>
-        <tag>数据处理</tag>
       </tags>
   </entry>
   <entry>

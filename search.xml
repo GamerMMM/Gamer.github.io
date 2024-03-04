@@ -1056,10 +1056,33 @@ C --&gt;|Two| E[Result 2]</code></pre>
   <entry>
     <title>DjangoBaisc</title>
     <url>/2024/%E5%AD%A6%E7%82%B9/DjangoBaisc/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>丢一个<a href="https://www.djangoproject.com/download/">官网教程</a></p>
+<h1 id="Get-Started！"><a href="#Get-Started！" class="headerlink" title="Get Started！"></a>Get Started！</h1><h2 id="安装-初始化"><a href="#安装-初始化" class="headerlink" title="安装&amp;初始化"></a>安装&amp;初始化</h2><ol>
+<li>超级无敌推荐git下载，不需要任何环境变量一次成功。在你准备好的虚拟环境下：<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/django</span><span class="regexp">/django.git</span></span><br></pre></td></tr></table></figure></li>
+<li>虚拟环境中建立一个django的新项目<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">django-admin startproject [你的项目名]</span><br></pre></td></tr></table></figure>
+这时候新项目的目录如下:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysite/</span><br><span class="line">    manage.py</span><br><span class="line">    mysite/</span><br><span class="line">        __init__.py</span><br><span class="line">        settings.py</span><br><span class="line">        urls.py</span><br><span class="line">        asgi.py</span><br><span class="line">        wsgi.py</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><code>setting.py</code>指定Django如何与你的系统交互以及你如何管理项目</li>
+<li><code>urls.py</code>告诉Django应创建哪些网页来响应浏览器请求</li>
+<li><code>wsgi.py</code>帮助Django提供他创建的文件(web sever gateway interface)</li>
+<li><code>db.sqlite3</code>是你的数据库，用于储存Django大部分与项目有关的信息</li>
+</ul>
+<ol start="3">
+<li>创建应用程序<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python manage.py startapp [程序名]</span><br></pre></td></tr></table></figure></li>
+<li>查看你的项目<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+注意<code>Quit the server with CTRL-BREAK.</code>就是说停止运行就是Ctrl+C</li>
+</ol>
+<h2 id="编写你的应用程序"><a href="#编写你的应用程序" class="headerlink" title="编写你的应用程序"></a>编写你的应用程序</h2><p>我的项目名是myFirstDjango，程序名是blogs</p>
+<h3 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h3><p>打开<code>blogs</code>下的<code>models.py</code>，我们就在这里创建模型；模型告诉Django如何处理应用程序中存储的数据。在代码层面，模型就是一个类，就像前边讨论的每个类一样，包含属性和方法。</p>
+]]></content>
       <categories>
         <category>学点</category>
       </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Web</tag>
+      </tags>
   </entry>
   <entry>
     <title>降维学习与度量学习</title>

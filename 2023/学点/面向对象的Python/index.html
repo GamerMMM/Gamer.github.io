@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_medium.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.png">
@@ -16,22 +16,22 @@
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="引子一个简单的小例子 通过函数，传入可变参数，最后输出值return是字典，不需要传入的参数是预设的。 自动给相同类型属性的变量赋值 实体，属性，功能….1234567891011121314151617181920212223242526272829attack_vals &#x3D; &amp;#123;    &quot;A&quot;:30,    &quot;B&quot;:50,&amp;#125;def do">
+  <meta name="description" content="引子一个简单的小例子 通过函数，传入可变参数，最后输出值return是字典，不需要传入的参数是预设的。 自动给相同类型属性的变量赋值 实体，属性，功能….1234567891011121314151617181920212223242526272829attack_vals &#x3D; &#123;    &quot;A&quot;:30,    &quot;B&quot;:50,&#125;def do">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象的Python">
 <meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84Python/">
 <meta property="og:site_name" content="Gamer&#39;s Show">
-<meta property="og:description" content="引子一个简单的小例子 通过函数，传入可变参数，最后输出值return是字典，不需要传入的参数是预设的。 自动给相同类型属性的变量赋值 实体，属性，功能….1234567891011121314151617181920212223242526272829attack_vals &#x3D; &amp;#123;    &quot;A&quot;:30,    &quot;B&quot;:50,&amp;#125;def do">
+<meta property="og:description" content="引子一个简单的小例子 通过函数，传入可变参数，最后输出值return是字典，不需要传入的参数是预设的。 自动给相同类型属性的变量赋值 实体，属性，功能….1234567891011121314151617181920212223242526272829attack_vals &#x3D; &#123;    &quot;A&quot;:30,    &quot;B&quot;:50,&#125;def do">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-01T11:43:01.000Z">
-<meta property="article:modified_time" content="2023-11-08T14:55:17.009Z">
+<meta property="article:modified_time" content="2024-03-02T14:06:41.488Z">
 <meta property="article:author" content="Gamer">
 <meta property="article:tag" content="Python 面向对象">
 <meta name="twitter:card" content="summary">
@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-08 22:55:17" itemprop="dateModified" datetime="2023-11-08T22:55:17+08:00">2023-11-08</time>
+                <time title="Modified: 2024-03-02 22:06:41" itemprop="dateModified" datetime="2024-03-02T22:06:41+08:00">2024-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +232,7 @@
 <li>自动给相同类型属性的变量赋值</li>
 <li>实体，属性，功能….<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">attack_vals = &#123;</span><br><span class="line">    <span class="string">&quot;A&quot;</span><span class="symbol">:</span><span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;B&quot;</span><span class="symbol">:</span><span class="number">50</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dog</span>(<span class="params">name,d_type</span>)<span class="symbol">:</span><span class="comment">#传参的模板</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span><span class="symbol">:name</span>,</span><br><span class="line">        <span class="string">&quot;d_type&quot;</span><span class="symbol">:d_type</span>,</span><br><span class="line">        <span class="string">&quot;attack_val&quot;</span><span class="symbol">:</span><span class="number">30</span>,</span><br><span class="line">        <span class="string">&quot;life_val&quot;</span><span class="symbol">:</span><span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">#自动给相同类型属性的变量赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dog_bite</span>(<span class="params">person_obj</span>) <span class="comment">#编辑对象的特定动作，绑定不出错儿~</span></span><br><span class="line">        person_obj[<span class="string">&quot;life_val&quot;</span>] -= data[<span class="string">&quot;attack_val&quot;</span>] <span class="comment">#执行动作</span></span><br><span class="line">    <span class="comment">#由于data就是在这个函数里定义的，所以直接调用data就可以</span></span><br><span class="line">    <span class="comment">#将函数定义在“狗”的内部，避免被错误地调用</span></span><br><span class="line">    data[<span class="string">&quot;bite&quot;</span>] = dog_bite</span><br><span class="line">    <span class="comment">#确保外部可以顺利调用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> d_type <span class="keyword">in</span> <span class="symbol">attack_vals:</span></span><br><span class="line">        data[attack_val] = attack_vals[d_type]</span><br><span class="line">    <span class="symbol">else:</span></span><br><span class="line">        data[attack_val] = <span class="number">15</span> <span class="comment">#给没有名字的一个默认值</span></span><br><span class="line">    <span class="keyword">return</span> data <span class="comment">#输出字典类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以此类推可以生成多个实体</span></span><br><span class="line">d1 = dog(<span class="string">&quot;lym&quot;</span>,<span class="string">&quot;A&quot;</span>)</span><br><span class="line">d1[<span class="string">&quot;bite&quot;</span>](person) <span class="comment">#调用dog_bite函数</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="面向过程-amp-面向对象"><a href="#面向过程-amp-面向对象" class="headerlink" title="面向过程 &amp; 面向对象"></a>面向过程 &amp; 面向对象</h2><h3 id="面向过程编程-Procedural-Programming"><a href="#面向过程编程-Procedural-Programming" class="headerlink" title="面向过程编程(Procedural Programming)"></a>面向过程编程(Procedural Programming)</h3><ul>
+<h2 id="面向过程-面向对象"><a href="#面向过程-面向对象" class="headerlink" title="面向过程 &amp; 面向对象"></a>面向过程 &amp; 面向对象</h2><h3 id="面向过程编程-Procedural-Programming"><a href="#面向过程编程-Procedural-Programming" class="headerlink" title="面向过程编程(Procedural Programming)"></a>面向过程编程(Procedural Programming)</h3><ul>
 <li>top-down language，程序从上到下一步步执行，解决问题（分解问题思想）</li>
 <li>简单的小脚本，可扩展性差</li>
 </ul>
@@ -289,8 +289,8 @@
       <i class="fa fa-chevron-left"></i> PythonBasic
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/%E5%AD%A6%E7%82%B9/QtDesigner/" rel="next" title="pyQt5">
-      pyQt5 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/%E5%AD%A6%E7%82%B9/QtDesigner/" rel="next" title="pyQt5一步到位笔记">
+      pyQt5一步到位笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -350,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%8F%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">一个简单的小例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B-amp-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">面向过程 &amp; 面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%BC%96%E7%A8%8B-Procedural-Programming"><span class="nav-number">1.2.1.</span> <span class="nav-text">面向过程编程(Procedural Programming)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-Object-oriented-Programming"><span class="nav-number">1.2.2.</span> <span class="nav-text">面向对象编程(Object-oriented Programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#class-%E7%B1%BB"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">class : 类</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%8F%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">一个简单的小例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">面向过程 &amp; 面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%BC%96%E7%A8%8B-Procedural-Programming"><span class="nav-number">1.2.1.</span> <span class="nav-text">面向过程编程(Procedural Programming)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-Object-oriented-Programming"><span class="nav-number">1.2.2.</span> <span class="nav-text">面向对象编程(Object-oriented Programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#class-%E7%B1%BB"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">class : 类</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -364,7 +364,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -377,7 +377,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -455,8 +455,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="true"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

@@ -23,20 +23,20 @@
     var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="BasicsConvolutions Conv layers consist of a set of filters, which you can think of as just 2d matrices of numbers.">
+  <meta name="description" content="引言误差 对于十字相乘法类的二次方程，如果两根相差过大，会发现求根公式算小根是错误的：或许结论推理也不能 如何运算精确度更高？  误差的来源 模型误差：分析方法近似造成的误差eg.物理中的理想化模型 观测误差：测量过程中不可消除的误差，与设备、方式有问题 截断误差：数学计算方法中常见，数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CNN">
-<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/">
+<meta property="og:title" content="数值计算方法">
+<meta property="og:url" content="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
 <meta property="og:site_name" content="Gamer&#39;s Show">
-<meta property="og:description" content="BasicsConvolutions Conv layers consist of a set of filters, which you can think of as just 2d matrices of numbers.">
+<meta property="og:description" content="引言误差 对于十字相乘法类的二次方程，如果两根相差过大，会发现求根公式算小根是错误的：或许结论推理也不能 如何运算精确度更高？  误差的来源 模型误差：分析方法近似造成的误差eg.物理中的理想化模型 观测误差：测量过程中不可消除的误差，与设备、方式有问题 截断误差：数学计算方法中常见，数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：$">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-20T10:18:13.000Z">
-<meta property="article:modified_time" content="2023-11-20T13:35:00.234Z">
+<meta property="article:published_time" content="2024-03-02T11:53:18.000Z">
+<meta property="article:modified_time" content="2024-03-03T11:55:07.941Z">
 <meta property="article:author" content="Gamer">
-<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="Gamer">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/">
+<link rel="canonical" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>CNN | Gamer's Show</title>
+  <title>数值计算方法 | Gamer's Show</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CNN
+          数值计算方法
         </h1>
 
         <div class="post-meta">
@@ -189,10 +189,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-11-20 18:18:13 / Modified: 21:35:00" itemprop="dateCreated datePublished" datetime="2023-11-20T18:18:13+08:00">2023-11-20</time>
+              <time title="Created: 2024-03-02 19:53:18" itemprop="dateCreated datePublished" datetime="2024-03-02T19:53:18+08:00">2024-03-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-03-03 19:55:07" itemprop="dateModified" datetime="2024-03-03T19:55:07+08:00">2024-03-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -221,9 +227,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="Convolutions"><a href="#Convolutions" class="headerlink" title="Convolutions"></a>Convolutions</h2><ul>
-<li>Conv layers consist of a set of <strong>filters</strong>, which you can think of as just 2d matrices of numbers.</li>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="误差"><a href="#误差" class="headerlink" title="误差"></a>误差</h2><ol>
+<li>对于十字相乘法类的二次方程，如果两根相差过大，会发现<strong>求根公式</strong>算小根是错误的：或许结论推理也不能</li>
+<li>如何运算精确度更高？</li>
+</ol>
+<h3 id="误差的来源"><a href="#误差的来源" class="headerlink" title="误差的来源"></a>误差的来源</h3><ol>
+<li>模型误差：分析方法近似造成的误差eg.物理中的理想化模型</li>
+<li>观测误差：测量过程中不可消除的误差，与设备、方式有问题</li>
+<li><strong>截断误差</strong>：数学计算方法中常见，数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：<br>$$</li>
+</ol>
+<p>$$<br>    * 泰勒展开，级数展开<br>4. 舍入误差：计算机中由于数据类型的长度有限，在实际位数超过该长度时，<br>在本课误差估计中，假定数学模型合理，测定值精确，主要讨论<strong>截断误差和舍入误差</strong></p>
+<h3 id="绝对误差、相对误差与有效数字"><a href="#绝对误差、相对误差与有效数字" class="headerlink" title="绝对误差、相对误差与有效数字"></a>绝对误差、相对误差与有效数字</h3><h4 id="绝对误差"><a href="#绝对误差" class="headerlink" title="绝对误差"></a>绝对误差</h4><p>$x^*$为准确值x的一个近似值，则称$x-x^*$为近似值$x^*$的绝对误差，简称误差，表示为$\epsilon$:<br>$$ \epsilon&#x3D;x-x^*$$<br>$|\epsilon|$的大小显示出近似值的准确程度，同一量的不同近似中，$|\epsilon|$越小，近似值准确度越高</p>
+<h4 id="绝对误差限"><a href="#绝对误差限" class="headerlink" title="绝对误差限"></a>绝对误差限</h4><p>实践中无法确定x，但是可以确定<strong>误差绝对值</strong>的上限，从而确定准确值的范围，定义满足如下不等式的正数称为近似值的误差限：<br>$$ x^*-\epsilon \le x \le x^*+\epsilon $$<br>也可以表示为$x&#x3D;x^*\pm \epsilon$</p>
+<h4 id="相对误差-epsilon"><a href="#相对误差-epsilon" class="headerlink" title="相对误差$\epsilon^*$"></a>相对误差$\epsilon^*$</h4><p>绝对误差与真值之比，称为<strong>近似值</strong>的相对误差（为了增强可操作性）<br>$$ \epsilon_r(x)&#x3D;\frac{\epsilon(x)}{x}&#x3D;\frac{x-x^*}{x} $$<br>    * 相对误差可以体现误差绝对大小与测量度相对大小关系，也就是说误差的绝对大小并不能决定精度<br>然而实际问题中x未知，因而常将近似值替换准确值来计算相对误差，衡量准确程度：<br>$$ \epsilon^*_r(x)&#x3D;\frac{\epsilon(x)}{x^*}&#x3D;\frac{x-x^*}{x^*} $$</p>
+<h4 id="相对误差限"><a href="#相对误差限" class="headerlink" title="相对误差限"></a>相对误差限</h4><p>类似于绝对误差限，满足下列不等式的正数$\epsilon_r$为<strong>近似值</strong>的相对误差限<br>$$ \epsilon^*_r(x)&#x3D;|\frac{\epsilon(x)}{x^*}|&#x3D;|\frac{x-x^*}{x^*}| \le \epsilon_r $$</p>
+<h4 id="有效数字"><a href="#有效数字" class="headerlink" title="有效数字"></a>有效数字</h4><p>近似值的误差限是其某一位上的<strong>半个单位</strong>时，称其“准确”到这意味，且从该位其到前面第一位<strong>非零数字</strong>为止<strong>所有数字</strong>都称为有效数字。<br>一般说，设有一个数x，其近似值的规格化形式为：<br>$$ $$</p>
+<div class="note info">
+            <p><strong>注意</strong>：</p><ol><li>绝对误差有单位，相对误差由于做了除法是没有单位的，常用百分号表示</li><li>四舍五入时，绝对误差限不超过末位数的半个单位</li><li>有效数字：</li></ol><ul><li>203和0.203有效数字均为n&#x3D;3，只是m不同</li><li>为什么强调采用标准式写法：9000的有效数字位数不一定为4，我们无法确定这是测定准确结果还是仅将0用于占位</li></ul>
+          </div>
+<h4 id="有效数字与误差的关系"><a href="#有效数字与误差的关系" class="headerlink" title="有效数字与误差的关系"></a>有效数字与误差的关系</h4><p>相对误差回推有效数字</p>
+<h3 id="数值运算中应注意的几个原则"><a href="#数值运算中应注意的几个原则" class="headerlink" title="数值运算中应注意的几个原则"></a>数值运算中应注意的几个原则</h3><ol>
+<li>选用数值稳定性好的算法</li>
+</ol>
+<ul>
+<li>什么是稳定性好</li>
+<li>如何判断一种算法具有良好的稳定性？<br> 假定数值具有初始误差$$，考察由$$引起的误差累计是否会增长，如果不增长则认为是稳定的，如果严重增长则认为不稳定</li>
+<li>如果改变为一种正确的算法，或许相同的计算类型稳定性可以增强（比如说改变递推方式，可以得到越来越精确的值）</li>
+<li>重要的是<strong>误差传递的方式</strong></li>
 </ul>
+<ol start="2">
+<li>避免两个（有效位数）相近的数相减（会严重消损有效数字）</li>
+</ol>
+<ul>
+<li>分母“无理化”</li>
+<li>降幂公式逆运算</li>
+</ul>
+<h3 id="有效数字的运算规则"><a href="#有效数字的运算规则" class="headerlink" title="有效数字的运算规则"></a>有效数字的运算规则</h3><ol>
+<li>加减运算</li>
+<li>乘除运算</li>
+</ol>
 
     </div>
 
@@ -239,7 +281,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/CNN/" title="CNN">https://gamermmm.github.io/2023/学点/CNN/</a>
+    <a href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/" title="数值计算方法">https://gamermmm.github.io/2024/学点/数值计算方法/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -249,9 +291,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
-          </div>
 
         
 
@@ -259,12 +298,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/%E5%AD%A6%E7%82%B9/%E5%BD%B1%E5%83%8F%E7%BB%84%E5%AD%A6/" rel="prev" title="影像组学">
-      <i class="fa fa-chevron-left"></i> 影像组学
+    <a href="/2024/%E5%AD%A6%E7%82%B9/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" rel="prev" title="集成学习">
+      <i class="fa fa-chevron-left"></i> 集成学习
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/uncategorized/Kaplan-Meier/" rel="next" title="Kaplan-Meier">
-      Kaplan-Meier <i class="fa fa-chevron-right"></i>
+    <a href="/2024/%E5%AD%A6%E7%82%B9/%E9%99%8D%E7%BB%B4%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0/" rel="next" title="降维学习与度量学习">
+      降维学习与度量学习 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -324,7 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basics"><span class="nav-number">1.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolutions"><span class="nav-number">1.1.</span> <span class="nav-text">Convolutions</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE"><span class="nav-number">1.1.</span> <span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">误差的来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E3%80%81%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E4%B8%8E%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">绝对误差、相对误差与有效数字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">绝对误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">绝对误差限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE-epsilon"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">相对误差$\epsilon^*$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">相对误差限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">有效数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E4%B8%8E%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">有效数字与误差的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E4%B8%AD%E5%BA%94%E6%B3%A8%E6%84%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="nav-number">1.1.3.</span> <span class="nav-text">数值运算中应注意的几个原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E7%9A%84%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99"><span class="nav-number">1.1.4.</span> <span class="nav-text">有效数字的运算规则</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -481,6 +520,59 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

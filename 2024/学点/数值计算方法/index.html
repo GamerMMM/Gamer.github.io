@@ -23,18 +23,40 @@
     var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="引言误差 对于十字相乘法类的二次方程，如果两根相差过大，会发现求根公式算小根是错误的：或许结论推理也不能 如何运算精确度更高？  误差的来源 模型误差：分析方法近似造成的误差eg.物理中的理想化模型 观测误差：测量过程中不可消除的误差，与设备、方式有问题 截断误差：数学计算方法中常见，数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：$">
+  <meta name="description" content="引言误差 对于十字相乘法类的二次方程，如果两根相差过大，会发现求根公式算小根是错误的：或许结论推理也不能 如何运算精确度更高？  误差的来源知道误差来源属于哪一类  模型误差：分析方法近似造成的误差eg.物理中的理想化模型 观测误差：测量过程中不可消除的误差，与设备、方式有问题 截断误差：数学计算方法中常见，主动的操作，可以保证计算最后的精度；数学中的“无穷”需要转化为计算机中的“有穷”；比如说无">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数值计算方法">
 <meta property="og:url" content="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
 <meta property="og:site_name" content="Gamer&#39;s Show">
-<meta property="og:description" content="引言误差 对于十字相乘法类的二次方程，如果两根相差过大，会发现求根公式算小根是错误的：或许结论推理也不能 如何运算精确度更高？  误差的来源 模型误差：分析方法近似造成的误差eg.物理中的理想化模型 观测误差：测量过程中不可消除的误差，与设备、方式有问题 截断误差：数学计算方法中常见，数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：$">
+<meta property="og:description" content="引言误差 对于十字相乘法类的二次方程，如果两根相差过大，会发现求根公式算小根是错误的：或许结论推理也不能 如何运算精确度更高？  误差的来源知道误差来源属于哪一类  模型误差：分析方法近似造成的误差eg.物理中的理想化模型 观测误差：测量过程中不可消除的误差，与设备、方式有问题 截断误差：数学计算方法中常见，主动的操作，可以保证计算最后的精度；数学中的“无穷”需要转化为计算机中的“有穷”；比如说无">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%891.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%892.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%893.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%894.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%895.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%89%B0%E5%8A%A8%E7%A4%BA%E4%BE%8B.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A4.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A4.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A42.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%80%89%E4%B8%BB%E5%85%83%E7%BB%83%E4%B9%A0.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%80%89%E4%B8%BB%E5%85%83%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%951.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%80%89%E4%B8%BB%E5%85%83%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%952.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E8%AF%B4%E6%98%8E.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%AB%98%E6%96%AF%E7%BA%A6%E5%BD%93%E6%B6%88%E5%8E%BB%E6%B3%951.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%AB%98%E6%96%AF%E7%BA%A6%E5%BD%93%E6%B6%88%E5%8E%BB%E6%B3%952.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/4.1%E5%B0%8F%E7%BB%93.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E4%B8%89%E8%A7%92%E5%88%86%E8%A7%A3%E6%B3%95%E4%B8%8EDOO.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/do1.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/do2.png">
+<meta property="og:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/do3.png">
 <meta property="article:published_time" content="2024-03-02T11:53:18.000Z">
-<meta property="article:modified_time" content="2024-03-03T11:55:07.941Z">
+<meta property="article:modified_time" content="2024-03-23T15:55:15.208Z">
 <meta property="article:author" content="Gamer">
 <meta property="article:tag" content="Gamer">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gamermmm.github.io/_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%891.png">
 
 <link rel="canonical" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">
 
@@ -137,6 +159,16 @@
     <a href="/archives/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Archives</a>
 
   </li>
+        
+            
+  <li class="menu-item menu-item-codingnotes">
+
+    <a href="/yourdiy/" rel="section"><i class="fa fa-book fa-fw"></i>CodingNotes</a>
+
+  </li>
+
+
+      
   </ul>
 </nav>
 
@@ -197,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-03-03 19:55:07" itemprop="dateModified" datetime="2024-03-03T19:55:07+08:00">2024-03-03</time>
+                <time title="Modified: 2024-03-23 23:55:15" itemprop="dateModified" datetime="2024-03-23T23:55:15+08:00">2024-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,42 +263,199 @@
 <li>对于十字相乘法类的二次方程，如果两根相差过大，会发现<strong>求根公式</strong>算小根是错误的：或许结论推理也不能</li>
 <li>如何运算精确度更高？</li>
 </ol>
-<h3 id="误差的来源"><a href="#误差的来源" class="headerlink" title="误差的来源"></a>误差的来源</h3><ol>
+<h3 id="误差的来源"><a href="#误差的来源" class="headerlink" title="误差的来源"></a>误差的来源</h3><p><strong>知道误差来源属于哪一类</strong></p>
+<ol>
 <li>模型误差：分析方法近似造成的误差eg.物理中的理想化模型</li>
 <li>观测误差：测量过程中不可消除的误差，与设备、方式有问题</li>
-<li><strong>截断误差</strong>：数学计算方法中常见，数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：<br>$$</li>
+<li><strong>截断误差</strong>：数学计算方法中常见，主动的操作，可以保证计算最后的精度；数学中的“无穷”需要转化为计算机中的“有穷”；比如说无穷大化为一个极大数值，无穷小数转为多位的有限小数。表示为：<br>$$</li>
 </ol>
 <p>$$<br>    * 泰勒展开，级数展开<br>4. 舍入误差：计算机中由于数据类型的长度有限，在实际位数超过该长度时，<br>在本课误差估计中，假定数学模型合理，测定值精确，主要讨论<strong>截断误差和舍入误差</strong></p>
 <h3 id="绝对误差、相对误差与有效数字"><a href="#绝对误差、相对误差与有效数字" class="headerlink" title="绝对误差、相对误差与有效数字"></a>绝对误差、相对误差与有效数字</h3><h4 id="绝对误差"><a href="#绝对误差" class="headerlink" title="绝对误差"></a>绝对误差</h4><p>$x^*$为准确值x的一个近似值，则称$x-x^*$为近似值$x^*$的绝对误差，简称误差，表示为$\epsilon$:<br>$$ \epsilon&#x3D;x-x^*$$<br>$|\epsilon|$的大小显示出近似值的准确程度，同一量的不同近似中，$|\epsilon|$越小，近似值准确度越高</p>
 <h4 id="绝对误差限"><a href="#绝对误差限" class="headerlink" title="绝对误差限"></a>绝对误差限</h4><p>实践中无法确定x，但是可以确定<strong>误差绝对值</strong>的上限，从而确定准确值的范围，定义满足如下不等式的正数称为近似值的误差限：<br>$$ x^*-\epsilon \le x \le x^*+\epsilon $$<br>也可以表示为$x&#x3D;x^*\pm \epsilon$</p>
 <h4 id="相对误差-epsilon"><a href="#相对误差-epsilon" class="headerlink" title="相对误差$\epsilon^*$"></a>相对误差$\epsilon^*$</h4><p>绝对误差与真值之比，称为<strong>近似值</strong>的相对误差（为了增强可操作性）<br>$$ \epsilon_r(x)&#x3D;\frac{\epsilon(x)}{x}&#x3D;\frac{x-x^*}{x} $$<br>    * 相对误差可以体现误差绝对大小与测量度相对大小关系，也就是说误差的绝对大小并不能决定精度<br>然而实际问题中x未知，因而常将近似值替换准确值来计算相对误差，衡量准确程度：<br>$$ \epsilon^*_r(x)&#x3D;\frac{\epsilon(x)}{x^*}&#x3D;\frac{x-x^*}{x^*} $$</p>
 <h4 id="相对误差限"><a href="#相对误差限" class="headerlink" title="相对误差限"></a>相对误差限</h4><p>类似于绝对误差限，满足下列不等式的正数$\epsilon_r$为<strong>近似值</strong>的相对误差限<br>$$ \epsilon^*_r(x)&#x3D;|\frac{\epsilon(x)}{x^*}|&#x3D;|\frac{x-x^*}{x^*}| \le \epsilon_r $$</p>
-<h4 id="有效数字"><a href="#有效数字" class="headerlink" title="有效数字"></a>有效数字</h4><p>近似值的误差限是其某一位上的<strong>半个单位</strong>时，称其“准确”到这意味，且从该位其到前面第一位<strong>非零数字</strong>为止<strong>所有数字</strong>都称为有效数字。<br>一般说，设有一个数x，其近似值的规格化形式为：<br>$$ $$</p>
+<h4 id="有效数字"><a href="#有效数字" class="headerlink" title="有效数字"></a>有效数字</h4><p>近似值的误差限是其某一位上的<strong>半个单位</strong>时，称其“准确”到这意味，且从该位其到前面第一位<strong>非零数字</strong>为止<strong>所有数字</strong>都称为有效数字。<br>一般说，设有一个数x，其近似值的规格化形式为：<br>$$ x^*&#x3D;\pm0.\alpha_1\alpha_2···\alpha_n×10^m$$<br>其中$\alpha_n$是0~9的数字,$\alpha_1\ne0$，n是正整数，m是整数。</p>
+<h4 id="绝对误差限-1"><a href="#绝对误差限-1" class="headerlink" title="绝对误差限"></a>绝对误差限</h4><p>若$x^*$的误差限为：<br>$$ |\epslion(x)&#x3D;|x-x^*|\ne\frac{1}{2}×10^{m-n} $$<br>则称$x^*$具有n位有效数字，或称其精确到$10^{m-n}$</p>
 <div class="note info">
-            <p><strong>注意</strong>：</p><ol><li>绝对误差有单位，相对误差由于做了除法是没有单位的，常用百分号表示</li><li>四舍五入时，绝对误差限不超过末位数的半个单位</li><li>有效数字：</li></ol><ul><li>203和0.203有效数字均为n&#x3D;3，只是m不同</li><li>为什么强调采用标准式写法：9000的有效数字位数不一定为4，我们无法确定这是测定准确结果还是仅将0用于占位</li></ul>
+            <p><strong>注意</strong>：</p><ol><li>绝对误差有单位，相对误差由于做了除法是没有单位的，常用百分号表示</li><li>四舍五入时，绝对误差限不超过末位数的半个单位</li><li>有效数字：</li></ol><ul><li>203和0.203有效数字均为n&#x3D;3，只是m不同</li><li>为什么强调采用标准式写法：9000的有效数字位数不一定为4，我们无法确定这是测定准确结果还是仅将0用于占位</li></ul><ol start="4"><li>当计算有效数字位数和绝对误差限时，建议写作标准形式，写出m，n，套公式计算。</li></ol>
           </div>
-<h4 id="有效数字与误差的关系"><a href="#有效数字与误差的关系" class="headerlink" title="有效数字与误差的关系"></a>有效数字与误差的关系</h4><p>相对误差回推有效数字</p>
+
+<h3 id="有效数字与误差的关系"><a href="#有效数字与误差的关系" class="headerlink" title="有效数字与误差的关系"></a>有效数字与误差的关系</h3><p>相对误差回推有效数字；<br>$$ |\epsilon^*(x)|&#x3D;|frac{\epsilon(x)}{x^*}\lefrac{feac{1}{2}×10^{m-n}}{\alpha_1×10^{m-1}}&#x3D;frac{1}{2\alpha_1}×10^{-n+1} $$</p>
+<h4 id="相对误差限-1"><a href="#相对误差限-1" class="headerlink" title="相对误差限"></a>相对误差限</h4><p>从相对误差限的定义式可知，有效数字的位数反映了近似值的相对精确度：<br>$$ \alpha_r&#x3D;frac{1}{2\alpha_1}×10^{-n+1} $$<br>当用相对误差表示时，如果相对误差能满足$$|\epsilon_r(x)| \le frac{1}{2(\alpha_1+1)}×10^{-n+1} $$<br>则$x^*$至少具有n位有效数字</p>
 <h3 id="数值运算中应注意的几个原则"><a href="#数值运算中应注意的几个原则" class="headerlink" title="数值运算中应注意的几个原则"></a>数值运算中应注意的几个原则</h3><ol>
 <li>选用数值稳定性好的算法</li>
 </ol>
 <ul>
 <li>什么是稳定性好</li>
-<li>如何判断一种算法具有良好的稳定性？<br> 假定数值具有初始误差$$，考察由$$引起的误差累计是否会增长，如果不增长则认为是稳定的，如果严重增长则认为不稳定</li>
+<li>如何判断一种算法具有良好的稳定性？<br> 假定数值具有初始误差$\epsilon_0$，中间不再产生新误差，考察由$\epsilon_0$引起的误差累计是否会增长，如果不增长则认为是稳定的，如果严重增长则认为不稳定</li>
 <li>如果改变为一种正确的算法，或许相同的计算类型稳定性可以增强（比如说改变递推方式，可以得到越来越精确的值）</li>
 <li>重要的是<strong>误差传递的方式</strong></li>
+<li>可以通过误差传递方式由最后的误差倒退回误差初始值$\epsilon_0$</li>
 </ul>
 <ol start="2">
 <li>避免两个（有效位数）相近的数相减（会严重消损有效数字）</li>
 </ol>
 <ul>
+<li>在数值计算中两个相近的数相减会造成有效数字的严重损失，有一些好的解决方案：<ul>
 <li>分母“无理化”</li>
-<li>降幂公式逆运算</li>
+<li>降幂公式逆运算$1-cosx&#x3D;s(sin(x&#x2F;2))^2$</li>
+<li>$arctan\theta_1-arctan\theta_2 &#x3D; arctan(\frac{1}{\theta_1 \theta_2})$</li>
+<li>x很小的时候泰勒展开计算$e^x$</li>
+</ul>
+</li>
+<li><strong>总结</strong>：无法改变算式时，可采用增加有效数字位数进行运算（计算机上采用双精度计算，但是会增大时空开销）</li>
 </ul>
 <h3 id="有效数字的运算规则"><a href="#有效数字的运算规则" class="headerlink" title="有效数字的运算规则"></a>有效数字的运算规则</h3><ol>
-<li>加减运算</li>
-<li>乘除运算</li>
+<li>加减运算<ul>
+<li>取舍以小数点后位数最少的数值为准</li>
+<li>先<strong>按照小数点后位数最少的数据保留</strong>其他各数的位数，再进行加减计算，结果也应当使小数点后保留相同的位数</li>
+</ul>
+</li>
+<li>乘除运算<ul>
+<li>以<strong>有效数字最少</strong>的为准</li>
+<li>先按有效数字最少的数据保留其他各数，再进行乘除运算，计算结果仍保留相同有效数字</li>
+</ul>
+</li>
+<li>绝对值太小的不易做除数<ul>
+<li>容易数据溢出</li>
+<li>小数点后高位略有误差会有较大影响</li>
+</ul>
+</li>
+<li>防止大数吃掉小数（Kahan算法，大数吃小数）<ul>
+<li>字长有限，绝对值大小差距悬殊运算时容易出现</li>
+<li>小数进行一定累计之后再参与运算</li>
+</ul>
+</li>
 </ol>
-
+<h1 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h1><p>是一种映射，并且有相类似的规范</p>
+<h2 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h2><p>三角不等式中是矢量相加<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%891.png" alt="Img"><br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%892.png" alt="Img"><br>L2范数实际上是向量空间中的距离，无穷范数取最大值,p范数其实是其他特殊范数的一般形式；</p>
+<h2 id="矩阵范数"><a href="#矩阵范数" class="headerlink" title="矩阵范数"></a>矩阵范数</h2><p>相对于向量范数，多了相容性；<br>求范数之后成为标量；<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%893.png" alt="Img"><br>根据向量的常用范数得到常用的矩阵范数：<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%894.png" alt="Img"></p>
+<ul>
+<li>1范数：每列和的绝对值取最大值</li>
+<li>无穷范数（行范数）：每行和的绝对值取最大值</li>
+<li>2范数实际上是欧氏空间中对距离的测定，最常用；ATA的正负不需要考虑，一定为正；<br><img src="/./_Img/%E8%8C%83%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%895.png" alt="Img"><br>2范数实际上是ATA与谱半径积的平方根<br>单位矩阵任何范数都是1</li>
+</ul>
+<h3 id="扰动分析"><a href="#扰动分析" class="headerlink" title="扰动分析"></a>扰动分析</h3><h4 id="病态方程与良态方程"><a href="#病态方程与良态方程" class="headerlink" title="病态方程与良态方程"></a>病态方程与良态方程</h4><p>对于线性方程组Ax&#x3D;b，若系数矩阵A或常数项b的元素</p>
+<h4 id="讨论：常数项与矩阵的扰动对方程组解的影响"><a href="#讨论：常数项与矩阵的扰动对方程组解的影响" class="headerlink" title="讨论：常数项与矩阵的扰动对方程组解的影响"></a>讨论：常数项与矩阵的扰动对方程组解的影响</h4><p>进行数据存在扰动时的误差分析，这里主要使用了矩阵范数的相容性性质，对于任何范数进行证明中的运算均成立</p>
+<ol>
+<li>常数项的扰动<br><img src="/./_Img/%E6%89%B0%E5%8A%A8%E7%A4%BA%E4%BE%8B.png" alt="Img"></li>
+</ol>
+<p>A二范数的条件数是A最大谱半径与最小谱半径商的平方根<br>根据A矩阵的条件数，可以确定解扰动的范围，体现了方程数据扰动对解相对误差的影响，初步判断是否病态。<br>其中A是扰动误差产生的核心，也是计算软件进行运算与否的重要依据之一</p>
+<h1 id="线性方程直接求解"><a href="#线性方程直接求解" class="headerlink" title="线性方程直接求解"></a>线性方程直接求解</h1><p>两类解法：直接法与迭代法</p>
+<h2 id="直接法"><a href="#直接法" class="headerlink" title="直接法"></a>直接法</h2><h3 id="高斯消去法"><a href="#高斯消去法" class="headerlink" title="高斯消去法"></a>高斯消去法</h3><p>先消元，即按一定的规律逐步消去未知量，将方程组化为等价的上三角形方程组；然后进行回代，即由上三角形方程组逐个求出每个未知数的解</p>
+<h4 id="顺序高斯消去法"><a href="#顺序高斯消去法" class="headerlink" title="顺序高斯消去法"></a>顺序高斯消去法</h4><p>消元过程按方程和未知量的自然顺序进行：方程排列顺序，未知量位置顺序，类似于上三角形矩阵的变换；</p>
+<ul>
+<li>顺序高斯消元法的规则：<ul>
+<li>依从左到右、自上而下的次序将主对角元下方的元素化为零。</li>
+<li>不作行交换，也不用非零数乘某行。</li>
+<li>第k列消元（将主对角元下方化零）时，将下面各行分别减去第k行的适当倍数，不作其他变换。</li>
+</ul>
+</li>
+<li>即便是非奇异矩阵，也有可能是一整行都是0，或者出现一个较其他行相对较小系数，会造成严重的精度问题（数值稳定性差）</li>
+<li>使用上角标$^($)表示迭代次数</li>
+<li>行变换不会改变矩阵的非奇异性，理论上不会有某一行为0</li>
+<li>消去过程的时间复杂度更高<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A4.png" alt="Img"></li>
+<li><strong>消元过程可以按顺序进行的充要条件？</strong><ul>
+<li>$a_{kk}^{(k-1)}\ne0,k&#x3D;1,2···$</li>
+</ul>
+</li>
+<li>递推<img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A4.png" alt="Img"><br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%9A%84%E6%AD%A5%E9%AA%A42.png" alt="Img"></li>
+</ul>
+<p>定理要会用：对于方程组：</p>
+<ul>
+<li><strong>顺序消元过程能进行到底</strong>的充要条件是<strong>系数矩阵A的<em>顺序主子矩阵</em>Ak (k&#x3D;1,2,…,n-1)非奇异</strong>。</li>
+<li>用<strong>顺序高斯消去法求解</strong>的充要条件是<strong>系数矩阵的一切顺序主子矩阵</strong>均非奇异。</li>
+<li>一些小补充<blockquote>
+<p>顺序高斯消去法求解和顺序消去可以进行到底有什么区别?<br>顺序高斯消去法（Sequential Gaussian Elimination）和顺序消元法（Sequential Elimination）都是线性代数中用于解决线性方程组的方法，但它们有一些区别。</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><strong>顺序高斯消去法（Sequential Gaussian Elimination）</strong>：<ul>
+<li>这是高斯消元法的一种变体，通过一系列的行变换将方程组化为上三角形式，然后通过回代求解方程组。在顺序高斯消去法中，通常会按顺序处理每一行，逐步进行消元操作。</li>
+<li>顺序高斯消去法通常用于解决稠密的线性方程组，因为它需要进行大量的矩阵操作。</li>
+<li>它的计算复杂度为 O(n^3)，其中 n 是方程组的大小。</li>
+</ul>
+</li>
+<li><strong>顺序消元法（Sequential Elimination）</strong>：<ul>
+<li>顺序消元法也是一种线性方程组求解方法，但不同于高斯消元法，它更侧重于直接消去变量而不是通过矩阵操作。</li>
+<li>在顺序消元法中，可以按照任意顺序依次消去方程组中的变量，并解出剩余的变量。通常采用的顺序是从第一个变量开始，逐步向后推进。</li>
+<li>顺序消元法通常适用于稀疏的线性方程组，因为它的操作更侧重于变量之间的消去，而不是整个矩阵的操作。</li>
+<li>它的计算复杂度取决于消元的顺序，通常为 O(n^2) 到 O(n^3)。</li>
+</ul>
+</li>
+</ol>
+<p>因此，两种方法的主要区别在于其操作的对象和计算复杂度。顺序高斯消去法更侧重于矩阵操作，适用于稠密的线性方程组，而顺序消元法更侧重于变量之间的消去，适用于稀疏的线性方程组。</p>
+<h4 id="选主元高斯消去法"><a href="#选主元高斯消去法" class="headerlink" title="选主元高斯消去法"></a>选主元高斯消去法</h4><p><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.png" alt="Img"></p>
+<ul>
+<li><p>基本思想：每次消元前<strong>按一定的范围</strong>选取<strong>绝对值最大</strong>的元素作为主元素。以便减少舍入误差的影响。</p>
+<ul>
+<li>主要有列主元高斯消去法和全主元高斯消去法.一般只使用行交换进行消去，可以降低复杂度</li>
+<li>只要detA≠０，就必能找到k行以下该列某不为0的元素</li>
+<li>若r&gt;k 则交换第k行和第r行，然后进行消元。<ul>
+<li>意思就是谁大把谁放入当前操作行作为保留元素</li>
+</ul>
+</li>
+<li>不影响x，只是对排序调整<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%80%89%E4%B8%BB%E5%85%83%E7%BB%83%E4%B9%A0.png" alt="Img"><br>最后得方程组，有-1，1，5<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%80%89%E4%B8%BB%E5%85%83%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%951.png" alt="Img"><br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%80%89%E4%B8%BB%E5%85%83%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%952.png" alt="Img"></li>
+</ul>
+</li>
+<li><p>一般使用列主元就已经足够</p>
+</li>
+<li><p><strong>进阶的选主元消去</strong></p>
+<ul>
+<li><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E5%AF%B9%E7%AE%97%E6%B3%95%E7%9A%84%E8%AF%B4%E6%98%8E.png" alt="对算法的说明"></li>
+<li>运算量：$\frac{n^3}{3}$(计算机中做乘除运算的时间远远超过做加减运算时间，故我们只估计 <em>乘除运算</em> 的次数)</li>
+</ul>
+</li>
+<li><p>Gauss-Jordan消去法<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%AB%98%E6%96%AF%E7%BA%A6%E5%BD%93%E6%B6%88%E5%8E%BB%E6%B3%951.png" alt="Img"><br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E9%AB%98%E6%96%AF%E7%BA%A6%E5%BD%93%E6%B6%88%E5%8E%BB%E6%B3%952.png" alt="Img"></p>
+<blockquote>
+<p>用途<br>高斯约当消去法（Gauss-Jordan elimination）是高斯消去法的一种改进形式，用于求解线性方程组并求解矩阵的逆。与高斯消去法不同，高斯约当消去法一次性将矩阵化为阶梯形式，并最终化为单位矩阵。因此，它能够同时解决线性方程组和求解逆矩阵的问题。<br>高斯约当消去法的主要用途包括：</p>
+</blockquote>
+<ol>
+<li><strong>求解线性方程组</strong>：通过高斯约当消去法，可以将线性方程组的系数矩阵化为阶梯形式，并最终化为单位矩阵。这使得方程组的解可以直接从化简后的矩阵中读取。</li>
+<li><strong>求解逆矩阵</strong>：在高斯约当消去法中，将待求的矩阵与单位矩阵连接在一起，通过一系列的行变换将待求矩阵化为单位矩阵，同时单位矩阵也会变为原矩阵的逆。因此，高斯约当消去法也可用于求解矩阵的逆。</li>
+<li><strong>求解行列式</strong>：通过高斯约当消去法，可以化简原矩阵为上三角形式，从而可以直接计算矩阵的行列式。<br>总之，高斯约当消去法是一种功能强大的方法，可以同时解决线性方程组、求解逆矩阵以及计算行列式等问题。</li>
+</ol>
+</li>
+</ul>
+<p>求方程解的例子</p>
+<blockquote>
+<p>考虑以下线性方程组：<br>[<br>\begin{cases}<br>2x + 3y - z &#x3D; 7 \<br>3x + y + 2z &#x3D; 5 \<br>x - 2y + z &#x3D; -1<br>\end{cases}<br>]<br>可以将这个线性方程组表示为增广矩阵形式：<br>[<br>\left[\begin{array}{ccc|c}<br>2 &amp; 3 &amp; -1 &amp; 7 \<br>3 &amp; 1 &amp; 2 &amp; 5 \<br>1 &amp; -2 &amp; 1 &amp; -1<br>\end{array}\right]<br>]<br>现在，我们将通过高斯约当消元法将这个增广矩阵化简为阶梯形式。然后，从阶梯形式中读取方程组的解。<br>    1. <strong>第一步</strong>：将第一行第一个元素（主元素）变为 1，同时使用第一行的主元素消去其他行的对应元素。<br>[<br>\left[\begin{array}{ccc|c}<br>1 &amp; \frac{3}{2} &amp; -\frac{1}{2} &amp; \frac{7}{2} \<br>3 &amp; 1 &amp; 2 &amp; 5 \<br>1 &amp; -2 &amp; 1 &amp; -1<br>\end{array}\right]<br>]<br>    2. <strong>第二步</strong>：使用第一行的第一个元素将第二行的第一个元素变为 0，并将第三行的第一个元素变为 0。<br>[<br>\left[\begin{array}{ccc|c}<br>1 &amp; \frac{3}{2} &amp; -\frac{1}{2} &amp; \frac{7}{2} \<br>0 &amp; -\frac{7}{2} &amp; \frac{7}{2} &amp; -\frac{11}{2} \<br>0 &amp; -\frac{7}{2} &amp; \frac{3}{2} &amp; -\frac{9}{2}<br>\end{array}\right]<br>]<br>    3. <strong>第三步</strong>：将第二行第二个元素（主元素）变为 1，并使用第二行的主元素消去第一行和第三行的对应元素。<br>[<br>\left[\begin{array}{ccc|c}<br>1 &amp; \frac{3}{2} &amp; -\frac{1}{2} &amp; \frac{7}{2} \<br>0 &amp; 1 &amp; -1 &amp; 1 \<br>0 &amp; -\frac{7}{2} &amp; \frac{3}{2} &amp; -\frac{9}{2}<br>\end{array}\right]<br>]<br>    4. <strong>第四步</strong>：使用第二行的第二个元素将第一行的第二个元素变为 0，并使用第二行的第二个元素将第三行的第二个元素变为 0。<br>[<br>\left[\begin{array}{ccc|c}<br>1 &amp; 0 &amp; 1 &amp; 3 \<br>0 &amp; 1 &amp; -1 &amp; 1 \<br>0 &amp; 0 &amp; 2 &amp; 4<br>\end{array}\right]<br>]<br>    5. <strong>第五步</strong>：将第三行的第三个元素（主元素）变为 1，并使用第三行的主元素消去第一行和第二行的对应元素。<br>[<br>\left[\begin{array}{ccc|c}<br>1 &amp; 0 &amp; 0 &amp; 1 \<br>0 &amp; 1 &amp; 0 &amp; 2 \<br>0 &amp; 0 &amp; 1 &amp; 2<br>\end{array}\right]<br>]<br>现在，我们得到了阶梯形式的增广矩阵。根据阶梯形式，我们可以直接读出方程组的解：<br>[<br>\begin{cases}<br>x &#x3D; 1 \<br>y &#x3D; 2 \<br>z &#x3D; 2<br>\end{cases}<br>]<br>这就是线性方程组的解，通过高斯约当消元法得到。</p>
+</blockquote>
+<h4 id="重点-小结"><a href="#重点-小结" class="headerlink" title="重点&amp;小结"></a><strong>重点&amp;小结</strong></h4><p><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/4.1%E5%B0%8F%E7%BB%93.png" alt="Img"></p>
+<ol>
+<li><p>解线性方程组Gauss消去法的计算程序如何实现？可以进行Gauss消去法的条件是什么？</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">gauss_elimination</span>(<span class="params">A, b</span>):</span><br><span class="line">    n = len(A)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 合并增广矩阵</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        A[i].append(b[i])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 消元过程</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="comment"># 首先找到主元素所在行</span></span><br><span class="line">        max_index = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> abs(A[j][i]) &gt; abs(A[max_index][i]):</span><br><span class="line">                max_index = j</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将主元素所在行交换至当前行</span></span><br><span class="line">        A[i], A[max_index] = A[max_index], A[i]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将当前主元素所在列的其他元素消为0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, n):</span><br><span class="line">            factor = A[j][i] / A[i][i]</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(i, n + <span class="number">1</span>):</span><br><span class="line">                A[j][k] -= factor * A[i][k]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 回代求解</span></span><br><span class="line">    x = [<span class="number">0</span>] * n</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        x[i] = A[i][n] / A[i][i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">            A[j][n] -= A[j][i] * x[i]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例子</span></span><br><span class="line">A = [[<span class="number">2</span>, <span class="number">1</span>, -<span class="number">1</span>],</span><br><span class="line">     [-<span class="number">3</span>, -<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">     [-<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br><span class="line">b = [<span class="number">8</span>, -<span class="number">11</span>, -<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">solution = gauss_elimination(A, b)</span><br><span class="line">print(<span class="string">&quot;Solution:&quot;</span>, solution)</span><br></pre></td></tr></table></figure>
+<p>Gauss 消去法可以应用于求解线性方程组的条件包括：</p>
+</li>
+<li><p><strong>方程组的系数矩阵是一个非奇异矩阵</strong>：这意味着方程组的系数矩阵的行列式不为零。非奇异矩阵保证了方程组有唯一解。</p>
+</li>
+<li><p>方程组的系数矩阵是一个方阵：Gauss 消去法通常应用于求解方阵形式的线性方程组。如果方程组的系数矩阵不是方阵，那么方程组可能有无穷解或者无解。</p>
+</li>
+<li><p>可以<strong>按顺序进行消去</strong>的充要条件：<strong>主对角线元素不为零</strong>：Gauss 消去法在进行消元的过程中会涉及到主对角线元素的除法操作，因此要求主对角线元素不为零，避免除以零的情况。</p>
+</li>
+<li><p>方程组的条件数较小：条件数反映了方程组的稳定性，较小的条件数意味着方程组求解的稳定性较高，更容易得到准确的解。高条件数可能导致数值不稳定性和舍入误差的累积。</p>
+</li>
+<li><p>解线性方程组列主元Gauss消去法的计算程序如何实现？可以进行列主元Gauss消去法的条件是什么？<br>条件同上；顺序消元过程进行到底&amp;高斯消去法求解&lt;-&gt;系数矩阵一切<strong>顺序主子矩阵</strong>均非奇异</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">swap_rows</span>(<span class="params">A, i, j</span>):</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;交换矩阵的两行&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">    A[i], A[j] = A[j], A[i]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gauss_elimination</span>(<span class="params">A, b</span>):</span><br><span class="line">    n = len(A)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 合并增广矩阵</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        A[i].append(b[i])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 消元过程</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="comment"># 在当前列中找到绝对值最大的元素所在的行</span></span><br><span class="line">        max_index = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> abs(A[j][i]) &gt; abs(A[max_index][i]):</span><br><span class="line">                max_index = j</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将找到的主元素所在行交换至当前行</span></span><br><span class="line">        swap_rows(A, i, max_index)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将当前主元素所在列的其他元素消为0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, n):</span><br><span class="line">            factor = A[j][i] / A[i][i]</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(i, n + <span class="number">1</span>):</span><br><span class="line">                A[j][k] -= factor * A[i][k]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 回代求解</span></span><br><span class="line">    x = [<span class="number">0</span>] * n</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        x[i] = A[i][n] / A[i][i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">            A[j][n] -= A[j][i] * x[i]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例子</span></span><br><span class="line">A = [[<span class="number">2</span>, <span class="number">1</span>, -<span class="number">1</span>],</span><br><span class="line">     [-<span class="number">3</span>, -<span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">     [-<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]]</span><br><span class="line">b = [<span class="number">8</span>, -<span class="number">11</span>, -<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">solution = gauss_elimination(A, b)</span><br><span class="line">print(<span class="string">&quot;Solution:&quot;</span>, solution)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Gauss消去法的计算复杂度是？<br>$O(n^3)$，其中 n 是方程组的未知数个数。</p>
+</li>
+</ol>
+<h3 id="直接三角分解法"><a href="#直接三角分解法" class="headerlink" title="直接三角分解法"></a>直接三角分解法</h3><p>对于方程组AX&#x3D;b，只要对系数矩阵作了三角分解A&#x3D;LU，就可以很容易地求出线性方程的解。<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/%E4%B8%89%E8%A7%92%E5%88%86%E8%A7%A3%E6%B3%95%E4%B8%8EDOO.png" alt="Img"></p>
+<ul>
+<li>A的行列式就是U的行列式:<br>$$ A_k&#x3D;L_kU_k,detA_k&#x3D;detU_k&#x3D;\prod^k_{i&#x3D;1} a^{(i-1)}_{ii} $$</li>
+</ul>
+<h4 id="会计算Dolittle（4，5）"><a href="#会计算Dolittle（4，5）" class="headerlink" title="会计算Dolittle（4，5）"></a>会计算Dolittle（4，5）</h4><p>核心：使用尽可能少的计算量写出非零数：通过矩阵乘法规则可以推出来A在LU上的“映射”，每行依次进行，先行后列，可以直接把LU中的非0数写出来<br><strong>步骤如下</strong>：</p>
+<ul>
+<li>L矩阵对角线元素全为1，U矩阵第一行元素与A第一行相同</li>
+<li>取k&#x3D;1,2,…,n.依次计算k行U和k列L<ul>
+<li>$a_ij$ &#x3D; Li行*Uj列,按这个来列方程解值<br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/do1.png" alt="Img"></li>
+</ul>
+</li>
+<li><strong>求解方程组Ax＝b 的Doolittle 三角分解方法,包括分解和回代两步。</strong><br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/do2.png" alt="Img"><br><img src="/./_Img/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.assets/do3.png" alt="Img"></li>
+</ul>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><h1 id="-3"><a href="#-3" class="headerlink" title=""></a></h1>
     </div>
 
     
@@ -302,8 +491,8 @@
       <i class="fa fa-chevron-left"></i> 集成学习
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/%E5%AD%A6%E7%82%B9/%E9%99%8D%E7%BB%B4%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%BA%A6%E9%87%8F%E5%AD%A6%E4%B9%A0/" rel="next" title="降维学习与度量学习">
-      降维学习与度量学习 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/%E5%AD%A6%E7%82%B9/%E5%BE%AE%E7%94%9F%E7%89%A9%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="next" title="微生物学笔记">
+      微生物学笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -363,7 +552,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE"><span class="nav-number">1.1.</span> <span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">误差的来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E3%80%81%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E4%B8%8E%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">绝对误差、相对误差与有效数字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">绝对误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">绝对误差限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE-epsilon"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">相对误差$\epsilon^*$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">相对误差限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">有效数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E4%B8%8E%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">有效数字与误差的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E4%B8%AD%E5%BA%94%E6%B3%A8%E6%84%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="nav-number">1.1.3.</span> <span class="nav-text">数值运算中应注意的几个原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E7%9A%84%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99"><span class="nav-number">1.1.4.</span> <span class="nav-text">有效数字的运算规则</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE"><span class="nav-number">1.1.</span> <span class="nav-text">误差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">误差的来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E3%80%81%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E4%B8%8E%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">绝对误差、相对误差与有效数字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">绝对误差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">绝对误差限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE-epsilon"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">相对误差$\epsilon^*$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">相对误差限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">有效数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90-1"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">绝对误差限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E4%B8%8E%E8%AF%AF%E5%B7%AE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.3.</span> <span class="nav-text">有效数字与误差的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%AF%AF%E5%B7%AE%E9%99%90-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">相对误差限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97%E4%B8%AD%E5%BA%94%E6%B3%A8%E6%84%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="nav-number">1.1.4.</span> <span class="nav-text">数值运算中应注意的几个原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97%E7%9A%84%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99"><span class="nav-number">1.1.5.</span> <span class="nav-text">有效数字的运算规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%83%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">范数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E8%8C%83%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">向量范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%8C%83%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">矩阵范数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B0%E5%8A%A8%E5%88%86%E6%9E%90"><span class="nav-number">2.2.1.</span> <span class="nav-text">扰动分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%97%85%E6%80%81%E6%96%B9%E7%A8%8B%E4%B8%8E%E8%89%AF%E6%80%81%E6%96%B9%E7%A8%8B"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">病态方程与良态方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA%EF%BC%9A%E5%B8%B8%E6%95%B0%E9%A1%B9%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E6%89%B0%E5%8A%A8%E5%AF%B9%E6%96%B9%E7%A8%8B%E7%BB%84%E8%A7%A3%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">讨论：常数项与矩阵的扰动对方程组解的影响</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%9B%B4%E6%8E%A5%E6%B1%82%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">线性方程直接求解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">直接法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95"><span class="nav-number">3.1.1.</span> <span class="nav-text">高斯消去法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">顺序高斯消去法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E4%B8%BB%E5%85%83%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">选主元高斯消去法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E7%82%B9-%E5%B0%8F%E7%BB%93"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">重点&amp;小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E4%B8%89%E8%A7%92%E5%88%86%E8%A7%A3%E6%B3%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">直接三角分解法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%9A%E8%AE%A1%E7%AE%97Dolittle%EF%BC%884%EF%BC%8C5%EF%BC%89"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">会计算Dolittle（4，5）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-1"><span class="nav-number">5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-2"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-3"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -377,7 +566,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -390,7 +579,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

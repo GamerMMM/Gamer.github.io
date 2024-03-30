@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_medium.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="重点：  多文件编译与链接过程 宏定义&amp;MAKE文件 程序命令行参数 GDB调试工具  声明与定义对于头文件，尽量只申明函数而不实现函数。尽量只声明全局变量而不定义全局变量  声明：告诉编译器关于变量名称、变量类型、变量大小，函数名称、结构名称大小等信息，在此阶段不会给变量分配任何的库存。  声明变量：extern int x;;也可以用于函数声明 通常用在全局变量在不同文件内的共享 头文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L2-编程环境">
+<meta property="og:url" content="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/L2-%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83/">
+<meta property="og:site_name" content="Gamer&#39;s Show">
+<meta property="og:description" content="重点：  多文件编译与链接过程 宏定义&amp;MAKE文件 程序命令行参数 GDB调试工具  声明与定义对于头文件，尽量只申明函数而不实现函数。尽量只声明全局变量而不定义全局变量  声明：告诉编译器关于变量名称、变量类型、变量大小，函数名称、结构名称大小等信息，在此阶段不会给变量分配任何的库存。  声明变量：extern int x;;也可以用于函数声明 通常用在全局变量在不同文件内的共享 头文">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-17T03:52:38.000Z">
+<meta property="article:modified_time" content="2024-03-17T09:43:43.064Z">
+<meta property="article:author" content="Gamer">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="OOP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/L2-%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>L2-编程环境 | Gamer's Show</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Gamer's Show</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">你知道人生最要紧的事是快乐不停</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-ghost fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-star-of-david fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/something/" rel="section"><i class="fa fa-cube fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Archives</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-codingnotes">
+
+    <a href="/yourdiy/" rel="section"><i class="fa fa-book fa-fw"></i>CodingNotes</a>
+
+  </li>
+
+
+      
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/L2-%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gamer">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gamer's Show">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          L2-编程环境
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-03-17 11:52:38 / Modified: 17:43:43" itemprop="dateCreated datePublished" datetime="2024-03-17T11:52:38+08:00">2024-03-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>重点：</p>
+<ul>
+<li>多文件编译与链接过程</li>
+<li>宏定义&amp;<code>MAKE</code>文件</li>
+<li>程序命令行参数</li>
+<li>GDB调试工具</li>
+</ul>
+<h2 id="声明与定义"><a href="#声明与定义" class="headerlink" title="声明与定义"></a>声明与定义</h2><p>对于头文件，尽量只申明函数而不实现函数。尽量只声明全局变量而不定义全局变量</p>
+<ul>
+<li><p>声明：告诉编译器关于变量名称、变量类型、变量大小，函数名称、结构名称大小等信息，在此阶段<strong>不会给变量分配任何的库存</strong>。</p>
+<ul>
+<li>声明变量：<code>extern int x;</code>;也可以用于函数声明</li>
+<li>通常用在全局变量在不同文件内的共享</li>
+<li>头文件中只是进行函数声明，并没有实现（定义）函数体，避免在链接时发现多个相同的函数实现（重复定义）而发生错误</li>
+</ul>
+</li>
+<li><p>定义：变量声明+内存分配</p>
+<ul>
+<li>我们常见的<code>int x=1</code>或者<code>int x</code>都是变量定义，后者只是缺少初始化</li>
+</ul>
+</li>
+</ul>
+<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><ul>
+<li><code>#define</code>:一种<strong>预编译指令</strong>，用于给一个字符串定义一个“标识符”，这个标识符叫做<strong>宏名</strong>，被定义的字符串叫做<strong>替换文本</strong>；<ul>
+<li>预编译：<strong>宏替换</strong>：将宏名用被定义的字符串替换后再进行编译</li>
+<li>作用域：宏定义的有效范围称为宏名的作用域，宏名的作用域从宏定义的结束处开始到其所在的源代码文件末尾，不受分程序结构的影响。<ul>
+<li>可以用预处理指令<code>#undef</code>加上宏名终止宏名的作用域。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>宏定义的简单使用：&lt;宏名&gt;(&lt;参数表&gt;) &lt;字符串&gt;  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define PI 3.14</span></span><br><span class="line"><span class="comment">#define sqrt(x) ((x)*(x))</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>常量常用const定义</li>
+<li>注意line2在去掉字符串中x的括号时会引起运算错误：如果用<code>sqrt(u+v)</code>会输出<code>u+v*u+v</code>，由此体现宏替换只是简单的替换，并不会作出任何改变；如果有语法错误也只能在编译阶段发现</li>
+</ul>
+</li>
+<li>宏使用时的其他指令<ul>
+<li>避免头文件重复包含<ul>
+<li><code>#pragma</code>指令：可以设置面一起状态或者指示编译器进行特定活动：<ul>
+<li>#pragma once:保证头文件只被编译一次。</li>
+<li>#pragma message(“info”)，在编译信息输出窗口中输出相应的信息，例如<code>#pragma message(&quot;Hello&quot;)</code>。</li>
+<li>#pragma warning，设置编译器处理编译警告信息的方式，例如<code>#pragma warning(disable:4507 34;once : 4385;error:164)</code>等价于<code>#pragma warning(disable:4507 34)</code>（不显示4507和34号警告信息）、<code>#pragma warning(once:4385)</code>（4385号警告信息仅报告一次）、<code>#pragma warning(error:164)</code>（把164号警告信息作为一个错误）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ifndef name //=if !def</span></span><br><span class="line"><span class="comment">#define newName</span></span><br><span class="line"><span class="comment">#else</span></span><br><span class="line">/<span class="regexp">/程序段</span></span><br><span class="line"><span class="regexp">#endif</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ or</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">#pragma once /</span><span class="regexp">/保证物理上的同一个文件不会被编译多次</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用于debug输出，控制程序是否输出调试信息  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ #define DEBUG</span></span><br><span class="line"><span class="regexp">#ifdef DEBUG</span></span><br><span class="line"><span class="regexp">    count&lt;&lt;&quot;val:&lt;&lt;val&lt;&lt;endl;</span></span><br><span class="line"><span class="regexp">#endif</span></span><br></pre></td></tr></table></figure></li>
+<li><code>#error</code>：指令使预处理器发出一条错误消息，然后停止执行预处理。  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#error info</span></span><br><span class="line"><span class="comment">#error MFC requires C++ compilation</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="编译与连接"><a href="#编译与连接" class="headerlink" title="编译与连接"></a>编译与连接</h2><h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>预处理:根据预处理指令对代码源文件处理，比如宏替换</li>
+<li>编译：检查语法<ul>
+<li>第一遍执行语法分析与静态类型检查，把源代码解析为语法分析树的结构</li>
+<li>第二遍由代码生成器遍历语法分析树，把树的每个节点转换为汇编语言或机器代码，生成目标模块<code>.o</code>或<code>.obj</code>文件</li>
+</ul>
+</li>
+<li>汇编：汇编代码转换机器码，可以利用反汇编调试代码</li>
+<li>链接：将各目标文件中的各段代码进行地址定位，从而把一组目标模块链接为可执行程序，使操作系统可以执行它；处理目标模块中的函数或变量引用，必要时搜索库文件处理所有的引用。<ul>
+<li>如果有外部函数声明但是没有函数实现，无法通过链接，但是可以通过编译</li>
+</ul>
+</li>
+</ul>
+<h3 id="编译指令"><a href="#编译指令" class="headerlink" title="编译指令"></a>编译指令</h3><p><code>g++ -c</code>：只编译不链接<br><code>g++ -o ex1.out ex1.o</code>：链接程序<br><code>g++ ex5_main.cpp func.cpp -o</code>：直接编译 </p>
+<h2 id="MAKE工具"><a href="#MAKE工具" class="headerlink" title="MAKE工具"></a><code>MAKE</code>工具</h2><p>通过写入<code>MakeFile</code>文件可以实现</p>
+<h2 id="程序命令行工具"><a href="#程序命令行工具" class="headerlink" title="程序命令行工具"></a>程序命令行工具</h2><h2 id="GDB调试工具"><a href="#GDB调试工具" class="headerlink" title="GDB调试工具"></a>GDB调试工具</h2>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Gamer
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/L2-%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83/" title="L2-编程环境">https://gamermmm.github.io/2024/学点/L2-编程环境/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/OOP/" rel="tag"># OOP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/%E5%AD%A6%E7%82%B9/%E7%BB%86%E8%83%9E%E7%94%9F%E7%89%A9%E5%AD%A6/" rel="prev" title="医学伦理学">
+      <i class="fa fa-chevron-left"></i> 医学伦理学
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/%E5%AD%A6%E7%82%B9/L3-%E5%B0%81%E8%A3%85%E4%B8%8E%E6%8E%A5%E5%8F%A3/" rel="next" title="L3-封装与接口">
+      L3-封装与接口 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">声明与定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">宏定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%B8%8E%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">编译与连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%8C%87%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">编译指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAKE%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">MAKE工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">程序命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GDB%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">GDB调试工具</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gamer</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/something/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-shield-dog"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gamer.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : '[object Object]',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

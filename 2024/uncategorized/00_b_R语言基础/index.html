@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_medium.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="课程准备1_R语言基础01 R语言简介R语言历史R语言是一款统计软件，R语言也是一门编程语言，R语言也是一个数据分析平台。R是一个免费自由且跨平台通用的统计计算与绘图软件，它有 Windows、Mac、Linux 等版本，均可免费下载使用。R 项目(The R Project for Statistical Computing)最早由新西兰奥克兰大学(Auckland University)的 R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gamer&#39;s Show">
+<meta property="og:url" content="https://gamermmm.github.io/2024/uncategorized/00_b_R%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+<meta property="og:site_name" content="Gamer&#39;s Show">
+<meta property="og:description" content="课程准备1_R语言基础01 R语言简介R语言历史R语言是一款统计软件，R语言也是一门编程语言，R语言也是一个数据分析平台。R是一个免费自由且跨平台通用的统计计算与绘图软件，它有 Windows、Mac、Linux 等版本，均可免费下载使用。R 项目(The R Project for Statistical Computing)最早由新西兰奥克兰大学(Auckland University)的 R">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208242250328.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208242251893.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251046474.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251059734.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251106828.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251116185.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251121020.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251132625.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251145911.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251146924.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208251150139.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208252300203.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208270034840.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208270943740.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208272153190.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208272154474.png">
+<meta property="og:image" content="https://gitee.com/yuming2020/note/raw/master/202208272211265.png">
+<meta property="article:published_time" content="2024-03-26T09:14:51.708Z">
+<meta property="article:modified_time" content="2024-03-26T09:14:51.732Z">
+<meta property="article:author" content="Gamer">
+<meta property="article:tag" content="Gamer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/yuming2020/note/raw/master/202208242250328.png">
+
+<link rel="canonical" href="https://gamermmm.github.io/2024/uncategorized/00_b_R%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Gamer's Show</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Gamer's Show</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">你知道人生最要紧的事是快乐不停</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-ghost fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-star-of-david fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/something/" rel="section"><i class="fa fa-cube fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Archives</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-codingnotes">
+
+    <a href="/yourdiy/" rel="section"><i class="fa fa-book fa-fw"></i>CodingNotes</a>
+
+  </li>
+
+
+      
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2024/uncategorized/00_b_R%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gamer">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gamer's Show">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-03-26 17:14:51" itemprop="dateCreated datePublished" datetime="2024-03-26T17:14:51+08:00">2024-03-26</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="课程准备"><a href="#课程准备" class="headerlink" title="课程准备"></a>课程准备</h1><h2 id="1-R语言基础"><a href="#1-R语言基础" class="headerlink" title="1_R语言基础"></a>1_R语言基础</h2><h3 id="01-R语言简介"><a href="#01-R语言简介" class="headerlink" title="01 R语言简介"></a>01 R语言简介</h3><h4 id="R语言历史"><a href="#R语言历史" class="headerlink" title="R语言历史"></a>R语言历史</h4><p>R语言是一款<strong>统计软件</strong>，R语言也是一门<strong>编程语言</strong>，R语言也是一个<strong>数据分析平台</strong>。R是一个免费自由且跨平台通用的<strong>统计计算与绘图软件</strong>，它有 Windows、Mac、Linux 等版本，均可免费下载使用。R 项目(The R Project for Statistical Computing)最早由新西兰奥克兰大学(Auckland University)的 Robert Gentleman(1959-)和 Ross Ihaka(1954-) 开发，故软件取两人名字的首字母命名为 R 。该项目始于 1993年，2000年发布了首个官方版本 R 1.0.0 ，后期维护由 R 核心团队(R Core Team)负责。截止 2022-06-23,，已发布到 4.2.1版本。凭借其开源、免费、自由等开放式理念，R 迅速获得流行，目前已成为学术研究和商业应用领域最为常用的数据分析软件之一。随着大数据行业的发展，R语言变得越来越流行，R语言发挥了越来越重要的作用。</p>
+<h4 id="为什么要学习-R语言"><a href="#为什么要学习-R语言" class="headerlink" title="为什么要学习 R语言"></a>为什么要学习 R语言</h4><p>R是个多面手，你做科研过程的数据计算、统计检验、统计建模、数据挖掘、数据可视化它全包了。学了它，不用向以前必须学习统计软件STATA或者SPSS，同时还要学Graphpad、origin等绘图工具。同时R的脚本会记录你的数据处理工作的整个过程，过3年，你的学弟依旧可以拿着你的原始数据，重现你l论文的数据统计与可视化结果。</p>
+<p>R能干啥，可能从下面的 <a target="_blank" rel="noopener" href="https://cran.r-project.org/web/views/">R task view</a>看得更清楚</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208242250328.png" alt="image-20220824225001163"></p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208242251893.png" alt="image-20220824225135768"></p>
+<h3 id="02-R语言的优缺点"><a href="#02-R语言的优缺点" class="headerlink" title="02 R语言的优缺点"></a>02 R语言的优缺点</h3><h4 id="R语言的优点"><a href="#R语言的优点" class="headerlink" title="R语言的优点"></a>R语言的优点</h4><ul>
+<li><strong>开源、免费，具有完整的统计学功能，有大量的扩展包</strong> <ul>
+<li>有效的数据处理和保存机制。 </li>
+<li>拥有一整套数组和矩阵的操作运算符。 </li>
+<li>一系列连贯而又完整的数据分析中间工具。 </li>
+<li>图形统计可以对数据直接进行分析和显示，可用于多种图形设备。 </li>
+<li>一种相当完善、简洁和高效的程序设计语言。 </li>
+<li>R语言是彻底面向对象的统计编程语言。 </li>
+<li>R语言和其它编程语言、数据库之间有很好的接口。 </li>
+<li>R语言是自由软件，可以放心大胆地使用，但其功能却不比任何其它同类软件差。 </li>
+<li>R语言具有丰富的网上资源</li>
+</ul>
+</li>
+</ul>
+<h4 id="R语言的缺点"><a href="#R语言的缺点" class="headerlink" title="R语言的缺点"></a>R语言的缺点</h4><ul>
+<li><strong>开源、免费，具有完整的统计学功能，有大量的扩展包</strong> <ul>
+<li>学习成本大； </li>
+<li>不擅长处理非结构数据； </li>
+<li>计算消耗资源较多； </li>
+<li>R的扩展包太多了，比较混乱，不容易找到适合的扩展包； </li>
+<li>不擅长多线程处理。</li>
+</ul>
+</li>
+</ul>
+<h4 id="R语言与-Excel对比"><a href="#R语言与-Excel对比" class="headerlink" title="R语言与 Excel对比"></a>R语言与 Excel对比</h4><ul>
+<li>R语言开源免费，Excel收费； </li>
+<li>R语言支持 Linux版本，Excel只支持 windows，macos，ios，Android； </li>
+<li>能够计算大数据，Excel默认只能处理 100万行数据； </li>
+<li>R语言有更好扩展能力，有很多现成的包； </li>
+<li>R语言有更好的绘图能力，例如可以很方便绘制热图，基因组圈图等复杂图形； </li>
+<li>R语言的 Bioconductor项目可以处理生物数据，例如基因表达数据，单细胞测序等； </li>
+<li>R语言学习成本较大，不如 Excel简单。</li>
+</ul>
+<p>是时候放弃excel了</p>
+<h4 id="R语言与-Python对比"><a href="#R语言与-Python对比" class="headerlink" title="R语言与 Python对比"></a>R语言与 Python对比</h4><ul>
+<li>R语言具有更强大的统计学功能； </li>
+<li>R语言的 Bioconductor项目可以处理生物数据，例如基因表达数据，单细胞测序等； </li>
+<li>R语言的绘图能力更强，尤其是 ggplot2包； </li>
+<li>python兼容性不好； </li>
+<li>python具有更强大的文本处理能力； </li>
+<li>python资源管理更好，R不擅长多线程计算，更消耗资源</li>
+</ul>
+<p>我建议：目前的科研状态，一定要学习 R 或 Python，至少学一种，实际上应该都会。如果你对&#x3D;&#x3D;生物统计学、生物信息学&#x3D;&#x3D;更感兴趣，我建议你先学<strong>R</strong>。如果你对机器学习最感兴趣，特别是像深度学习这样的现代方法，那么应该首先选择 Python。当然如果你有python基础，直接使用python就可，不学R。如果没有，先学R。这两种语言很多的地方是相通的。学会了一个再学另外一个相对简单。真正的数据分析科学家与工程师，都是左手R 右手Python的。看下面的链接</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24792838">R vs Python：R是现在最好的数据科学语言吗？</a></p>
+<h4 id="本课程为啥不在使用SPSS？"><a href="#本课程为啥不在使用SPSS？" class="headerlink" title="本课程为啥不在使用SPSS？"></a>本课程为啥不在使用SPSS？</h4><ul>
+<li>因为不开源，使用的时候写论文写统计方法，有人要问你使用的SPSS的序列号，不好回答。</li>
+<li>另外在科学图形绘制上，SPSS没有任何优势</li>
+<li>最新的统计方法都是在目前都是R上出现，最新的SPSS需要调用R插件进行新的统计方法的使用。</li>
+</ul>
+<h3 id="03-结构化数据与非结构化数据"><a href="#03-结构化数据与非结构化数据" class="headerlink" title="03 结构化数据与非结构化数据"></a>03 结构化数据与非结构化数据</h3><ul>
+<li>结构化数据：信息能够用数据或统一的结构加以表示，我们称之为结构化数据，如数字、符号； </li>
+<li>非结构化数据：信息无法用数字或统一的结构表示，如文本、图像、声音、网页等，我们称之为非结构化数据。</li>
+</ul>
+<p>R语言更擅长处理结构化数据，因此，在使用 R之前，尽量确保数据是严格的表格结构。也就是二位的表格，分为行和列。在 R语言中，行称为“观测”，列称为“变量”。</p>
+<h3 id="04-数据分析的六个过程"><a href="#04-数据分析的六个过程" class="headerlink" title="04 数据分析的六个过程"></a>04 数据分析的六个过程</h3><ol>
+<li>数据采集 </li>
+<li>数据存储 </li>
+<li>统计分析 </li>
+<li>数据挖掘 </li>
+<li>数据可视化 </li>
+<li>生成报告</li>
+</ol>
+<h2 id="2-R与-Rstudio软件安装"><a href="#2-R与-Rstudio软件安装" class="headerlink" title="2_R与 Rstudio软件安装"></a>2_R与 Rstudio软件安装</h2><h3 id="01-R软件安装"><a href="#01-R软件安装" class="headerlink" title="01 R软件安装"></a>01 R软件安装</h3><p>R语言支持 windows，macos，linux等多个系统平台，提供图形化界面，下载和安装都不难，可以直接从官网进行下载，当前最新版本为 4.2.1。R语言平均每半年更新一个比较大的版本，中间也会有一些小版本，建议安装最新的版本。可以从 R的官网下载软件安装包，软件最好安装到系统默认目录下。</p>
+<p>R官网： <a target="_blank" rel="noopener" href="https://www.r-project.org/">https://www.r-project.org/</a> ,如下图</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251046474.png" alt="image-20220825104635253"></p>
+<p>windows系统：<br>下载地址：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/R-4.2.1-win.exe">https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/R-4.2.1-win.exe</a></p>
+<p>Mac系统 :<br>下载地址：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/base/R-4.2.1.pkg">https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/base/R-4.2.1.pkg</a> </p>
+<h3 id="02Rstudio软件安装"><a href="#02Rstudio软件安装" class="headerlink" title="02Rstudio软件安装"></a>02Rstudio软件安装</h3><p>当前 R语言的集成开发环境很多，但其中 Rstudio可以说是最优秀的，Rstudio是 R软件的一个集成开发环境，为 R的使用提供了极大的便利，Rstudio本身并不集成 R软件，<em><strong>需要首先安装 R软件</strong></em>，Rstudio会调用 R软件。Rstudio支持 windows，macos，Linux等多个系统平台，并且提供免费的桌面版与服务器版本可供选择，服务器版本可以搭建多用户使用场景，直接通过网络浏览器访问 R。此外，Rstudio公司还开发了大量 R语言的扩展包，操作简单，功能强大，极大扩展了 R语言的功能。到10月份Rstudio将更名为Posit，将R与python的链接更方便</p>
+<p>官方网站：<a target="_blank" rel="noopener" href="https://www.rstudio.com/%EF%BC%8C%E5%A6%82%E4%B8%8B%E5%9B%BE">https://www.rstudio.com/，如下图</a></p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251059734.png" alt="image-20220825105959538"></p>
+<p>下载地址： </p>
+<p>windows：<br><a target="_blank" rel="noopener" href="https://download1.rstudio.org/desktop/windows/RStudio-2022.07.1-554.exe">https://download1.rstudio.org/desktop/windows/RStudio-2022.07.1-554.exe</a></p>
+<p>macos：<br><a target="_blank" rel="noopener" href="https://download1.rstudio.org/desktop/macos/RStudio-2022.07.1-554.dmg">https://download1.rstudio.org/desktop/macos/RStudio-2022.07.1-554.dmg</a></p>
+<h4 id="rstudio设置"><a href="#rstudio设置" class="headerlink" title="rstudio设置"></a>rstudio设置</h4><p>为了更好地使用 Rstuido软件，需要对软件进行一些设置，主要包括主题背景，字体大小，<br>字体编码，默认软件源等。 </p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251106828.png" alt="image-20220825110612716"></p>
+<h3 id="03-解决windows下-Rstudio无法识别中文问题"><a href="#03-解决windows下-Rstudio无法识别中文问题" class="headerlink" title="03 解决windows下 Rstudio无法识别中文问题"></a>03 解决windows下 Rstudio无法识别中文问题</h3><p>方法一：创建一个新账户<br>创建一个新的英文账户，或者修改本地账户为使用 windows账户登录。 </p>
+<p>方法二：修改缓存目录<br>Rstudio遇到中文报错，主要原因在于，Rstudio需要一个临时缓存文件，windows系统下这个默认目录在”C:\User\XXXX\AppData\Local\Temp”。其中 XXXX为用户名，如果是中文，则无法识别，所以，我们需要修改 TEMP和 TMP这个目录环境变量。右键此电脑，选择属性，然后点到高级系统设置，选择环境变量 </p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251116185.png" alt="image-20220825111659009"></p>
+<p>修改 TEMP和 TMP变量，其中不能有中文，如下</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251121020.png" alt="image-20220825112113735"></p>
+<h2 id="3-开始使用-R"><a href="#3-开始使用-R" class="headerlink" title="3_开始使用 R"></a>3_开始使用 R</h2><h3 id="01设置工作目录"><a href="#01设置工作目录" class="headerlink" title="01设置工作目录"></a>01设置工作目录</h3><p>使用 R语言的第一个过程就是设置工作目录，使用 R语言经常需要读写文件，设置好工作目录可以方便读写文件。需要对不同系统目录的写法有所了解，windows目录结构与 Linux(Mac)目录结构主要差别在两点：第一，Linux(Mac)系统不存在盘符，所有数据路径都是有“&#x2F;”开始；第二：Linux系统采用正斜线分割目录，windows采用反斜线分割目录。在 R中可以使用正斜线。另外，Rstudio目前对中文支持并不好，目录中最好不要有中文，否则会报错。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">windows系统目录结构：C:\Users\xxx\Desktop\</span><br><span class="line">macos系统目录结构：/Users/xxx/Desktop/ </span><br><span class="line">Linux系统目录结构：/home/xxx/</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置工作目录"><a href="#设置工作目录" class="headerlink" title="设置工作目录"></a>设置工作目录</h4><p>方法一：Crtl+Shift+H快捷键 (windows) ; cmd+Shift+H快捷键(Mac) 或者通过菜单，如下</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251132625.png" alt="image-20220825113225359"></p>
+<p>方法二：使用鼠标，通过文件管理窗口设置工作目录 </p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251145911.png" alt="image-20220825114553695"></p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251146924.png" alt="image-20220825114628797"></p>
+<p>方法三：使用 R函数 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看当前目录</span></span><br><span class="line">getwd<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#设置想要的工作目录，这里以账户为xxx的桌面为例子，设置为工作目录，注意使用的路径符号为正斜杆/.</span></span><br><span class="line">setwd<span class="punctuation">(</span><span class="string">&quot;c:/Users/xxx/Desktop/&quot;</span><span class="punctuation">)</span>   </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="02创建-Project"><a href="#02创建-Project" class="headerlink" title="02创建 Project"></a>02创建 Project</h4><p>创建 Project可以将所有数据放到一个目录下，R的 Project会保存分析过程中全部内容，方便管理以及分享。 </p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208251150139.png" alt="image-20220825115043896"></p>
+<h4 id="03-R软件的运行"><a href="#03-R软件的运行" class="headerlink" title="03 R软件的运行"></a>03 R软件的运行</h4><p>R软件有交互式与脚本式运行两种方式，交互式便于进行数据探索，脚本式便于批量化和自动化处理。</p>
+<p>脚本方式运行中，创建一个扩展名为.R的文件，例如test.R可以在Rstudio脚本窗口中一条条 运行，也可以一起全部运行。</p>
+<p>[<del>在Linux命令行中，可以使用Rscript命令运行脚本文件，或者使用R -f 来运行，当计算量较大，需要较长的运算时，或者可重复性计算等条件下，需要使用无监督的脚本式运行。在使用脚本运行R时，需要保证脚本能够正确执行，通常先使用小数据进行测试，并且运行过程中将结果及时保存为文件，例如绘制出的图片，而不是交互式显示。R脚本也可以提供选项参数，将R脚本转换为一个可执行程序。</del>]  </p>
+<h4 id="04-函数"><a href="#04-函数" class="headerlink" title="04 函数"></a>04 函数</h4><h5 id="R语言函数"><a href="#R语言函数" class="headerlink" title="R语言函数"></a>R语言函数</h5><p>学习 R语言的本质就是学习 R函数的过程，因为在 R中，每一步操作都需要使用 R的函数。在 R语言中，每个 R函数都需要后面介绍小括号，这是为了与环境中的变量区分开。比如定义一个名为 data的变量，R中还自带一个 data函数，这样就无法区分，因此，R函数需要接上小括号，例如 data()函数。R中需要使用选项参数，用来调节 R函数的功能。选项和参数之间用等号连接。不同选项后面接不同的参数，例如有的选项接数值参数，有的接字符串，有的接逻辑值。例如下面的案例。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#一条典型的R函数 </span></span><br><span class="line">plot<span class="punctuation">(</span>x <span class="operator">=</span> women<span class="operator">$</span>height<span class="punctuation">,</span>y <span class="operator">=</span> women<span class="operator">$</span>weight<span class="punctuation">,</span>col<span class="operator">=</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span>pch<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">16</span><span class="punctuation">,</span><span class="number">17</span><span class="punctuation">,</span><span class="number">18</span><span class="punctuation">)</span><span class="punctuation">,</span>ann <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中 plot()为绘图函数，后面必须是小括号； </li>
+<li>x选项为输入 x轴的值，接一个向量； </li>
+<li>y选项为输入 y轴的值，接一个向量； </li>
+<li>col选项为颜色值，接一个字符串； </li>
+<li>pch选项为点的性状，接一个数值向量； </li>
+<li>ann选项为是否显示x轴与y轴的标签，接一个逻辑值；</li>
+</ul>
+<h5 id="游戏：测试计算机算力"><a href="#游戏：测试计算机算力" class="headerlink" title="游戏：测试计算机算力"></a>游戏：测试计算机算力</h5><p>随机生成十万，百万，千万，亿，十亿个随机数，然后利用 R进行求和计算。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#十万随机数 </span></span><br><span class="line">x <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">100000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">length</span><span class="punctuation">(</span>x<span class="punctuation">)</span>  </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x<span class="punctuation">)</span></span><br><span class="line">system.time<span class="punctuation">(</span>x <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">1000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#用户时间: 是处理用户应用程序代码（R 代码）所花费的 CPU 时间。</span></span><br><span class="line"><span class="comment">#系统时间: 用户应用程序访问系统资源，则该处理时间将报告为系统时间。</span></span><br><span class="line"><span class="comment">#流逝时间: 它测量代码块运行时经过的时钟时间,用户必须等待 R 完成运行代码的整体时间。 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#百万随机数 </span></span><br><span class="line">x_1 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">1000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x_1<span class="punctuation">)</span></span><br><span class="line">system.time<span class="punctuation">(</span>x_1 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">1000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">#千万随机数 </span></span><br><span class="line">x_2 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">10000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x_2<span class="punctuation">)</span></span><br><span class="line">system.time<span class="punctuation">(</span>x_2 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">10000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">)</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment">#亿随机数 </span></span><br><span class="line">x_3 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">100000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x_3<span class="punctuation">)</span>  </span><br><span class="line">system.time<span class="punctuation">(</span>x_3 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">100000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">)</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment">#小心点，别轻易尝试，会很慢,10亿</span></span><br><span class="line">system.time<span class="punctuation">(</span>x_4 <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">1000000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x_4<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#100亿，内存不够报错Error: cannot allocate vector of size 74.5 Gb</span></span><br><span class="line">system.time<span class="punctuation">(</span>x <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">10000000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#展示环境变量</span></span><br><span class="line">ls<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#清除环境变量</span></span><br><span class="line">rm<span class="punctuation">(</span><span class="built_in">list</span><span class="operator">=</span> <span class="string">&quot;x_1&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#清除所有变量，但是注意并没有清除内存</span></span><br><span class="line">rm<span class="punctuation">(</span><span class="built_in">list</span><span class="operator">=</span>ls<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#清除内存</span></span><br><span class="line">gc<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 揭示下结果</span></span><br><span class="line"><span class="comment"># used (Mb) gc trigger   (Mb)   max used   (Mb)</span></span><br><span class="line"><span class="comment"># Ncells  994704 53.2    2064062  110.3    1471043   78.6</span></span><br><span class="line"><span class="comment"># Vcells 2690772 20.6 1028036240 7843.3 1113693366 8496.9</span></span><br><span class="line"><span class="comment">#######################################################</span></span><br><span class="line"><span class="comment">#used是当前使用情况,gc trigger是会触发垃圾回收的值,maxused是上次gc()操作或者是此次启动R后使用最大值.(Mb)是Ncells和Vcells的大小转换为Mb单位时的值.</span></span><br><span class="line"><span class="comment">#Ncells即cons cells,32位R中占28B,64位R中占56B,我是用的64位的R,所以</span></span><br><span class="line"><span class="number">994704</span><span class="operator">*</span><span class="number">56</span><span class="operator">/</span><span class="punctuation">(</span><span class="number">1024</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#53.12292,约等于53.2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Vcells即vector cells,占8B,所以</span></span><br><span class="line"><span class="number">2690772</span><span class="operator">*</span><span class="number">8</span><span class="operator">/</span><span class="punctuation">(</span><span class="number">1024</span><span class="operator">^</span><span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#20.52896,约等于20.6</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="R语言括号"><a href="#R语言括号" class="headerlink" title="R语言括号"></a>R语言括号</h5><ul>
+<li>括号按照性状可以分为小括号，中括号以及大括号，大括号也叫作花括号。在 R语言中，各种括号实现不同的功能。其中小括号具有重要作用。是函数式编程语言，所有的功能都需要通过函数完成。在 R中，为了区分字符，变量，数据集，函数以及扩展包，所以函数后面必须接小括号。例如 sum三个字符，如果要表示一个字符，就使用双引号，如果表示求和函数，作为 sum()，如果作为一个变量，数据集，直接写 sum即可。如果代表一个 R包，则直接 library加载即可。 </li>
+<li>中括号在 R中也有重要作用，数据索引时要用到。 </li>
+<li>花括号与其他编程语言类似，都表示一个代码块，用在自定义 R函数中。</li>
+</ul>
+<h5 id="R语言提示警告以及错误"><a href="#R语言提示警告以及错误" class="headerlink" title="R语言提示警告以及错误"></a>R语言提示警告以及错误</h5><p>正确区分软件错误，R语言在运行过程中会输出很多信息，这些信息主要包括三类，分别是：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 运行状态信息，正常信息，不用担心； </li>
+<li><input disabled="" type="checkbox"> 警告信息 warnings，不影响软件运行，需要注意； </li>
+<li><input disabled="" type="checkbox"> 错误信息 Error，软件终止运行，需要检查错误；</li>
+</ul>
+<h4 id="05常用快捷键"><a href="#05常用快捷键" class="headerlink" title="05常用快捷键"></a>05常用快捷键</h4><p>下面列出 R或者 Rstudio中一些常用快捷键: </p>
+<ul>
+<li><p><strong>alt+-</strong> </p>
+<p>R语言的赋值使用“&lt;-”，每次需要敲两个字符，非常麻烦，在 Rstudio中可以使用“alt+-”直接生成，非常方便，如果使用右侧 alt键，更加容易。 </p>
+</li>
+<li><p><strong>ctrl+shfit+h</strong> </p>
+<p>使用 R第一件事情就是设置工作目录，如果不习惯敲 setwd()函数或者不熟悉系统目录结构，可以使用该快捷键直接用鼠标选择。 </p>
+</li>
+<li><p><strong>esc</strong> </p>
+<p>中断程序，非常有用。 </p>
+</li>
+<li><p><strong>tab</strong></p>
+</li>
+</ul>
+<p>tab自动补齐，可以补齐函数，选项参数等； </p>
+<ul>
+<li><p><strong>ctrl+L</strong> </p>
+<p>相当于清屏，与 Linux 一致。 </p>
+</li>
+<li><p>上下箭头 </p>
+<p>历史记录； </p>
+</li>
+<li><p><strong>ctrl+sfhit+F10</strong> </p>
+<p>重新启动 R，有些情况下需要重新启动 R，这个时候无需关闭整个 Rstudio，使用该快捷键即可重新启动 R。 </p>
+</li>
+<li><p><strong>ctrl+r</strong> </p>
+<p>ctrl+r快捷键可以快速调出使用过的历史记录，如果有些命令太长，使用这个快捷键非常方便。 </p>
+</li>
+<li><p><strong>ctrl+向上</strong> </p>
+<p>也是快速调出历史记录，与 ctrl+r类似。 </p>
+</li>
+<li><p><strong>ctrl++，ctrl+-</strong> </p>
+<p>调整字体大小。 </p>
+</li>
+<li><p><strong>ctrl+shift+m</strong> </p>
+<p>如果使用 tidyverse系列包，经常需要使用管道符“%&gt;%”，使用该快捷键可以直接输出管道符。 </p>
+</li>
+<li><p><strong>alt+shift+k</strong> </p>
+<p>可以快速调出所有快捷键列表。</p>
+</li>
+</ul>
+<h3 id="06自定义R环境"><a href="#06自定义R环境" class="headerlink" title="06自定义R环境"></a>06自定义R环境</h3><p>R语言可以通过自定义修改默认行为，例如修改默认提示符，修改默认镜像地址，修改默认加载包目录，默认有效数字位数，启动后自动加载包等。<br>R每次启动时，会从默认目录下（windows系统一般为我的文档）读取.Rpofile文件，对 R的自定义，就是修改该配置文件。这个默认配置文件类似于 Linux系统家目录下的.bashrc文件。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#通过 file.edit()函数创建文件 </span></span><br><span class="line">file.edit<span class="punctuation">(</span><span class="string">&quot;~/.Rprofile&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">########################################################</span></span><br><span class="line"><span class="comment">## 在Rprofile完成下面工作 ##</span></span><br><span class="line"><span class="comment">########################################################</span></span><br><span class="line"><span class="comment">#修改提示符 </span></span><br><span class="line"><span class="comment">#options(prompt=&quot;$&quot;) </span></span><br><span class="line"><span class="comment">#options(prompt=&quot;&gt;&quot;) </span></span><br><span class="line"><span class="comment">#修改次级提示符 </span></span><br><span class="line"><span class="comment">#options (continue=&quot;+&quot;)</span></span><br><span class="line"><span class="comment">#options(continue = &quot;% &quot;)</span></span><br><span class="line"><span class="comment">#修改默认包加载目录 </span></span><br><span class="line"><span class="comment">#.libPaths(&quot;C:/Users/Administrator/AppData/Local/R/win-library/4.2&quot;) </span></span><br><span class="line">.libPaths<span class="punctuation">(</span><span class="string">&quot;G:/R/R-4.2.1/library/&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#修改默认 R镜像 </span></span><br><span class="line">local<span class="punctuation">(</span><span class="punctuation">&#123;</span>r <span class="operator">&lt;-</span>getOption<span class="punctuation">(</span><span class="string">&quot;repos&quot;</span><span class="punctuation">)</span> </span><br><span class="line">r<span class="punctuation">[</span><span class="string">&quot;CRAN&quot;</span><span class="punctuation">]</span><span class="operator">&lt;-</span><span class="string">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span> </span><br><span class="line">options<span class="punctuation">(</span>repos<span class="operator">=</span>r<span class="punctuation">)</span><span class="punctuation">&#125;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#修改 bioconductor镜像 </span></span><br><span class="line">options<span class="punctuation">(</span>BioC_mirror<span class="operator">=</span><span class="string">&quot;http://mirrors.ustc.edu.cn/bioc/&quot;</span><span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">#启动加载函数 </span></span><br><span class="line">.First <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span> </span><br><span class="line"><span class="comment"># library(BioCManager,quietly = TRUE) </span></span><br><span class="line">cat <span class="punctuation">(</span><span class="string">&quot;\nWelcome at&quot;</span><span class="punctuation">,</span>date<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="string">&quot;\n&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="punctuation">&#125;</span> </span><br><span class="line"> </span><br><span class="line">.Last <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span> </span><br><span class="line">cat <span class="punctuation">(</span><span class="string">&quot;\nGoodbye at &quot;</span><span class="punctuation">,</span>date<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="string">&quot;\n&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="punctuation">&#125;</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-语言包管理"><a href="#4-语言包管理" class="headerlink" title="4_语言包管理"></a>4_语言包管理</h2><p>R语言的一大优势就是有各种各样的扩展包，所谓 R扩展包，就是将数据处理的算法通过 R函数来实现，在加上测试数据，说明文档整合在一起，就是 R的扩展包。在使用 R的过程中，肯定需要使用到 R的包，因此，需要掌握 R包的管理，包括包的查找，安装，加载，升级，取消加载，删除，查看帮助文档等等操作。 </p>
+<h3 id="如何选择合适的-R包"><a href="#如何选择合适的-R包" class="headerlink" title="如何选择合适的 R包"></a>如何选择合适的 R包</h3><ul>
+<li>1.通过 R TaskView查找需要的软件包，根据大类查找；在Rstudio的help中的Home打开R resource选择CRAN Task Views，网站如下：<a target="_blank" rel="noopener" href="https://cran.rstudio.com/web/views/">https://cran.rstudio.com/web/views/</a></li>
+</ul>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208252300203.png" alt="image-20220825230033920"></p>
+<p>##有关生物信息的的task views取消了 需要看</p>
+<p><a target="_blank" rel="noopener" href="https://cran.r-hub.io/web/views/Genetics.html">https://cran.r-hub.io/web/views/Genetics.html</a></p>
+<p>###有关统计学习与教学的包</p>
+<p><a target="_blank" rel="noopener" href="https://cran.rstudio.com/web/views/TeachingStatistics.html">https://cran.rstudio.com/web/views/TeachingStatistics.html</a></p>
+<ul>
+<li>2阅读文献，参考里面使用的 R包。 </li>
+<li>3 bioconductor项目</li>
+</ul>
+<p>Bioconductor 是建立在 R语言环境上的，用于生物信息数据的注释、处理、分析及可视化工具包的总集，由一系列 R扩展包组成。很多生物数据都是使用 bioconductor包来分析的。 </p>
+<p>Bioconductor官网：<a target="_blank" rel="noopener" href="http://www.bioconductor.org/">http://www.bioconductor.org/</a> </p>
+<h3 id="R包的管理"><a href="#R包的管理" class="headerlink" title="R包的管理"></a>R包的管理</h3><p>由于不用 R包之间存在相互依赖的关系，因此，强烈推荐采用在线安装的方式，这样软件可以自动解决依赖关系问题，节约大量时间。R默认的服务器在国外，为了加快下载速度，需要将 R镜像站点修改为国内镜像站点。 </p>
+<h4 id="R包默认安装到以下目录"><a href="#R包默认安装到以下目录" class="headerlink" title="R包默认安装到以下目录"></a>R包默认安装到以下目录</h4><p>R包的默认安装路径与登录账号是否为管理员有关，如果登录的为管理员账号，则默认安装到 R安装目录下。如果登录的为普通账户，则在每个账号下的**&#x3D;&#x3D;我的文档&#x3D;&#x3D;**中。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#windows系统： </span></span><br><span class="line">G<span class="operator">:</span><span class="punctuation">\</span>R<span class="punctuation">\</span>R<span class="operator">-</span><span class="number">4.2</span>.1<span class="punctuation">\</span>library </span><br><span class="line">C<span class="operator">:</span><span class="punctuation">\</span>Users<span class="punctuation">\</span>xxxx<span class="punctuation">\</span>Documents<span class="punctuation">\</span>R<span class="punctuation">\</span>win<span class="operator">-</span>library<span class="punctuation">\</span><span class="number">4.2</span> </span><br><span class="line"><span class="comment">#macos系统： </span></span><br><span class="line"><span class="operator">/</span>Library<span class="operator">/</span>Frameworks<span class="operator">/</span>R.framework<span class="operator">/</span>Versions<span class="operator">/</span><span class="number">4.0</span><span class="operator">/</span>Resources<span class="operator">/</span>library </span><br><span class="line"> </span><br><span class="line"><span class="comment">#查看R包安装目录 </span></span><br><span class="line">.libPaths<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line">.Library </span><br></pre></td></tr></table></figure>
+
+<h4 id="设置镜像"><a href="#设置镜像" class="headerlink" title="设置镜像"></a>设置镜像</h4><p>通过网络安装 R包，网络速度影响比较大，因此要选择合适的镜像，一般选择距离较近的镜像。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chooseCRANmirror<span class="punctuation">(</span><span class="punctuation">)</span>   </span><br><span class="line">chooseBioCmirror<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line">setRepositories<span class="punctuation">(</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<p>常用 R镜像站点 </p>
+<ul>
+<li>CRAN站点： <ul>
+<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/">https://mirrors.tuna.tsinghua.edu.cn/CRAN/</a> </li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/CRAN/">https://mirrors.ustc.edu.cn/CRAN/</a></li>
+</ul>
+</li>
+<li>Bioconductor镜像： <ul>
+<li><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/bioc/">https://mirrors.ustc.edu.cn/bioc/</a> </li>
+<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/bioconductor/">https://mirrors.tuna.tsinghua.edu.cn/bioconductor/</a></li>
+</ul>
+</li>
+<li>github: <ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="R包管理"><a href="#R包管理" class="headerlink" title="R包管理"></a>R包管理</h3><p>可以将每个 R包开成一个手机 App，R包的管理类似于手机应用的管理，包括搜索，下载，安装，打开，卸载等操作。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 vcd包 </span></span><br><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;vcd&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#一次安装多个包 </span></span><br><span class="line">install.packages<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;ggplot2&quot;</span><span class="punctuation">,</span><span class="string">&quot;pheatmap&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="comment">#查看已安装的包 </span></span><br><span class="line">installed.packages<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#加载 R包 </span></span><br><span class="line">library<span class="punctuation">(</span>vcd<span class="punctuation">)</span> </span><br><span class="line">require<span class="punctuation">(</span>vcd<span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#升级软件包 </span></span><br><span class="line">update.packages<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#删除扩展包，从磁盘中移除 </span></span><br><span class="line">remove.packages<span class="punctuation">(</span><span class="string">&quot;vcd&quot;</span><span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#取消加载，从内存中移除 </span></span><br><span class="line">detach<span class="punctuation">(</span><span class="string">&quot;package:vcd&quot;</span><span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#其余函数 </span></span><br><span class="line"><span class="comment">#列出 R包中的函数 </span></span><br><span class="line">ls<span class="punctuation">(</span>package<span class="operator">:</span>base<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#加载包中的数据集 </span></span><br><span class="line">data<span class="punctuation">(</span>package<span class="operator">=</span><span class="string">&quot;vcd&quot;</span><span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#查看当前环境哪些包加载 </span></span><br><span class="line"> search<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#列出当前包 </span></span><br><span class="line"><span class="punctuation">(</span>.packages<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#列出有效包 </span></span><br><span class="line"><span class="punctuation">(</span>.packages<span class="punctuation">(</span>all.available<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="comment">#列出加载包的路径 </span></span><br><span class="line">find.package<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line">path.package<span class="punctuation">(</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<h4 id="安装-github网站的-R包"><a href="#安装-github网站的-R包" class="headerlink" title="安装 github网站的 R包"></a>安装 github网站的 R包</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 devtools </span></span><br><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;devtools&quot;</span><span class="punctuation">)</span> </span><br><span class="line">library<span class="punctuation">(</span>devtools<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#github在线安装 </span></span><br><span class="line">install_github<span class="punctuation">(</span><span class="string">&quot;github_user_name/package_name&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#下载到本地安装 </span></span><br><span class="line">devtools<span class="operator">::</span>install_local<span class="punctuation">(</span><span class="string">&quot;path_to_package_file.zip&quot;</span><span class="punctuation">)</span>  </span><br></pre></td></tr></table></figure>
+
+<h4 id="安装-Bioconductor网站的-R包"><a href="#安装-Bioconductor网站的-R包" class="headerlink" title="安装 Bioconductor网站的 R包"></a>安装 Bioconductor网站的 R包</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;BiocManager&quot;</span><span class="punctuation">)</span></span><br><span class="line">BiocManager<span class="operator">::</span>install<span class="punctuation">(</span><span class="string">&quot;DESeq2&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="检查更新R包，不建议频繁更新，半年一次就好"><a href="#检查更新R包，不建议频繁更新，半年一次就好" class="headerlink" title="检查更新R包，不建议频繁更新，半年一次就好"></a>检查更新R包，不建议频繁更新，半年一次就好</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装rvcheck</span></span><br><span class="line">BiocManager<span class="operator">::</span>install<span class="punctuation">(</span><span class="string">&quot;rvcheck&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#加载rvcheck</span></span><br><span class="line">library<span class="punctuation">(</span>rvcheck<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#检查R版本是否要更新</span></span><br><span class="line">check_r<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#更新全部R以及包</span></span><br><span class="line">rvcheck<span class="operator">::</span>update_all<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看帮助文档"><a href="#查看帮助文档" class="headerlink" title="查看帮助文档"></a>查看帮助文档</h4><p>学习 R语言需要经常查看帮助文档，包括 R包的帮助文档，查看帮助文档可以快速了解一些函数的用法。不过由于开发者不同，因此帮助文档的水平也参差不齐。查看帮助文档，可以使用 help()函数，一般的 R函数都会自带案例代码，可以直接使用 example()函数运行这些代码。此外，一些 R包还提供一种 vignette格式的文档。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#打开帮助页 </span></span><br><span class="line">help<span class="punctuation">(</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#查看函数帮助 </span></span><br><span class="line"><span class="operator">?</span>ggplot2 </span><br><span class="line"><span class="comment">#查看扩展包里函数 </span></span><br><span class="line"><span class="operator">?</span><span class="operator">?</span>heatmap   </span><br><span class="line"><span class="comment">#查看包帮助文档 </span></span><br><span class="line">help<span class="punctuation">(</span>package<span class="operator">=</span><span class="string">&quot;ggplot2&quot;</span> <span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#运行函数案例代码 </span></span><br><span class="line">example<span class="punctuation">(</span><span class="string">&quot;heatmap&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#查看 vignettes格式文档   </span></span><br><span class="line">browseVignettes<span class="punctuation">(</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="comment">#R网站搜索 </span></span><br><span class="line">RSiteSearch<span class="punctuation">(</span><span class="string">&quot;heatmap&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="R包迁移"><a href="#R包迁移" class="headerlink" title="R包迁移"></a>R包迁移</h4><h4 id="直接拷贝-R包"><a href="#直接拷贝-R包" class="headerlink" title="直接拷贝 R包"></a>直接拷贝 R包</h4><p>R包一般都是一个完整文件，只需要将 R包整个文件夹迁移走，一般就可以运行。对 R包进行迁移时，尽量保证 R版本一致。直接将整个 R包目录拷贝到新的目录下即可。首先找到 R包的安装目录，然后将整个目录打包，拷贝到另外一个目录解压缩。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找到R包的安装目录</span></span><br><span class="line">.libPaths<span class="punctuation">(</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<p>该方法只是一种方案，绝大部分包是可以的。但是注意不能将 windows系统安装的迁移到Linux下。该方法也不是万无一失，比如 R包需要系统一些配置，缺少了还是无法运行。</p>
+<h4 id="获取名字重新安装"><a href="#获取名字重新安装" class="headerlink" title="获取名字重新安装"></a>获取名字重新安装</h4><p>获取要迁移的 R包名字列表，在一台设备上使用循环逐个安装。但是该方法无法处理 github上安装的包。  </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#保存 A设备上的 R包名字列表； </span></span><br><span class="line">oldip <span class="operator">&lt;-</span> installed.packages<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span> </span><br><span class="line">save<span class="punctuation">(</span>oldip<span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;installedPacckages.Rdata&quot;</span><span class="punctuation">)</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#在 B设备上进行安装； </span></span><br><span class="line">load<span class="punctuation">(</span><span class="string">&quot;installedPacckages.Rdata&quot;</span><span class="punctuation">)</span> </span><br><span class="line">newip <span class="operator">&lt;-</span> installed.packages<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span> </span><br><span class="line"><span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> setdiff<span class="punctuation">(</span>oldip<span class="punctuation">,</span>newip<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span> </span><br><span class="line">  BiocManager<span class="operator">::</span>install<span class="punctuation">(</span>i<span class="punctuation">)</span> </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-文件操作"><a href="#5-文件操作" class="headerlink" title="5_文件操作"></a>5_文件操作</h2><p>一般情况下我们需要分析的数据都是存储在文件中，那么利用 R分析数据的第一步就是将输入读入 R语言。如果分析的数据是记录着纸质载体上，还需要将数据手动录入，然后保存为一个文件。在 R中分析文件一般是文件文件，通常是以逗号分隔的 csv文件，如果数据本身包含逗号，就需要使用制表符 tab分隔的文件。有些情况下还有需要处理其他统计软件生成的文件，例如 Excel生成的 xlsx格式文件等。R可以很方便的读写多种格式文件。</p>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><p>1、csv<br>逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由字段组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或制表符。通常，所有记录都有完全相同的字段序列。通常都是纯文本文件。 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name,age </span><br><span class="line">张三,20 </span><br><span class="line">李四,30 </span><br></pre></td></tr></table></figure>
+
+<p>2、tsv<br>TSV：tab separated values；即“制表符分隔值”，如： </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name    age </span><br><span class="line">张三      <span class="number">20</span> </span><br><span class="line">李四      <span class="number">30</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Rstudio导入文件"><a href="#Rstudio导入文件" class="headerlink" title="Rstudio导入文件"></a>Rstudio导入文件</h3><p>通过 Rstudio导入文件 , 如下：</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208270034840.png" alt="image-20220827003446667"></p>
+<ul>
+<li>data ：文件路径 </li>
+<li>header ： 第一行是否作为表头 </li>
+<li>sep ：分隔符 </li>
+<li>row.names： 哪一列作为行名 </li>
+<li>stringsAsFactors： 字符串是否作为因子 </li>
+<li>na.strings ：空值用什么表示</li>
+</ul>
+<h3 id="函数读入文件"><a href="#函数读入文件" class="headerlink" title="函数读入文件"></a>函数读入文件</h3><p>在 Rstudio中，可以通过点击鼠标读入文件，在读入文件之前，需要对文件格式和内容有所了解。例如文件是否是一个标准的列表形式，也就是是否为结构化数据。文件存储格式，是二进制还是纯文本，如果是纯文本，文件扩展名是什么？用什么分隔符分割？文件有多少行，多少列？ 第一行是否为列名，第一列是否为行名？清楚了这些之后就可以读入文件了。 </p>
+<p>R提供了大量读入文件的函数，这些函数通常是以 read.*开头，后面接文件扩展，例如 read.csv，read.xlsx，read.spss等。其中最常用的为 read.table。read.table包括以下重要选项参数。 </p>
+<p>1、data：后面接文件路径，注意文件路径一定要加引号，注意 windows系统文件路径的写法。 </p>
+<p>2、header：只接逻辑值 TRUE或者 FALSE，代表第一行是否作为表头，默认为 FALSE。如果不设置，R会默认添加 V1，V2等作为列名。 </p>
+<p>3、sep：分隔符，读入文件最重要的一个选项，如果设置错误，文件格式很乱，通常就是逗号“，”，制表符“\t”或者冒号“：”等。 </p>
+<p>4、row.names：后面接数字，指定哪一列作为行名，默认是 0，通常可以设置为 1。 </p>
+<p>5、stringsAsFactors：后面接逻辑值，设置为T，R语言默认会将文件中的字符串自动转换为因子。 </p>
+<p>6、na.strings：后面接字符串，指定文件中空值的表示方法。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读入一个文件，存入 x变量   </span></span><br><span class="line">x <span class="operator">&lt;-</span> read.table<span class="punctuation">(</span><span class="string">&quot;./1998cross-sectional+data+set_released+version.csv&quot;</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#读入文件，指定分隔符 </span></span><br><span class="line">x <span class="operator">&lt;-</span> read.table<span class="punctuation">(</span>file <span class="operator">=</span> <span class="string">&quot;./1998cross-sectional+data+set_released+version.csv&quot;</span><span class="punctuation">,</span> header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#读入文件，指定分隔符和列名 </span></span><br><span class="line">x <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span>file <span class="operator">=</span> <span class="string">&quot;./1998cross-sectional+data+set_released+version.csv&quot;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>row.names <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span>  </span><br><span class="line"><span class="comment">#读入文件，指定分隔符、表头与行名以及字符串不作为因子 </span></span><br><span class="line">x <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span>file <span class="operator">=</span> <span class="string">&quot;differential_expression.csv&quot;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">,</span>row.names <span class="operator">=</span> </span><br><span class="line">                <span class="number">1</span><span class="punctuation">,</span>na.strings <span class="operator">=</span> <span class="string">&quot;NA&quot;</span><span class="punctuation">,</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span>  </span><br></pre></td></tr></table></figure>
+
+<p>无论使用哪个函数读取文件，R中读入的数据都存储为数据框这种数据类型。通常将文件<strong>保存为一个变量</strong>。读入文件之后，需要验证文件是否读入成功，通常使用 head函数截取文件头部显示出来，判断格式是否正确，在 Rstudio中也可以使用 View()函数将全部内容显示出来。如果格式不正确就需要修改命令重新读取文件；如果没有问题，就可以对数据进行后续的分析了。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看数据结构 </span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#查看文件头部 </span></span><br><span class="line">head<span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#查看文件尾部 </span></span><br><span class="line">tail<span class="punctuation">(</span>dta<span class="punctuation">)</span>  </span><br><span class="line"><span class="comment">#查看行名，列名 </span></span><br><span class="line">rownames<span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line">colnames<span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#View窗口中查看数据 </span></span><br><span class="line">View<span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#查看数据属性信息 </span></span><br><span class="line">str<span class="punctuation">(</span>x<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="函数写入文件"><a href="#函数写入文件" class="headerlink" title="函数写入文件"></a>函数写入文件</h3><p>数据处理结束之后，需要将存储在变量中的结果保存到文件中，R提供了大量写入文件的函数，这些函数通常与 read系列都是对应的，用法也类似使用起来也并不难。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入文件 </span></span><br><span class="line">write.csv<span class="punctuation">(</span>x <span class="operator">=</span> x<span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;matrix.csv&quot;</span><span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;,&quot;</span><span class="punctuation">,</span>append <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span>  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>x：要写入文件中的数据集名字。 </li>
+<li>File：文件路径和文件名，注意加引号，需要自己给文件命名，注意扩展名最好与分隔符</li>
+<li>匹配。 </li>
+<li>sep：分隔符，如果是 csv文件，sep设置为逗号，制表符分割，则设置为“\t”</li>
+<li>append:接逻辑值，是否追加写入</li>
+</ul>
+<h3 id="读写-excel文件"><a href="#读写-excel文件" class="headerlink" title="读写 excel文件"></a>读写 excel文件</h3><p>Excel是全球最流行的电子表格程序，即使你可以使用 R语言处理所有的数据分析工作，但是总有一天你不得不处理别人传给你 Excel生成的电子表格需要你帮忙处理。还好 R可以很方便的处理 excel的电子表格。通常处理 Excel表格有两种方法。</p>
+<p>方法一：将excel文件另存为 csv或者 tsv </p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208270943740.png" alt="image-20220827094314568"></p>
+<p>方法二：readr，xlsx，openxlsx等包<br>R中有大量可以读写 Excel电子表格的包，使用方法与 read.table()函数类似，只需注意Excel的电子表格分为工作簿与工作表，一个工作簿中包含多个工作表（sheet），因此需要指定读取工作簿中那个工作表，可以指定工作表的名字，也可以使用顺序号</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装 openxlsx包 </span></span><br><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;openxlsx&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#加载 openxlsx包 </span></span><br><span class="line">library<span class="punctuation">(</span>openxlsx<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#读入 excel文件，指定 sheet的序号或者名称</span></span><br><span class="line">x <span class="operator">&lt;-</span> read.xlsx<span class="punctuation">(</span>xlsxFile<span class="operator">=</span> <span class="string">&quot;./lettuce.xlsx&quot;</span><span class="punctuation">,</span>sheet <span class="operator">=</span> <span class="string">&quot;treatment&quot;</span><span class="punctuation">,</span> rows <span class="operator">=</span> <span class="number">1</span><span class="operator">:</span><span class="number">60</span><span class="punctuation">,</span>cols <span class="operator">=</span> <span class="number">1</span><span class="operator">:</span><span class="number">5</span><span class="punctuation">)</span> </span><br><span class="line">x <span class="operator">&lt;-</span> read.xlsx<span class="punctuation">(</span>xlsxFile<span class="operator">=</span> <span class="string">&quot;./lettuce.xlsx&quot;</span><span class="punctuation">,</span>sheet <span class="operator">=</span> <span class="number">2</span><span class="punctuation">,</span> rows <span class="operator">=</span> <span class="number">1</span><span class="operator">:</span><span class="number">60</span><span class="punctuation">,</span>cols <span class="operator">=</span> <span class="number">1</span><span class="operator">:</span><span class="number">5</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#写入 Excel文件，设置 sheet名 </span></span><br><span class="line">write.xlsx<span class="punctuation">(</span>x <span class="operator">=</span> x<span class="punctuation">,</span>sheetName <span class="operator">=</span> <span class="string">&quot;dta&quot;</span><span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;dta.xlsx&quot;</span><span class="punctuation">,</span>append <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<h3 id="其他-R数据格式"><a href="#其他-R数据格式" class="headerlink" title="其他 R数据格式"></a>其他 R数据格式</h3><p>除了常规各种文本表格之外，R还提供了两种文件格式，分别是 RDS与 Rdata格式。RDS可以用来存储单个数据集，Rdata可以存储多个 R数据集。R内置格式的好处是对 R软件支持更好，便于分享，且内置压缩算法，同样的数据内容，文件更小，便于传输。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#数据集iris 数据框&quot;data.frame&quot;结构</span></span><br><span class="line"><span class="operator">?</span>iris </span><br><span class="line">head<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#数据集iris 数组&quot;array&quot;结构</span></span><br><span class="line"><span class="operator">?</span>iris3</span><br><span class="line">head<span class="punctuation">(</span>iris3<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>iris3<span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>iris3<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#当前工作目录</span></span><br><span class="line">getwd<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#文件夹下所有内容</span></span><br><span class="line">dir<span class="punctuation">(</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#write RDS file</span></span><br><span class="line">saveRDS<span class="punctuation">(</span>iris<span class="punctuation">,</span>file<span class="operator">=</span><span class="string">&quot;iris.RDS&quot;</span><span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#read RDS file</span></span><br><span class="line">rdsdata <span class="operator">&lt;-</span> readRDS<span class="punctuation">(</span><span class="string">&quot;iris.RDS&quot;</span><span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">#Write RData file </span></span><br><span class="line">save<span class="punctuation">(</span>iris<span class="punctuation">,</span>iris3<span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;iris.Rdata&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#加载变量</span></span><br><span class="line">load<span class="punctuation">(</span><span class="string">&quot;iris.Rdata&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#所有变量存储在.Rdata</span></span><br><span class="line">save.image<span class="punctuation">(</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="补充R语言下的文件夹与文件操作"><a href="#补充R语言下的文件夹与文件操作" class="headerlink" title="补充R语言下的文件夹与文件操作"></a>补充R语言下的文件夹与文件操作</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#查看当前目录下文件</span></span><br><span class="line">dir<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#列出当前文件夹下所有文件夹，包括隐藏文件夹</span></span><br><span class="line">list.dirs<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#列出当前文件夹下所有文件夹，所有文件</span></span><br><span class="line">list.files<span class="punctuation">(</span>path <span class="operator">=</span> <span class="string">&quot;.&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#显示文件夹下面所有的文件，包括以.开头的文件，可以设置all.files = TRUE</span></span><br><span class="line">list.files<span class="punctuation">(</span>path <span class="operator">=</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span>all.files <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#只关注csv文件可以使用模式匹配，也就是正则表达式</span></span><br><span class="line">list.files<span class="punctuation">(</span>path <span class="operator">=</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span>pattern <span class="operator">=</span> <span class="string">&quot;csv$&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建文件夹</span></span><br><span class="line">dir.create<span class="punctuation">(</span><span class="string">&quot;ab&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#删除文件夹</span></span><br><span class="line">unlink<span class="punctuation">(</span><span class="string">&quot;ab&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#创建文件</span></span><br><span class="line">file.create<span class="punctuation">(</span><span class="string">&quot;file_name.txt&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#编辑文件</span></span><br><span class="line">file.edit<span class="punctuation">(</span><span class="string">&quot;file_name.txt&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#重命名文件</span></span><br><span class="line">file.rename<span class="punctuation">(</span><span class="string">&quot;file_name.txt&quot;</span><span class="punctuation">,</span><span class="string">&quot;file_name_2.txt&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">file.copy<span class="punctuation">(</span><span class="string">&quot;file_name_2.txt&quot;</span><span class="punctuation">,</span><span class="string">&quot;file_name_3.txt&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#删除文件</span></span><br><span class="line">file.remove<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;file_name_2.txt&quot;</span><span class="punctuation">,</span><span class="string">&quot;file_name_3.txt&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-数据结构"><a href="#6-数据结构" class="headerlink" title="6_数据结构"></a>6_数据结构</h2><p>在使用R语言过程中，每一步中都需要关注R语言的数据结构。数据结构是R语言中最重要的内容，也是最难的一部分，学会了这部分之后，R语言就不难了。很多时候，函数无法运行，都是因为数据结构的问题。在学习R语言数据结构之前需要首先了解下数据的类型。 </p>
+<h3 id="1数据类型"><a href="#1数据类型" class="headerlink" title="1数据类型"></a>1数据类型</h3><p>数据类型主要表示数据代表哪种内容，是字符串还是数值，逻辑值，或者时间日期等。数值可以用于计算，字符串不能用来计算，逻辑值用来判断等。其实这个在excel中我们也见过，Excel中数据类型如下图所示：</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208272153190.png" alt="image-20220827215303054"></p>
+<p>R的数值类型主要包括字符、数值、复数、逻辑4类，如下。我们主要用字符、数值和逻辑三类。</p>
+<p>R的数值类型 </p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208272154474.png" alt="image-20220827215449356"></p>
+<h3 id="2常用数据结构"><a href="#2常用数据结构" class="headerlink" title="2常用数据结构"></a>2常用数据结构</h3><p>R的数据结构主要包括以下几种：向量、，每一种都有固定的用处，学习R语言需要非常熟悉每一种数据结构的特点。</p>
+<p><img src="https://gitee.com/yuming2020/note/raw/master/202208272211265.png" alt="image-20220827221123112"></p>
+<h3 id="3内置数据集"><a href="#3内置数据集" class="headerlink" title="3内置数据集"></a>3内置数据集</h3><p>R 语言的一个好处是内置了大量数据集，一般 R扩展包也包含数据集，这样无需自己准备输入文件，可以很方便的重复案例的内容。启动 R之后，默认已经加载了 datasets包，里面包含了大量数据集，使用 data()函数可以显示所有数据集。直接敲数据集的名字就能够打印出数据集的内容，内置数据集与自己通过文件将数据读入 R中，存储为变量效果上是一样的。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示所有内置数据集 ，来自‘datasets’这个包  </span></span><br><span class="line">data<span class="punctuation">(</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#加载扩展包数据集   </span></span><br><span class="line">data<span class="punctuation">(</span>package <span class="operator">=</span> <span class="string">&quot;MASS&quot;</span><span class="punctuation">)</span>    </span><br><span class="line">data<span class="punctuation">(</span>package <span class="operator">=</span> <span class="string">&quot;ggplot2&quot;</span><span class="punctuation">)</span>   </span><br></pre></td></tr></table></figure>
+
+<h3 id="4-向量"><a href="#4-向量" class="headerlink" title="4 向量"></a>4 向量</h3><p>向量：vector，是 R中最重要的一个概念，它是构成其他数据结构的基础。向量其实是用于存储数值型、字符型或逻辑型数据的一维数组。R中的向量与解析几何或者物理学中有数值和方向的量不同，R中的<strong>向量是一个集合，即可以是数值的集合也可以是字符串或者逻辑值的集合</strong>。其余数据结构都由向量构成。 </p>
+<h4 id="4-1-创建向量"><a href="#4-1-创建向量" class="headerlink" title="4.1 创建向量"></a>4.1 创建向量</h4><p>用函数 c来创建向量。c代表 concatenate连接，也可以理解为收集 collect，或者合并 combine。新手经常犯的错误就是忘了使用 c()函数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#R内置向量 </span></span><br><span class="line">rivers </span><br><span class="line">euro </span><br><span class="line">plot<span class="punctuation">(</span>rivers<span class="punctuation">)</span>   </span><br><span class="line">hist<span class="punctuation">(</span>rivers<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>euro<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">length</span><span class="punctuation">(</span>euro<span class="punctuation">)</span>   </span><br><span class="line">a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#字符型向量 </span></span><br><span class="line">b <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span><span class="string">&quot;green&quot;</span><span class="punctuation">,</span><span class="string">&quot;blue&quot;</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#生成连续型向量 </span></span><br><span class="line"><span class="built_in">c</span> <span class="operator">&lt;-</span> seq<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">100</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span>   </span><br><span class="line">d <span class="operator">&lt;-</span> <span class="built_in">rep</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">)</span>   </span><br><span class="line"></span><br><span class="line"><span class="comment">#数据类型、特征</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>a<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">length</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 向量化操作   </span></span><br><span class="line">a   </span><br><span class="line">a<span class="operator">*</span><span class="number">2</span>   </span><br><span class="line">paste<span class="punctuation">(</span>b<span class="punctuation">,</span>a<span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;-&quot;</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-向量索引"><a href="#4-2-向量索引" class="headerlink" title="4.2 向量索引"></a>4.2 向量索引</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rivers<span class="punctuation">[</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span><span class="punctuation">]</span> </span><br><span class="line">euro<span class="punctuation">[</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span> </span><br><span class="line">euro<span class="punctuation">[</span><span class="operator">-</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">)</span><span class="punctuation">]</span>   </span><br><span class="line">euro<span class="punctuation">[</span><span class="string">&quot;ATS&quot;</span><span class="punctuation">]</span> </span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-向量计算"><a href="#4-3-向量计算" class="headerlink" title="4.3 向量计算"></a>4.3 向量计算</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">x <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">10000000</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">length</span><span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line">mean<span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line">var<span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line">sd<span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line">median<span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">range</span><span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">abs</span><span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line"><span class="built_in">sqrt</span><span class="punctuation">(</span>x<span class="punctuation">)</span>   </span><br><span class="line">a <span class="operator">&lt;-</span> 1<span class="operator">:</span><span class="number">5</span> </span><br><span class="line">b <span class="operator">&lt;-</span> 10<span class="operator">:</span><span class="number">1</span> </span><br><span class="line">a<span class="operator">+</span><span class="number">1</span> </span><br><span class="line">a<span class="operator">*</span><span class="number">2</span> </span><br><span class="line">a<span class="operator">+</span>b</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-矩阵"><a href="#5-矩阵" class="headerlink" title="5 矩阵"></a>5 矩阵</h3><p>矩阵（Matrix）是一个按照长方阵列排列的复数或实数集合。向量是一维的，而矩阵是二维的，需要有行和列。矩阵是 R语言中使用较多的一种数据结构，矩阵分为数值矩阵和字符串矩阵，常用的是数据矩阵，基因的表达数据为数值矩阵。矩阵有两大作用，一个是用来计算相关性，另外可以用来绘制热图。</p>
+<h4 id="5-1-创建矩阵"><a href="#5-1-创建矩阵" class="headerlink" title="5.1 创建矩阵"></a>5.1 创建矩阵</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">state.x77   </span><br><span class="line">m <span class="operator">&lt;-</span> matrix<span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">20</span><span class="punctuation">,</span>nrow <span class="operator">=</span> <span class="number">4</span><span class="punctuation">,</span>ncol <span class="operator">=</span> <span class="number">5</span><span class="punctuation">)</span>   </span><br><span class="line">rowSums<span class="punctuation">(</span>state.x77<span class="punctuation">)</span> </span><br><span class="line">apply<span class="punctuation">(</span>state.x77<span class="punctuation">,</span><span class="number">1</span><span class="punctuation">,</span><span class="punctuation">,</span><span class="built_in">sum</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">colMeans<span class="punctuation">(</span>state.x77<span class="punctuation">)</span> </span><br><span class="line">apply<span class="punctuation">(</span>state.x77<span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span>mean<span class="punctuation">)</span></span><br><span class="line">apply<span class="punctuation">(</span>state.x77<span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span>var<span class="punctuation">)</span></span><br><span class="line">apply<span class="punctuation">(</span>state.x77<span class="punctuation">,</span><span class="number">2</span><span class="punctuation">,</span><span class="built_in">max</span><span class="punctuation">)</span></span><br><span class="line"><span class="operator">?</span>apply</span><br><span class="line">cor<span class="punctuation">(</span>state.x77<span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">dim</span><span class="punctuation">(</span>state.x77<span class="punctuation">)</span></span><br><span class="line">rownames<span class="punctuation">(</span>state.x77<span class="punctuation">)</span></span><br><span class="line">colnames<span class="punctuation">(</span>state.x77<span class="punctuation">)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-矩阵索引"><a href="#5-2-矩阵索引" class="headerlink" title="5.2 矩阵索引"></a>5.2 矩阵索引</h4><p>矩阵属于二位数据，需要给定行列的。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">state.x77 </span><br><span class="line">state.x77<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="number">2</span><span class="punctuation">]</span> </span><br><span class="line">state.x77<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span><span class="punctuation">]</span> </span><br><span class="line">state.x77<span class="punctuation">[</span><span class="string">&quot;Alabama&quot;</span><span class="punctuation">,</span><span class="punctuation">]</span> </span><br><span class="line">state.x77<span class="punctuation">[</span><span class="punctuation">,</span><span class="string">&quot;Population&quot;</span><span class="punctuation">]</span> </span><br><span class="line"><span class="comment">#取奇数列</span></span><br><span class="line">state.x77<span class="punctuation">[</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="built_in">T</span><span class="punctuation">,</span><span class="built_in">F</span><span class="punctuation">)</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-3-利用矩阵绘制热图"><a href="#5-3-利用矩阵绘制热图" class="headerlink" title="5.3 利用矩阵绘制热图"></a>5.3 利用矩阵绘制热图</h4><p>R非常擅长基于矩阵数据绘制热图，基础包中的 heatmap()可以直接绘制热图，gplots 包 heatmap.2()也可以绘制热图，pheatmap包 pheatmap()函数可以绘制更加优雅的热图，ComplexHeatmap包 可以绘制复杂的热图。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">example<span class="punctuation">(</span><span class="string">&quot;heatmap&quot;</span><span class="punctuation">)</span> </span><br><span class="line">m <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;Rdata/heatmap.csv&quot;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>row.names <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span> </span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>m<span class="punctuation">)</span> </span><br><span class="line">x <span class="operator">&lt;-</span> as.matrix<span class="punctuation">(</span>m<span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>t<span class="punctuation">(</span>x<span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>col<span class="operator">=</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;green&quot;</span><span class="punctuation">,</span><span class="string">&quot;red&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">yanse <span class="operator">&lt;-</span> colorRampPalette<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span><span class="string">&quot;black&quot;</span><span class="punctuation">,</span><span class="string">&quot;green&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">(</span>nrow<span class="punctuation">(</span>x<span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>col<span class="operator">=</span>yanse<span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>col<span class="operator">=</span>yanse<span class="punctuation">,</span>RowSideColors <span class="operator">=</span> yanse<span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>col<span class="operator">=</span>yanse<span class="punctuation">,</span>ColSideColors <span class="operator">=</span> </span><br><span class="line">colorRampPalette<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span><span class="string">&quot;black&quot;</span><span class="punctuation">,</span><span class="string">&quot;green&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">(</span>ncol<span class="punctuation">(</span>x<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>col<span class="operator">=</span>yanse<span class="punctuation">,</span>Rowv <span class="operator">=</span> <span class="literal">NA</span><span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>col<span class="operator">=</span>yanse<span class="punctuation">,</span>Rowv <span class="operator">=</span> <span class="literal">NA</span><span class="punctuation">,</span>Colv <span class="operator">=</span> <span class="literal">NA</span><span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>state.x77<span class="punctuation">)</span> </span><br><span class="line">heatmap<span class="punctuation">(</span>state.x77<span class="punctuation">,</span>scale <span class="operator">=</span> <span class="string">&quot;col&quot;</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<p>利用 pheatmap绘制热图 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#install.packages(&quot;pheatmap&quot;) </span></span><br><span class="line">library<span class="punctuation">(</span>pheatmap<span class="punctuation">)</span> </span><br><span class="line">x <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;Rdata/heatmap.csv&quot;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>row.names <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span> </span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line">pheatmap<span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line">annotation_col <span class="operator">&lt;-</span> </span><br><span class="line">data.frame<span class="punctuation">(</span>CellType<span class="operator">=</span>factor<span class="punctuation">(</span><span class="built_in">rep</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;N1&quot;</span><span class="punctuation">,</span><span class="string">&quot;T1&quot;</span><span class="punctuation">,</span><span class="string">&quot;N2&quot;</span><span class="punctuation">,</span><span class="string">&quot;T2&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span>each<span class="operator">=</span><span class="number">5</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">rownames<span class="punctuation">(</span>annotation_col<span class="punctuation">)</span> <span class="operator">&lt;-</span> colnames<span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line">pheatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>annotation_col <span class="operator">=</span> annotation_col<span class="punctuation">)</span> </span><br><span class="line">pheatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>annotation_col <span class="operator">=</span> annotation_col<span class="punctuation">,</span>display_numbers <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span> </span><br><span class="line">pheatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>annotation_col <span class="operator">=</span> annotation_col<span class="punctuation">,</span>display_numbers <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>number_format <span class="operator">=</span> </span><br><span class="line"><span class="string">&quot;%.2f&quot;</span><span class="punctuation">)</span> </span><br><span class="line">pheatmap<span class="punctuation">(</span>x<span class="punctuation">,</span>annotation_col <span class="operator">=</span> annotation_col<span class="punctuation">,</span>display_numbers <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>number_format <span class="operator">=</span> </span><br><span class="line"><span class="string">&quot;%.1f&quot;</span><span class="punctuation">,</span>number_color <span class="operator">=</span> <span class="string">&quot;black&quot;</span><span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-数据框"><a href="#6-数据框" class="headerlink" title="6 数据框"></a>6 数据框</h3><p>数据框是一种表格式的数据结构，属于一种二维表，分为行和列。数据框旨在模拟数据集，与其他统计软件例如 SAS或者 SPSS中的数据集的概念一致。数据集通常是由数据构成的一个矩形数组，行表示观测，列表示变量。不同的行业对于数据集的行和列叫法不同。在一个数据框中，每一行的元素个数相同，每一列元素个数也相同，每一列的数据类型一致，都为一个向量，每一行内容还是一个数据框。数据框是 R中使用最广泛的一种数据格式。</p>
+<h4 id="6-1-创建数据框"><a href="#6-1-创建数据框" class="headerlink" title="6.1 创建数据框"></a>6.1 创建数据框</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mtcars   </span><br><span class="line">iris   </span><br><span class="line">adata <span class="operator">&lt;-</span> data.frame<span class="punctuation">(</span>state.name<span class="punctuation">,</span>state.division<span class="punctuation">,</span>state.area<span class="punctuation">)</span>   </span><br><span class="line">View<span class="punctuation">(</span>adata<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>adata<span class="punctuation">)</span> </span><br><span class="line">head<span class="punctuation">(</span>adata<span class="punctuation">)</span></span><br><span class="line">tail<span class="punctuation">(</span>adata<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dim</span><span class="punctuation">(</span>adata<span class="punctuation">)</span></span><br><span class="line">rownames<span class="punctuation">(</span>adata<span class="punctuation">)</span></span><br><span class="line">colnames<span class="punctuation">(</span>adata<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-2-数据框索引"><a href="#6-2-数据框索引" class="headerlink" title="6.2 数据框索引"></a>6.2 数据框索引</h4><ul>
+<li><input disabled="" type="checkbox"> 中括号 </li>
+<li><input disabled="" type="checkbox"> 名称 </li>
+<li><input disabled="" type="checkbox"> dollar符 </li>
+<li><input disabled="" type="checkbox"> 逻辑值</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">euro<span class="punctuation">[</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">]</span>   </span><br><span class="line">euro<span class="punctuation">[</span><span class="operator">-</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">3</span><span class="punctuation">)</span><span class="punctuation">]</span>   </span><br><span class="line">euro<span class="punctuation">[</span><span class="string">&quot;ATS&quot;</span><span class="punctuation">]</span>   </span><br><span class="line">mtcars<span class="punctuation">[</span><span class="number">1</span><span class="operator">:</span><span class="number">4</span><span class="punctuation">,</span><span class="number">1</span><span class="operator">:</span><span class="number">5</span><span class="punctuation">]</span>   </span><br><span class="line">mtcars<span class="punctuation">[</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">2</span><span class="punctuation">,</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">)</span><span class="punctuation">]</span>   </span><br><span class="line">mtcars<span class="operator">$</span>mpg   </span><br><span class="line">mtcars<span class="punctuation">[</span><span class="string">&quot;Mazda RX4&quot;</span><span class="punctuation">,</span><span class="punctuation">]</span>   </span><br><span class="line"> </span><br><span class="line">x <span class="operator">&lt;-</span> runif<span class="punctuation">(</span><span class="number">100</span><span class="punctuation">,</span><span class="built_in">min</span> <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span><span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span>   </span><br><span class="line">x<span class="punctuation">[</span>x<span class="operator">&gt;</span><span class="number">50</span><span class="punctuation">]</span>   </span><br><span class="line">x <span class="punctuation">[</span>x<span class="operator">&gt;</span><span class="number">20</span> <span class="operator">&amp;</span> x <span class="operator">&lt;</span><span class="number">40</span><span class="punctuation">]</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">####逻辑判定符号：&amp;, |, ==, !=</span></span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>6.3利用 R实现 vlookup  案例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Excel函数：=VLOOKUP($A2,Sheet1!$A$1:$I$201,COLUMN(Sheet1!A2),FALSE) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#读入 200个基因的列表 bigtable   </span></span><br><span class="line">genes200 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;Rdata/200genes.csv&quot;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span>   </span><br><span class="line"></span><br><span class="line"><span class="comment">#读入 121个基因的 list small list   </span></span><br><span class="line">genes121 <span class="operator">&lt;-</span>  read.csv<span class="punctuation">(</span><span class="string">&quot;Rdata/121genes.csv&quot;</span><span class="punctuation">,</span>header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span>   </span><br><span class="line">head<span class="punctuation">(</span>genes200<span class="punctuation">)</span>   </span><br><span class="line">head<span class="punctuation">(</span>genes121<span class="punctuation">)</span>   </span><br><span class="line">genes200<span class="punctuation">[</span><span class="string">&quot;CLU&quot;</span><span class="punctuation">,</span><span class="punctuation">]</span>   </span><br><span class="line"></span><br><span class="line"><span class="comment">#修改 gene table行名   </span></span><br><span class="line">rownames<span class="punctuation">(</span>genes200<span class="punctuation">)</span> <span class="operator">&lt;-</span> genes200<span class="operator">$</span>gene   </span><br><span class="line">genes200<span class="punctuation">[</span><span class="string">&quot;CLU&quot;</span><span class="punctuation">,</span><span class="punctuation">]</span>   </span><br><span class="line">genes200<span class="punctuation">[</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;CLU&quot;</span><span class="punctuation">,</span><span class="string">&quot;DCN&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="punctuation">]</span>   </span><br><span class="line"><span class="comment">#去除重复 gene ID </span></span><br><span class="line">gene93 <span class="operator">&lt;-</span> unique<span class="punctuation">(</span>genes121<span class="operator">$</span>gene<span class="punctuation">)</span>   </span><br><span class="line"><span class="comment">#利用数据框的访问功能，一次实现 Excel Vlookup功能   </span></span><br><span class="line">dta <span class="operator">&lt;-</span> genes200<span class="punctuation">[</span>gene93<span class="punctuation">,</span><span class="punctuation">]</span>   </span><br><span class="line">dta   </span><br><span class="line"><span class="comment">#数据中包含没有检索到的 gene ID，返回值为 NA，利用 na.omit删除包含 NA的行   </span></span><br><span class="line">dta <span class="operator">&lt;-</span> na.omit<span class="punctuation">(</span>dta<span class="punctuation">)</span> </span><br><span class="line"><span class="built_in">dim</span><span class="punctuation">(</span>dta<span class="punctuation">)</span></span><br><span class="line">rownames<span class="punctuation">(</span>dta<span class="punctuation">)</span> <span class="operator">&lt;-</span> <span class="number">1</span><span class="operator">:</span>nrow<span class="punctuation">(</span>dta<span class="punctuation">)</span>   </span><br><span class="line">write.csv<span class="punctuation">(</span>dta<span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;Rdata/gene86.csv&quot;</span><span class="punctuation">,</span>row.names <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span>   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-缺失数据"><a href="#7-缺失数据" class="headerlink" title="7 缺失数据"></a>7 缺失数据</h3><p>缺失信息问题在数据科学中非常常见。在大规模数据采集过程中，几乎不可能每次都得到完整的数据，那么该如何处理缺失数据呢？首先我们要清楚为何会出现缺失数据，一种可能是机器断电，设备故障导致某个测量值发生了丢失。或者测量根本没有发生，例如在做调查问卷时，有些问题没有回答，或者有些问题是无效的回答等，这些都算作缺失值。对于缺失信息，R中提供了一些专门的处理方法。<br>在 R中，NA代表缺失值，NA是不可用，not available的简称，用来存储缺失信息。这里缺失值 NA表示 没有，但注意没有并不一定就是 0，NA是不知道是多少，也能是 0，也可能是任何值，缺失值和值为零是完全不同的。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">10</span><span class="punctuation">,</span><span class="literal">NA</span><span class="punctuation">)</span> </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line"><span class="built_in">sum</span><span class="punctuation">(</span>x<span class="punctuation">,</span>na.rm <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">)</span> </span><br><span class="line"><span class="built_in">is.na</span><span class="punctuation">(</span>x<span class="punctuation">)</span> </span><br><span class="line"><span class="comment">#install.packages(&quot;VIM&quot;)   </span></span><br><span class="line">library<span class="punctuation">(</span>VIM<span class="punctuation">)</span>  </span><br><span class="line">help<span class="punctuation">(</span>packages<span class="operator">=</span><span class="string">&quot;VIM&quot;</span><span class="punctuation">)</span></span><br><span class="line">data<span class="punctuation">(</span>sleep<span class="punctuation">,</span>package <span class="operator">=</span> <span class="string">&quot;VIM&quot;</span><span class="punctuation">)</span>   </span><br><span class="line">na.omit<span class="punctuation">(</span>sleep<span class="punctuation">)</span>  </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-列表"><a href="#8-列表" class="headerlink" title="8 列表"></a>8 列表</h3><p>列表就是一些对象的有序集合。列表中可以存储若干向量、矩阵、数据框，甚至其他列表的组合。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">state.center</span><br><span class="line"><span class="built_in">length</span><span class="punctuation">(</span>state.center<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>state.center<span class="punctuation">)</span></span><br><span class="line">state.center<span class="operator">$</span>x</span><br><span class="line"></span><br><span class="line">alist <span class="operator">&lt;-</span> <span class="built_in">list</span><span class="punctuation">(</span>euro<span class="punctuation">,</span>state.x77<span class="punctuation">,</span>iris<span class="punctuation">)</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment">###列表与数据框的选取</span></span><br><span class="line"><span class="comment">##有名称时用$</span></span><br><span class="line">state.center<span class="operator">$</span>x</span><br><span class="line"><span class="comment">#选取出来的是列表的第一个元素的具体内容，这个是个向量</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>state.center<span class="operator">$</span>x<span class="punctuation">)</span></span><br><span class="line">is.vector<span class="punctuation">(</span>state.center<span class="operator">$</span>x<span class="punctuation">)</span></span><br><span class="line"><span class="comment">##也可以按照位置选取,注意[1]与[[1]]的区别</span></span><br><span class="line">state.center<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="comment">#选取出来的是列表中的第一个元素，还是列表 </span></span><br><span class="line">state.center<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="comment">#选取出来的是列表的第一个元素的具体内容，这个是个向量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##无名字只能按照位置选取</span></span><br><span class="line">alist <span class="operator">&lt;-</span> <span class="built_in">list</span><span class="punctuation">(</span>euro<span class="punctuation">,</span>state.x77<span class="punctuation">,</span>iris<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>alist<span class="punctuation">)</span><span class="comment">#null,没有名字</span></span><br><span class="line">alist<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="comment">#选取出来的是列表中的第一个元素，还是列表   </span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>alist<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">alist<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span> <span class="comment">#选取出来的是列表的第一个元素的具体内容，这个是个向量</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>alist<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br><span class="line">is.vector<span class="punctuation">(</span>alist<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-因子"><a href="#9-因子" class="headerlink" title="9 因子"></a>9 因子</h3><p>所有的数据集合可以分为三类，连续型，名义型和有序型。连续型例如1 2 3 4 5 8 9 10，名义型如sample1 sample2 sample3 ，而有序型 good better best；周一，周二，周三……等。在R中名义型变量和有序性变量称为因子，factor。这些分类变量的可能值称为一个水平level，由这些水平值构成的向量就称为因子。因子主要用于计算频数，可以用来分组。可以通过factor()函数中的labels选项对因子的值进行批量修改。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">state.division</span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>state.division<span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>state.division<span class="punctuation">)</span></span><br><span class="line">state_division <span class="operator">&lt;-</span> state.division</span><br><span class="line"><span class="built_in">length</span><span class="punctuation">(</span>state_division<span class="punctuation">)</span></span><br><span class="line">levels<span class="punctuation">(</span>state_division<span class="punctuation">)</span></span><br><span class="line">table<span class="punctuation">(</span>state_division<span class="punctuation">)</span></span><br><span class="line">par<span class="punctuation">(</span>mar<span class="operator">=</span><span class="built_in">c</span> <span class="punctuation">(</span><span class="number">10</span><span class="punctuation">,</span><span class="number">4.1</span><span class="punctuation">,</span><span class="number">4.1</span><span class="punctuation">,</span><span class="number">2.1</span><span class="punctuation">)</span><span class="punctuation">)</span> </span><br><span class="line">barplot<span class="punctuation">(</span>table<span class="punctuation">(</span>state_division<span class="punctuation">)</span><span class="punctuation">,</span>las<span class="operator">=</span><span class="number">3</span><span class="punctuation">,</span>cex.axis<span class="operator">=</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">dev.off<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">afactor <span class="operator">&lt;-</span> factor<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;blue&quot;</span><span class="punctuation">,</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span><span class="string">&quot;green&quot;</span><span class="punctuation">,</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span><span class="string">&quot;blue&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span>levels <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;red&quot;</span><span class="punctuation">,</span></span><br><span class="line">                                                                        <span class="string">&quot;green&quot;</span><span class="punctuation">,</span><span class="string">&quot;blue&quot;</span><span class="punctuation">,</span><span class="string">&quot;yellow&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span>   </span><br><span class="line">bfactor <span class="operator">&lt;-</span> factor<span class="punctuation">(</span><span class="built_in">letters</span><span class="punctuation">[</span><span class="number">1</span><span class="operator">:</span><span class="number">5</span><span class="punctuation">]</span><span class="punctuation">,</span> labels <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;one&quot;</span><span class="punctuation">,</span><span class="string">&quot;two&quot;</span><span class="punctuation">,</span><span class="string">&quot;three&quot;</span><span class="punctuation">,</span><span class="string">&quot;four&quot;</span><span class="punctuation">,</span><span class="string">&quot;five&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Gamer
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://gamermmm.github.io/2024/uncategorized/00_b_R%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" title="">https://gamermmm.github.io/2024/uncategorized/00_b_R语言基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/%E5%AD%A6%E7%82%B9/L3-%E5%B0%81%E8%A3%85%E4%B8%8E%E6%8E%A5%E5%8F%A3/" rel="prev" title="L3-封装与接口">
+      <i class="fa fa-chevron-left"></i> L3-封装与接口
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/%E5%AD%A6%E7%82%B9/RBasic/" rel="next" title="RBasic">
+      RBasic <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">课程准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-R%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">1_R语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-R%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">01 R语言简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">R语言历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0-R%E8%AF%AD%E8%A8%80"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">为什么要学习 R语言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-R%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">02 R语言的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">R语言的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">R语言的缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E4%B8%8E-Excel%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">R语言与 Excel对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E4%B8%8E-Python%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">R语言与 Python对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E8%AF%BE%E7%A8%8B%E4%B8%BA%E5%95%A5%E4%B8%8D%E5%9C%A8%E4%BD%BF%E7%94%A8SPSS%EF%BC%9F"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">本课程为啥不在使用SPSS？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%9D%9E%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">03 结构化数据与非结构化数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%85%AD%E4%B8%AA%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">04 数据分析的六个过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-R%E4%B8%8E-Rstudio%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">2_R与 Rstudio软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-R%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.1.</span> <span class="nav-text">01 R软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02Rstudio%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.2.</span> <span class="nav-text">02Rstudio软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rstudio%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">rstudio设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-%E8%A7%A3%E5%86%B3windows%E4%B8%8B-Rstudio%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.3.</span> <span class="nav-text">03 解决windows下 Rstudio无法识别中文问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8-R"><span class="nav-number">1.3.</span> <span class="nav-text">3_开始使用 R</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01%E8%AE%BE%E7%BD%AE%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.1.</span> <span class="nav-text">01设置工作目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">设置工作目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02%E5%88%9B%E5%BB%BA-Project"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">02创建 Project</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#03-R%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">03 R软件的运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#04-%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">04 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.1.4.1.</span> <span class="nav-text">R语言函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%B5%8B%E8%AF%95%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E5%8A%9B"><span class="nav-number">1.3.1.4.2.</span> <span class="nav-text">游戏：测试计算机算力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E6%8B%AC%E5%8F%B7"><span class="nav-number">1.3.1.4.3.</span> <span class="nav-text">R语言括号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#R%E8%AF%AD%E8%A8%80%E6%8F%90%E7%A4%BA%E8%AD%A6%E5%91%8A%E4%BB%A5%E5%8F%8A%E9%94%99%E8%AF%AF"><span class="nav-number">1.3.1.4.4.</span> <span class="nav-text">R语言提示警告以及错误</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#05%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">05常用快捷键</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06%E8%87%AA%E5%AE%9A%E4%B9%89R%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.2.</span> <span class="nav-text">06自定义R环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%AF%AD%E8%A8%80%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">4_语言包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84-R%E5%8C%85"><span class="nav-number">1.4.1.</span> <span class="nav-text">如何选择合适的 R包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.2.</span> <span class="nav-text">R包的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E5%8C%85%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E5%88%B0%E4%BB%A5%E4%B8%8B%E7%9B%AE%E5%BD%95"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">R包默认安装到以下目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%95%9C%E5%83%8F"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">设置镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R%E5%8C%85%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.3.</span> <span class="nav-text">R包管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-github%E7%BD%91%E7%AB%99%E7%9A%84-R%E5%8C%85"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">安装 github网站的 R包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Bioconductor%E7%BD%91%E7%AB%99%E7%9A%84-R%E5%8C%85"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">安装 Bioconductor网站的 R包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%9B%B4%E6%96%B0R%E5%8C%85%EF%BC%8C%E4%B8%8D%E5%BB%BA%E8%AE%AE%E9%A2%91%E7%B9%81%E6%9B%B4%E6%96%B0%EF%BC%8C%E5%8D%8A%E5%B9%B4%E4%B8%80%E6%AC%A1%E5%B0%B1%E5%A5%BD"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">检查更新R包，不建议频繁更新，半年一次就好</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3"><span class="nav-number">1.4.3.4.</span> <span class="nav-text">查看帮助文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#R%E5%8C%85%E8%BF%81%E7%A7%BB"><span class="nav-number">1.4.3.5.</span> <span class="nav-text">R包迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8B%B7%E8%B4%9D-R%E5%8C%85"><span class="nav-number">1.4.3.6.</span> <span class="nav-text">直接拷贝 R包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%90%8D%E5%AD%97%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.3.7.</span> <span class="nav-text">获取名字重新安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">5_文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rstudio%E5%AF%BC%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.2.</span> <span class="nav-text">Rstudio导入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%AF%BB%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.3.</span> <span class="nav-text">函数读入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.4.</span> <span class="nav-text">函数写入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%86%99-excel%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.5.</span> <span class="nav-text">读写 excel文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-R%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.5.6.</span> <span class="nav-text">其他 R数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85R%E8%AF%AD%E8%A8%80%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.7.</span> <span class="nav-text">补充R语言下的文件夹与文件操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.</span> <span class="nav-text">6_数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.6.1.</span> <span class="nav-text">1数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.2.</span> <span class="nav-text">2常用数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E5%86%85%E7%BD%AE%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">1.6.3.</span> <span class="nav-text">3内置数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%90%91%E9%87%8F"><span class="nav-number">1.6.4.</span> <span class="nav-text">4 向量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E5%88%9B%E5%BB%BA%E5%90%91%E9%87%8F"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">4.1 创建向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E5%90%91%E9%87%8F%E7%B4%A2%E5%BC%95"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">4.2 向量索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E5%90%91%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="nav-number">1.6.4.3.</span> <span class="nav-text">4.3 向量计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%9F%A9%E9%98%B5"><span class="nav-number">1.6.5.</span> <span class="nav-text">5 矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-%E5%88%9B%E5%BB%BA%E7%9F%A9%E9%98%B5"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">5.1 创建矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E7%9F%A9%E9%98%B5%E7%B4%A2%E5%BC%95"><span class="nav-number">1.6.5.2.</span> <span class="nav-text">5.2 矩阵索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-%E5%88%A9%E7%94%A8%E7%9F%A9%E9%98%B5%E7%BB%98%E5%88%B6%E7%83%AD%E5%9B%BE"><span class="nav-number">1.6.5.3.</span> <span class="nav-text">5.3 利用矩阵绘制热图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%95%B0%E6%8D%AE%E6%A1%86"><span class="nav-number">1.6.6.</span> <span class="nav-text">6 数据框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E6%A1%86"><span class="nav-number">1.6.6.1.</span> <span class="nav-text">6.1 创建数据框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-%E6%95%B0%E6%8D%AE%E6%A1%86%E7%B4%A2%E5%BC%95"><span class="nav-number">1.6.6.2.</span> <span class="nav-text">6.2 数据框索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E7%BC%BA%E5%A4%B1%E6%95%B0%E6%8D%AE"><span class="nav-number">1.6.7.</span> <span class="nav-text">7 缺失数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%88%97%E8%A1%A8"><span class="nav-number">1.6.8.</span> <span class="nav-text">8 列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E5%9B%A0%E5%AD%90"><span class="nav-number">1.6.9.</span> <span class="nav-text">9 因子</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gamer</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/something/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-shield-dog"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gamer.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : '[object Object]',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

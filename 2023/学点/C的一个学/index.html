@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_medium.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_small.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="恼 符号字符可以直接用hhd输入  无符号u  unsigned long long llu int转化为long long（尤其是在加和乘中会经常遇到）时要 一些常见的超大数字long long c&#x3D;0x7fffffff;unsigned int d&#x3D;2147483748;int占用4字节，32比特，数据范围为-21474836482147483647 -2^ 312^31-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C_Basics">
+<meta property="og:url" content="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/C%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%A6/">
+<meta property="og:site_name" content="Gamer&#39;s Show">
+<meta property="og:description" content="恼 符号字符可以直接用hhd输入  无符号u  unsigned long long llu int转化为long long（尤其是在加和乘中会经常遇到）时要 一些常见的超大数字long long c&#x3D;0x7fffffff;unsigned int d&#x3D;2147483748;int占用4字节，32比特，数据范围为-21474836482147483647 -2^ 312^31-">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-24T01:40:11.286Z">
+<meta property="article:modified_time" content="2024-03-17T12:59:08.040Z">
+<meta property="article:author" content="Gamer">
+<meta property="article:tag" content="codings">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/C%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>C_Basics | Gamer's Show</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Gamer's Show</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">你知道人生最要紧的事是快乐不停</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-ghost fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-star-of-david fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/something/" rel="section"><i class="fa fa-cube fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Archives</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-codingnotes">
+
+    <a href="/yourdiy/" rel="section"><i class="fa fa-book fa-fw"></i>CodingNotes</a>
+
+  </li>
+
+
+      
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/C%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Gamer">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gamer's Show">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C_Basics
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-01-24 09:40:11" itemprop="dateCreated datePublished" datetime="2023-01-24T09:40:11+08:00">2023-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-03-17 20:59:08" itemprop="dateModified" datetime="2024-03-17T20:59:08+08:00">2024-03-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/something/%E5%AD%A6%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">学点</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="恼"><a href="#恼" class="headerlink" title="恼"></a>恼</h1><ol>
+<li>符号字符可以直接用<code>hhd</code>输入  无符号<code>u</code>  unsigned long long llu</li>
+<li><code>int</code>转化为<code>long long</code>（尤其是在加和乘中会经常遇到）时要</li>
+<li>一些常见的超大数字<br>long long c&#x3D;0x7fffffff;<br>unsigned int d&#x3D;2147483748;<br>int占用4字节，32比特，数据范围为-2147483648<del>2147483647 -2^ 31</del>2^31-1 10</li>
+<li>有除法先讨论0 以及是整数吗 如果发现就是浮点数的运算非必要一定不要出现整除的nt行为（）<ul>
+<li>但是在比较大小的时候，可以出现除以0，认为是“无穷”即可</li>
+</ul>
+</li>
+<li>math函数返回double类型 不要强制转换</li>
+<li>存在整形相乘时，注意及时修改中间变量类型，避免数据溢出（二分法找x的平方根）</li>
+<li>输出百分号是 <code>%%</code>  -如何输出<code>%%? That&#39;s imp0ssib1e</code>百分号输出有两个！两个！</li>
+<li><code>unsigned int</code>不要用<code>int</code>!一定要全用这个类型！范围不一样！</li>
+<li>c语言中没有布尔型运算 要输入头文件<code>#include&lt;stdbool.h&gt;</code></li>
+<li>好好扫描他的输出，看看是不是输入坐标也有br的cd空格</li>
+<li></li>
+<li>浮点数判断大小</li>
+<li>注意数据类型 尤其是题给函数  <strong>加乘开大  除法看是否浮点数</strong></li>
+<li>整除问题标记是否为0（eg连分数）</li>
+<li>开数组之前可以思考一下 比方说矩阵的加法 其实不一定非得要开两个数组 或许可以直接计算出结果</li>
+<li>余子式新矩阵的下标错了捏</li>
+<li>四舍五入输出 加0.5后强制整数阶段转换</li>
+</ol>
+<h1 id="基础知识-语句"><a href="#基础知识-语句" class="headerlink" title="基础知识&amp;语句"></a>基础知识&amp;语句</h1><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><h3 id="cout"><a href="#cout" class="headerlink" title="cout"></a><code>cout</code></h3><ul>
+<li>可以智慧地识别出数据类型，不需要人为指定。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; carrots;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="printf用法小全"><a href="#printf用法小全" class="headerlink" title="printf用法小全"></a>printf用法小全</h3><p><code>%[标志][最小宽度][.精度][类型长度]type</code><br><code>%S</code>可以打印宽字符串 以两个’\0’为结尾<br><code>%e``%E</code>输出科学计数法</p>
+<p><code>-</code>结果左对齐 右边填空格 默认右对齐 左边填空格<br><code>+</code>输出符号<br><code>0</code>输出前补0直到占满给定列宽<br><code>#</code>对八进制和十六进制加前缀   对ef强制输出小数点</p>
+<p><code>printf(&quot;%*d&quot;,m,1000)</code>可以指定输出最小宽度m<br><code>printf(&quot;%.*f&quot;,m,1000)</code>可以指定输出精度m 整数会自动补0 字符串超过指定长度截断<br>判断一个数是否为整数并依此保留精度不同printf(“%.*lf\n”,(fabs(ave-(int)ave))&lt;1e-6?0:2,ave);</p>
+<h2 id="一些细碎的知识点"><a href="#一些细碎的知识点" class="headerlink" title="一些细碎的知识点"></a>一些细碎的知识点</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><ol>
+<li>常用数据类型以及存储范围(单位：字节，一个字节是8位即$2^8$)<br>char 1<br>short int 2<br>(unsigned)int 4 -2147483648<del>2147483647 -2^ 31</del>2^31-1<br>long logn 8  2^ 63<br>float 4<br>double 8</li>
+<li>C++提供了一种灵活的标准，确保最小长度</li>
+</ol>
+<ul>
+<li>short不短于16</li>
+<li>int不短于short</li>
+<li>long不短于int，至少32位</li>
+<li>long long不短于long，至少64位</li>
+<li>float至少32位，都变了至少48位（double通常位64位）</li>
+</ul>
+<ol start="3">
+<li><code>const</code>限定，在建立变量的同时要对其赋值，否则该常量值不定且无法修改</li>
+</ol>
+<ul>
+<li>常量存储小数默认使用double类型，如果想得到浮点加后缀f&#x2F;F，想得到long double加后缀l&#x2F;L</li>
+</ul>
+<ol start="4">
+<li>浮点数表示的范围大于整数，但是运算速度和精度会有所降低</li>
+</ol>
+<ul>
+<li>eg.float类型的数字1.23e+23，对其加1输出不变，因为float只能表示前七位，因而第23位变化对这个值不会有任何影响</li>
+</ul>
+<h3 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h3><ol start="2">
+<li>逻辑语句</li>
+</ol>
+<ul>
+<li><code>&amp;&amp;</code>优先级大于<code>||</code></li>
+<li><code>a&lt;b&lt;c</code>中 关系运算符是左结合的 实质是只要c大于1 该式恒成立</li>
+</ul>
+<ol start="3">
+<li>条件运算符<blockquote>
+<p>z&#x3D;(a&gt;b)?A:B</p>
+</blockquote>
+</li>
+</ol>
+<p>一个复杂的嵌套举例：根据变量的值输出ab大小关系的陈述语句</p>
+<blockquote>
+<p>printf(“a is %s b”, (a&gt;b) ? “greater than” : (a&lt;b) ? “less than” : “equal to”)</p>
+</blockquote>
+<ol start="4">
+<li><p><code>switch</code>语句</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> switch (n)&#123;</span><br><span class="line">    <span class="symbol">case0:</span>    ;<span class="keyword">break</span>;</span><br><span class="line">    <span class="symbol">case1:</span>    ;<span class="keyword">break</span>;....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不同的case可以共享同一组语句序列和打印结果 可以写在同一行 </p>
+</li>
+<li><p>函数</p>
+</li>
+<li><p>格式</p>
+<blockquote>
+<p>类型名 函数名（参数列表）<br>{<br> 函数体<br>}</p>
+</blockquote>
+</li>
+<li><p>声明（函数本体可写于程序最后）去掉函数体后加分号</p>
+</li>
+<li><p>赋值语句：可以连续使用，从右到左赋值</p>
+</li>
+</ol>
+<h1 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h1><h2 id="数组基础"><a href="#数组基础" class="headerlink" title="数组基础"></a>数组基础</h2><ol>
+<li>数组是存放在连续内存空间上的相同类型数据的集合</li>
+<li>只能覆盖，无法删除</li>
+<li>对于一维数组，内存空间的地址是连续的</li>
+<li>对于二维数组，地址并非连续的矩阵，而是row个连续的内存条</li>
+<li><code>sizeof()</code>表整个数组所占字节数（字节数&#x2F;类型长度&#x3D;数组元素数），如果作用于数组元素，得到以字节为单位的长度</li>
+<li><code>int a[10]=&#123;1,2,3,4,5&#125;,i</code>其中i为偏移量，部分初始化时其余元素为0；只有{}时全设为0；初始化时<code>=</code>可省略<br>数组访问中数组名作为表达式的值等于该数组的首地址</li>
+</ol>
+<h3 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h3><h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><ol>
+<li>有序数组</li>
+<li>元素唯一</li>
+<li>关键是确定<strong>区间两端的开闭</strong></li>
+<li>时间复杂度O(log n)；空间复杂度O(n);<br>eg. 左闭右闭<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(l&lt;=r)</span><br><span class="line">r=mid-<span class="number">1</span>;</span><br><span class="line">l=mid+<span class="number">1</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
+<li>需要以空字符<code>\0</code>标记结尾</li>
+<li>一种简练初始化的方法,<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char tag[] = &quot;I&#x27;m Gamer&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><ol>
+<li>拼接：<code>cout</code>会把两个用空格、换行符、制表符分隔的字符串直接合并为一个</li>
+<li><code>strlen</code>返回字符串长度，只计算可见字符，忽略空字符</li>
+</ol>
+<ul>
+<li>因而数组长度的长度要加1</li>
+</ul>
+<ol start="3">
+<li><code>.size()</code>可以获取vector类型的长度</li>
+</ol>
+<h4 id="string类"><a href="#string类" class="headerlink" title="string类"></a><code>string</code>类</h4><ol>
+<li>可以将字符串声明为简单变量</li>
+<li>最初创建的是一个长度为0的string对象，读入之后，可以自动调整该对象的长度，但是最后不会加空格<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;string&gt;</span><br><span class="line">string str1;</span><br><span class="line">string str2 = &quot;panther&quot;; //创造一个初始化过的string对象</span><br><span class="line">//类似数组初始化： string str2 = &#123;&quot;panther&quot;&#125;;</span><br><span class="line">cin &gt;&gt; str1; //会自动调整大小</span><br></pre></td></tr></table></figure></li>
+<li>可以将一个string对象赋给另一个string对象（数组不能）</li>
+<li>可以使用“+”拼接字符串到末尾</li>
+<li><code>string</code>变量要在主函数中建立</li>
+<li><code>.length()</code>获取字符串长度</li>
+<li><strong>简单遍历</strong>对比</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><code>for(string&amp; str:strs)</code></th>
+<th>生成<code>str</code>对每个值引用，对其操作会影响到原容器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>for(string str:strs)</code></td>
+<td>生成<code>str</code>对每个值复制，对其操作不会影响到原容器</td>
+</tr>
+</tbody></table>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><h5 id="cin输入"><a href="#cin输入" class="headerlink" title="cin输入"></a><code>cin</code>输入</h5><pre><code>* 使用空白（空格、制表符、换行符）确定字符串结束的位置
+* 输入之后，cin把字符放到数组中，自动在结尾添加空字符
+</code></pre>
+<h5 id="面向行的输入"><a href="#面向行的输入" class="headerlink" title="面向行的输入"></a>面向行的输入</h5><h6 id="getline"><a href="#getline" class="headerlink" title="getline()"></a><code>getline()</code></h6><ol>
+<li>回车键输入的换行符来确定输入结尾</li>
+<li><code>cin.getline(name,length+1)</code>两个参数调用</li>
+<li>不保存换行符，更换为空字符</li>
+</ol>
+<h6 id="get"><a href="#get" class="headerlink" title="get()"></a><code>get()</code></h6><ol>
+<li>保留换行符，存储队列</li>
+<li>把输入中连续的两航存储在两个数组中:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin.getline(name1, length).getlinie(name2, length);</span><br></pre></td></tr></table></figure></li>
+<li>可以根据<code>get()</code>的输出来检查错误，是数组溢出还是正常换行</li>
+</ol>
+<h5 id="对比"><a href="#对比" class="headerlink" title="对比~"></a>对比~</h5><p>%c输入要注意前边加一个空格把所有空格吃掉</p>
+<p><code>scanf(&quot;%[^\n]&quot;,str);</code>读入一行不包括行尾换行符的字符串作为带查找的字串</p>
+<p><code>getchar()</code>只在回车处停<br><code>putchar()</code>输出字符的速度更快,输出的是字符,所以括号里有数字时会自动转换ASCII值<br><code>putchar(10)</code>换行</p>
+<table>
+<thead>
+<tr>
+<th>输入方式</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gets()</code></td>
+<td>从标准输入文件中读入一行字符，最终字符串不含’\n’ 最后也不会自动加空格 <strong>长度就是输入的长度</strong></td>
+</tr>
+<tr>
+<td><code>puts()</code></td>
+<td>在最后额外输出一个换行符</td>
+</tr>
+<tr>
+<td><code>fgets</code>(char *s,int n,stdin)</td>
+<td><strong>至多读入n-1个字符</strong>，自动添加结尾字符串结束符</td>
+</tr>
+<tr>
+<td><code>fputs</code>(char *s,int n,stdout)</td>
+<td>不会额外输出换行符</td>
+</tr>
+</tbody></table>
+<p>n均可省略</p>
+<p>输入数组就不要加<code>&amp;</code>和<code>[i]</code></p>
+<p>存储日期 定义并竖着初始化日期名  列保证大于最长字符串长度</p>
+<h4 id="询问操作"><a href="#询问操作" class="headerlink" title="询问操作"></a>询问操作</h4><p><strong>比较字典序</strong> 实际上指针指向的是该地址以后的字符串<br>比较<code>strcmp(str1,str2,num)</code>相等返回0 小于返回负数 大于返回正数 均视为无符号字符</p>
+<p>复制<code>memcpy(destination, source,num)</code>返回<code>destination</code> 只负责赋值<code>num</code>个<strong>字节全部复制建议用<code>sizeof(source)</code></strong> 不会检查<code>NULL</code>指针<br>此函数为内存复制函数</p>
+<p>查找<code>memchr(str,s,num)</code>在<code>str</code>的前num位中寻找<code>s</code> 返回一个unsigned字符 表示下标（%d）输出即可 找不到返回<code>NULL</code></p>
+<p><code>strchr(char *str,int c)</code>             在str中查找c首次出现的位置的指针<br><code>strrchr(char *str,int c) </code>           在str中查找c最后一次出现的位置的指针</p>
+<p><code>strstr(char *str,char *s1)</code>          在str中查找s1首次出现的位置的指针</p>
+<h6 id="查找子串出现的次数"><a href="#查找子串出现的次数" class="headerlink" title="查找子串出现的次数"></a>查找子串出现的次数</h6><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(char *p=strstr(str,s);p!=<span class="variable constant_">NULL</span>;p=strstr(p+<span class="number">1</span>,s))</span><br><span class="line">    sum++;</span><br></pre></td></tr></table></figure>
+<p>输出子串区间</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char *p=str;</span><br><span class="line">int len=strlen(s);</span><br><span class="line"><span class="keyword">while</span>((p=strstr(p,b))!=<span class="variable constant_">NULL</span>)</span><br><span class="line">&#123;</span><br><span class="line">    int idx=p-a;</span><br><span class="line">    int r=idx+len-<span class="number">1</span>;</span><br><span class="line">    p+=len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h4><p>s+i表示的就是字符串s的第i个字符  也表示自第i个字符向后（包括第i个）</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>strcat(s,str+i)</code>插入串+插入地址；</td>
+<td>将s插入到str的第i位之前，后边的字符向后顺移</td>
+</tr>
+<tr>
+<td><code>strcpy(str+i,s)</code>插入地址+串；</td>
+<td>将s插入到str的第i位之前，后边的字符向后顺移</td>
+</tr>
+<tr>
+<td><code>strncat(s,str+i);strncpy(str+i,s);</code></td>
+<td>加了参数n，表示最大许用参数，更安全；</td>
+</tr>
+</tbody></table>
+<h6 id="删除第i个字符以后的内容"><a href="#删除第i个字符以后的内容" class="headerlink" title="删除第i个字符以后的内容"></a>删除第i个字符以后的内容</h6><p><strong>实现指定位置字符串截断 将截断第一位换成’0’后面就不会输出啦</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str[i]=<span class="string">&#x27;\0&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>使用<code>\0</code>相当于截断</p>
+<h6 id="删除一个字符串的第i位到第j位"><a href="#删除一个字符串的第i位到第j位" class="headerlink" title="删除一个字符串的第i位到第j位"></a>删除一个字符串的第i位到第j位</h6><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcpy(str+i,str+j+<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h6 id="将s插入到str的第i位之前，后边的字符向后顺移"><a href="#将s插入到str的第i位之前，后边的字符向后顺移" class="headerlink" title="将s插入到str的第i位之前，后边的字符向后顺移"></a>将s插入到str的第i位之前，后边的字符向后顺移</h6><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strcat(s,str+i);</span><br><span class="line">strcpy(str+i,s);</span><br></pre></td></tr></table></figure>
+
+<h6 id="从-str-的第i位开始用s覆盖"><a href="#从-str-的第i位开始用s覆盖" class="headerlink" title="从 str 的第i位开始用s覆盖"></a>从 str 的第i位开始用s覆盖</h6><p>覆盖指从第i位开始，将str的字符依次替换为s的字符，如果str长度不够，则向后延长直到s结束，如果长度不到str结尾，则后续字符保留str原字符</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int len=strlen(s);</span><br><span class="line"><span class="keyword">if</span>(len&lt;strlen(str)-i)  memcpy(str+i,s); </span><br><span class="line"><span class="keyword">else</span> strcpy(str+i,s);</span><br></pre></td></tr></table></figure>
+
+<p>char <em>strcpy(char</em> dest, const char *src);<br>    功能：把从src地址开始且含有NULL结束符的字符串复制到以dest开始的地址空间<br>    用法：strcpy(s,t);<br><code>strcpy</code>会复制<code>\0</code>而<code>memcpy</code>不会<br>拷贝函数源地址和目标地址不能有任何重叠</p>
+<p>char *strcat(char *dest,char *src);<br>    功能：把src所指字符串添加到dest结尾处(覆盖dest结尾处的’\0’)并添加’\0’<br>    用法：strcat(s,t);<br>strcpy(char *dst,const char *src)   将src复制到dst中<br>strncpy(char *dst,const char *src,size_t n)  </p>
+<p>strcat(char *dst,const *src)        将字符串src追加到字符串dst后<br>strncat(char *dst,const *src，size_t n)</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>isalnum(int c)</code></td>
+<td>c是否是字母或数字</td>
+</tr>
+<tr>
+<td><code>isalpha(int c)</code></td>
+<td>c是否是字母</td>
+</tr>
+<tr>
+<td><code>iscntrl(int c)</code></td>
+<td>c是否是控制符(0x00~0xlf,0x7f)</td>
+</tr>
+<tr>
+<td><code>isdigital(int c)</code></td>
+<td>c是否是数字</td>
+</tr>
+<tr>
+<td><code>isxdigit()</code></td>
+<td>c是否是<strong>16进制</strong>数字</td>
+</tr>
+<tr>
+<td><code>islower()</code></td>
+<td>小写字母</td>
+</tr>
+<tr>
+<td><code>isupper()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>isgraph()</code></td>
+<td>是否是可打印字符（空格除外）</td>
+</tr>
+<tr>
+<td><code>isprintf()</code></td>
+<td>是否是可打印字符</td>
+</tr>
+<tr>
+<td><code>ispunct()</code></td>
+<td>是否是符号，可打印但非字母数字</td>
+</tr>
+<tr>
+<td><code>isspace()</code></td>
+<td>是否是空白符（’ ‘,’\n’,’\r’,’\t’,’\v’）</td>
+</tr>
+</tbody></table>
+<h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><h2 id="map"><a href="#map" class="headerlink" title="map"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/forever__1234/article/details/89647975?ops_request_misc=&request_id=&biz_id=102&utm_term=c++%20map&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-89647975.142%5Ev99%5Epc_search_result_base3&spm=1018.2226.3001.4187">map</a></h2><h3 id="普通map"><a href="#普通map" class="headerlink" title="普通map"></a>普通map</h3><ol>
+<li>头文件<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span> &lt;map&gt;</span><br></pre></td></tr></table></figure></li>
+<li>定义&amp;初始化<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">map&lt;keytype,valuetype&gt; name;</span><br><span class="line"><span class="regexp">//</span>假设存在map名为m</span><br><span class="line">map&lt;keytype,valuetype&gt; m2(m);</span><br><span class="line"><span class="regexp">//</span>创建了m的副本m2</span><br><span class="line">map&lt;keytype,valuetype&gt; m3(m.<span class="keyword">begin</span>(),m.<span class="keyword">end</span>());</span><br><span class="line"><span class="regexp">//</span>创建了map的对象m3，存储迭代器内指定范围的<span class="title class_">Entry</span>（此处是整个m）</span><br><span class="line">std::map&lt;std::string, int&gt; mymap = &#123;</span><br><span class="line">        &#123;<span class="string">&quot;alpha&quot;</span>, <span class="number">0</span>&#125;, &#123;<span class="string">&quot;beta&quot;</span>, <span class="number">0</span>&#125;, &#123;<span class="string">&quot;gamma&quot;</span>, <span class="number">0</span>&#125;&#125;;<span class="regexp">//</span>初始化</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="元素访问"><a href="#元素访问" class="headerlink" title="元素访问"></a>元素访问</h3><ul>
+<li>下标<code>[]</code>和<code>at()</code>操作只能用于非<code>const</code>的map和<code>unordered_map</code></li>
+<li><code>[]</code>访问不会做下标检查，对于不存在的key会设定value为默认值（一般为空&#x2F;False）</li>
+<li><code>at()</code>访问会做下标检查，不存在key时报错<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mymap[key] = value;</span><br><span class="line">mymap.at(key) = value;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="元素修改"><a href="#元素修改" class="headerlink" title="元素修改"></a>元素修改</h3><ol>
+<li>下标<code>[]</code></li>
+</ol>
+<ul>
+<li>用下标访问不存在的元素会自动添加，用下标访问存在的元素时会覆盖原元素</li>
+</ul>
+<ol start="2">
+<li><code>insert()</code><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/插入单个值</span></span><br><span class="line"><span class="regexp">map.insert(pair&lt;keytype,valuetype&gt;(key,value));</span></span><br><span class="line"><span class="regexp">map.insert(make_pair(key,value));</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/指定位置插入，不同位置的效率不同，涉及到重排</span></span><br><span class="line"><span class="regexp">std::map&lt;char, int&gt;::iterator it = mymap.begin();</span></span><br><span class="line"><span class="regexp">mymap.insert(it,std::pair&lt;keytype,valuetype&gt;(&#x27;b&#x27;,300));</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/范围内多值插入</span></span><br><span class="line"><span class="regexp">std::map&lt;keytype,valuetype&gt;map2;</span></span><br><span class="line"><span class="regexp">map2.insert(mymap.begin(),mymap.end());</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/列表形式插入</span></span><br><span class="line"><span class="regexp">map2.insert()(&#123;&#123;&#x27;d&#x27;,100&#125;,&#123;&#x27;e&#x27;,200&#125;&#125;);</span></span><br></pre></td></tr></table></figure>
+注意，insert插入位置已经存在值时，插入失败，value保持原值。</li>
+<li><code>erase()</code><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mymap.erase(<span class="number">0</span>);<span class="regexp">//</span>删除key为<span class="number">0</span>的元素</span><br><span class="line">mymap.erase(mymap.<span class="keyword">begin</span>());<span class="regexp">//</span>删除迭代器指向的位置元素</span><br></pre></td></tr></table></figure></li>
+<li><code>count(k)</code><br>查找关键字k出现的次数</li>
+<li><code>find(k)</code><br>查找元素，存在时返回指向该key的迭代器；不存在时返回迭代器的尾指针，即<code>mymap.end()</code>&#x2F;<code>-1</code>;</li>
+</ol>
+<h3 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h3><ul>
+<li>所有元素都是<code>pair</code>（对组）</li>
+<li><code>pair</code>中第一个元素为<code>key</code>，做索引；第二个元素为<code>value</code>;</li>
+<li>不允许有重复元素，自动开链法储存</li>
+<li>底层结构是哈希表</li>
+</ul>
+<h4 id="修改操作-1"><a href="#修改操作-1" class="headerlink" title="修改操作"></a>修改操作</h4><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>mp[key].pishback()</code></td>
+<td>把源字符串放在相同的<code>key</code>对应的<code>val</code></td>
+</tr>
+</tbody></table>
+<h4 id="访问操作"><a href="#访问操作" class="headerlink" title="访问操作"></a>访问操作</h4><p>循环map，获取每个键值对的key和val</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">actor&lt;vector&lt;string&gt;&gt; ans; <span class="regexp">//</span>建立一个容器，用于储存结果</span><br><span class="line"><span class="keyword">for</span>(unordered_map&lt;string,vector&lt;string&gt;&gt;<span class="symbol">:</span><span class="symbol">:iterator</span> it=mp.<span class="keyword">begin</span>();it!=mp.<span class="keyword">end</span>();it++)</span><br><span class="line">/<span class="regexp">/unordered_map&lt;string,vector&lt;string&gt;&gt;::iterator 等价于auto</span></span><br><span class="line"><span class="regexp">ans.push_back(it-&gt;first);/</span><span class="regexp">/获取key</span></span><br><span class="line"><span class="regexp">ans.push_back(it-&gt;second);/</span><span class="regexp">/获取val</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="vector-向量类型"><a href="#vector-向量类型" class="headerlink" title="vector(向量类型)"></a>vector(向量类型)</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Flag_ing/article/details/123380655">一个很好的入门教程</a></p>
+<ul>
+<li>是一种容器，可以容纳许多类型的数据</li>
+<li>动态数组，封装好的类</li>
+<li>头文件<code>#include&lt;vector&gt;</code></li>
+</ul>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>尖括号内可以是任何合法的数据类型</p>
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><h3 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h3><ol>
+<li>定义<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type<span class="keyword">def</span> <span class="title function_">struct</span> sentence&#123;</span><br><span class="line">	int l,x;</span><br><span class="line">	char s[<span class="number">10005</span>];</span><br><span class="line">&#125;sen; </span><br></pre></td></tr></table></figure></li>
+<li>初始化<br><code>&#123;&#125;</code>来初始化，空括号可以将每个元素置为0；</li>
+<li>不允许缩窄转换</li>
+</ol>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>其中sen为类型名 x为比较量</p>
+<h4 id="只是用于整数大小比较"><a href="#只是用于整数大小比较" class="headerlink" title="只是用于整数大小比较"></a>只是用于整数大小比较</h4><p>int compare(const void *e1, const void *e2)<br>{<br>    return ((sen *)e1)-&gt;x - ((sen *)e2)-&gt;x;<br>}<br>qsort(name, n, sizeof(type), compare);</p>
+<h4 id="浮点型-字符串比较"><a href="#浮点型-字符串比较" class="headerlink" title="浮点型+字符串比较"></a>浮点型+字符串比较</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int compare(const void *e1, const void *e2)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>((((star *)e1)-&gt;d - ((star *)e2)-&gt;d)&gt;eps)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>((((star *)e1)-&gt;d - ((star *)e2)-&gt;d)&lt;-eps)</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> strcmp(((star *)e1)-&gt;s,((star *)e2)-&gt;s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="共用体-Union"><a href="#共用体-Union" class="headerlink" title="共用体(Union)"></a>共用体(Union)</h2><p>与结构体的区别：共用体只能存储其中一个，在给其中一个变量赋值之后，其余变量的值自动丢失。</p>
+<ul>
+<li>数据使用多种格式，但不同时使用时，可以节省空间。比如说商品ID中有字符串有数字。</li>
+<li>主要用途就是节省空间，嵌入式系统里用的多</li>
+</ul>
+<ol>
+<li>变量建立<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">union one4all</span><br><span class="line">&#123;</span><br><span class="line">    int int_val;</span><br><span class="line">    long long_val;</span><br><span class="line">    double double_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>赋值语法与调用与结构体相同</li>
+</ol>
+<h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>整型中不会发生数据溢出<br>对于十六进制 一个f相当于二进制中一个字节1111 如果要批量处理数据的话用十六进制会更简单 一样的东西 把操作的数字变成0x····</p>
+<p>正负数判断 看最左侧的一位 0为正 1为负</p>
+<p><code>n&amp;=(n-1)</code>消去最低位的1 用于统计一个二进制数中1的个数 </p>
+<h3 id=""><a href="#" class="headerlink" title="&amp;"></a>&amp;</h3><ol>
+<li>对整数x的特定位清0 ：取操作数a使其特定位为0 其余位为1 然后&amp;<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=((<span class="number">1</span>&lt;&lt;m)|<span class="params">(1&lt;&lt;n)....)</span></span><br><span class="line"><span class="params">x=x&amp;(~a)</span></span><br></pre></td></tr></table></figure></li>
+<li>判断奇偶性 ： 看最后一位是1还是0<br><strong>在看某一位是1还是0的时候直接用操作&amp;计算 看等不等于0 让他进入循环就可以</strong><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((a&amp;<span class="number">1</span>)==<span class="number">1</span>) 奇数</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="-1"><a href="#-1" class="headerlink" title="|"></a>|</h3><ol>
+<li>将一个数的特定位设为1<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=a=((<span class="number">1</span>&lt;&lt;m)|<span class="params">(1&lt;&lt;n)....)</span></span><br><span class="line"><span class="params">x=x</span>|a</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="-2"><a href="#-2" class="headerlink" title="^"></a>^</h3><p>对一个数的特定位数进行取反</p>
+<h3 id="-3"><a href="#-3" class="headerlink" title="~"></a>~</h3><p><del>3&#x3D;4<br>&#96;x&amp;</del>1<code>将一个数x的最低位置0 其他位不变 </code>~n+1&#96;对一个整数取相反数<br>·  这是一个对数字的操作 优先级最高</p>
+<ol>
+<li>输出二进制数表达<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">printf(<span class="string">&quot;0B&quot;</span>)<span class="comment">#或者0b</span></span><br><span class="line"><span class="keyword">while</span>(x!=<span class="number">0</span>)</span><br><span class="line">    	    &#123;</span><br><span class="line">    	 	printf(<span class="string">&quot;%lld&quot;</span>,~(x%<span class="number">2</span>));</span><br><span class="line">    	 	x=x/<span class="number">2</span>;</span><br><span class="line">    	    &#125;</span><br><span class="line">    	    <span class="keyword">if</span>(x%<span class="number">2</span>==<span class="number">0</span>) printf(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    	    <span class="keyword">else</span> printf(<span class="string">&quot;0&quot;</span>);</span><br></pre></td></tr></table></figure>
+八进制前要加0 十六进制前要加0X或0x</li>
+<li>一个数的某些位设为0<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x=x&amp;~(<span class="number">1</span>&lt;&lt;m)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="-4"><a href="#-4" class="headerlink" title="&lt; &gt;"></a>&lt; &gt;</h3><p> 将一个数的二进制左右移动 多者溢出<br> · 在不溢出的情况下 左移一位*2 右移一位&#x2F;2<br> <strong>左移是很有效的乘二运算</strong><br> · 对有符号数 左补符号位（算数位移：负数情况下补1）</p>
+<ol>
+<li>求平均值<code>(x+y)&gt;&gt;1</code></li>
+<li>求2的n次方（很快而且不会超界）<code>1&lt;&lt;n</code></li>
+</ol>
+<h2 id="综合实例"><a href="#综合实例" class="headerlink" title="综合实例"></a>综合实例</h2><p>常用<code>(x&gt;&gt;i)&amp;1</code>获得一个数的补码各位 <strong>i从0开始由低到高获得</strong><br>注意操作对象是补码还是二进制数 如果是二进制数要手动转 不过如果是<code>unsigned int</code>就没事了 但是在相加运算时必须要<strong>使用同种类型</strong> 否则会超界<br>注意超界 如果要用longlong应当加后缀1ll</p>
+<ol>
+<li>特定位设置<br>将二进制的某一位置1<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num|<span class="params">=1&lt;&lt;i;</span></span><br></pre></td></tr></table></figure>
+置0<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num&amp;=-(<span class="number">1</span>&lt;&lt;i);</span><br></pre></td></tr></table></figure>
+构造一个前i位均为1的数<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int num=(<span class="number">1</span>&lt;&lt;i-<span class="number">1</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>把一个无符号整数a的七至十七位赋值为937 21至25位赋值为17</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unsigned int a = <span class="number">0XC305BAD3</span></span><br><span class="line">a &amp; =~(((<span class="number">1</span>&lt;&lt;<span class="number">11</span>)-<span class="number">1</span>)&lt;&lt;<span class="number">7</span>)/<span class="regexp">/transform 7~17 to 0 and save others</span></span><br><span class="line"><span class="regexp">a|=937&lt;&lt;7/</span><span class="regexp">/赋值</span></span><br><span class="line"><span class="regexp">a&amp;=~(((1&lt;&lt;5)-1)&lt;&lt;21)</span></span><br><span class="line"><span class="regexp">a|17&lt;&lt;21</span></span><br><span class="line"><span class="regexp">printf(&quot;a = 0X%X&quot;,a)</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>交换一个数的高位与低位<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   unsigned int n;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line">cout&lt;&lt;(n&gt;&gt;<span class="number">16</span>)+(n&lt;&lt;<span class="number">16</span>);</span><br><span class="line"><span class="comment"># or cout&lt;&lt;((n&amp;0xffff0000)&gt;&gt;16)+((n&amp;0x0000ffff)&lt;&lt;16);</span></span><br></pre></td></tr></table></figure></li>
+<li>利用按位运算的性质处理数据(一个也不能少)</li>
+<li>得到一个数的补码(可补前导0版 以八位为例)<br><strong>计算机本身存储的就是补码 所以直接对二进制的存储进行检查就可以！ 所有对二进制的按位操作都是对补码操作！</strong><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=<span class="number">7</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">printf(<span class="string">&quot;%d&quot;</span>,(x&gt;&gt;i)&amp;<span class="number">1</span>);<span class="comment">#自左向右检查每一位是否为0</span></span><br></pre></td></tr></table></figure>
+补码翻转得到新的数<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">7</span>;i++)</span><br><span class="line">ans|<span class="params">=((x&gt;&gt;i)&amp;1)&lt;&lt;(7-i);</span></span><br><span class="line"><span class="params">printf(&quot;%hhd&quot;,ans);</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>反码计算机</strong><br>正负数分离<br>化归思想 把所有负的都转成正的<br>如果是正数，本身就是反码，如果是负数，直接对对应正数取反就能得到反码<br>重点是“得到一个数的反码”  对数本身操作<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int n,a,b;</span><br><span class="line">void print(int k)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(k&gt;=<span class="number">0</span>)</span><br><span class="line">		printf(<span class="string">&quot;%d\n&quot;</span>,k);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">			printf(<span class="string">&quot;-%d\n&quot;</span>,~k);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(scanf(<span class="string">&quot; -%d&quot;</span>,&amp;a))</span><br><span class="line">    	a=~a;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	scanf(<span class="string">&quot;%d&quot;</span>,&amp;a);</span><br><span class="line">    <span class="keyword">if</span>(scanf(<span class="string">&quot; -%d&quot;</span>,&amp;b))</span><br><span class="line">    	b=~b;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	scanf(<span class="string">&quot;%d&quot;</span>,&amp;b);</span><br><span class="line">    print(a&amp;b);</span><br><span class="line">    print(a|<span class="params">b);</span></span><br><span class="line"><span class="params">    print(a^b);</span></span><br><span class="line"><span class="params">    <span class="keyword">return</span> 0;</span></span><br><span class="line"><span class="params">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="数的编码"><a href="#数的编码" class="headerlink" title="数的编码"></a>数的编码</h4><p>原码：最高位为符号位（0为正数 1为负数） 其余各位表示数本身的绝对值<br>反码：正数的反码与源码相同 若为负数 其绝对值的原码的各位取反<br>补码：正数的原码、反码和补码都相同 若为负数 对其反码加1（若有进位则进位舍弃）</p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>指针运算时要加括号 保证先运算再解引用<br>指针计算注意不要越界！<br>指针相减：计算偏移量<br>指针相加无意义 指针二分<code>mid=low+(high-low)/2</code><br>前排指针小                                    </p>
+<h1 id="错过的结构设计"><a href="#错过的结构设计" class="headerlink" title="错过的结构设计"></a>错过的结构设计</h1><ol>
+<li></li>
+<li>在立flag以及数据初始化的时候改变操作要放在判断操作以后<br>（eg.驼峰命名法转换  先确定flag是1否  后判定下划线 判断完后要恢复）</li>
+<li><strong>异或运算规律：</strong>只看1的个数  奇数个1异或是1 偶数个1异或是0 0异或结果都是0</li>
+</ol>
+<h1 id="一些规则"><a href="#一些规则" class="headerlink" title="一些规则"></a>一些规则</h1><h2 id="循环不变量"><a href="#循环不变量" class="headerlink" title="循环不变量"></a>循环不变量</h2><h3 id="二分查找：区间定义"><a href="#二分查找：区间定义" class="headerlink" title="二分查找：区间定义"></a>二分查找：区间定义</h3><h1 id="递归、搜索与回溯算法"><a href="#递归、搜索与回溯算法" class="headerlink" title="递归、搜索与回溯算法"></a>递归、搜索与回溯算法</h1><h2 id="框架一"><a href="#框架一" class="headerlink" title="框架一"></a>框架一</h2> <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int search(int x)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=算符种数n；i++)</span><br><span class="line">   <span class="keyword">if</span>(satisfy)</span><br><span class="line">   &#123;</span><br><span class="line">      secure the result(<span class="keyword">include</span> <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">      <span class="keyword">if</span>(x==n-<span class="number">1</span>)</span><br><span class="line">       print the result</span><br><span class="line">      <span class="keyword">else</span> search(x+<span class="number">1</span>) /<span class="regexp">/继续进行这个元素后的排列</span></span><br><span class="line"><span class="regexp">      recover(satisfy to enter the if) </span></span><br><span class="line"><span class="regexp">   &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="框架二"><a href="#框架二" class="headerlink" title="框架二"></a>框架二</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(reach the goal print)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"> <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line"> <span class="keyword">if</span>(satisfy)</span><br><span class="line">  &#123;</span><br><span class="line">    secure the result </span><br><span class="line">    search(x+<span class="number">1</span>)</span><br><span class="line">    recover</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><ol>
+<li>全排列：实际上需要找出每一个排列后的全排列<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">char s[<span class="number">10</span>],ch[<span class="number">10</span>];</span><br><span class="line">int n;</span><br><span class="line">bool p[<span class="number">10</span>];</span><br><span class="line">void search(int x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">	 <span class="keyword">if</span>(p[i]==<span class="number">0</span>)     /<span class="regexp">/该字符未参与排列</span></span><br><span class="line"><span class="regexp">	  &#123;</span></span><br><span class="line"><span class="regexp">	  	p[i]=1;      /</span><span class="regexp">/标记该位置的字符已经参与排列</span></span><br><span class="line"><span class="regexp">	  	ch[x]=s[i];        /</span><span class="regexp">/存储字符</span></span><br><span class="line"><span class="regexp">	  	if(x+1==n)     /</span><span class="regexp">/字符串是从0开始记 此时所有位置的字符已经排列完毕</span></span><br><span class="line"><span class="regexp">	  	 cout&lt;&lt;ch&lt;&lt;endl;</span></span><br><span class="line"><span class="regexp">	  	else</span></span><br><span class="line"><span class="regexp">	  	 search(x+1);    /</span><span class="regexp">/让下一个字符作为后一个排列的第一个进行全排列</span></span><br><span class="line"><span class="regexp">        p[i]=0;         /</span><span class="regexp">/只有本排列中参与的字符才会标记为已参与</span></span><br><span class="line"><span class="regexp">	  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()</span></span><br><span class="line"><span class="regexp">&#123;</span></span><br><span class="line"><span class="regexp">	cin&gt;&gt;s;</span></span><br><span class="line"><span class="regexp">	n=strlen(s);</span></span><br><span class="line"><span class="regexp">	search(0);</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>最大公因数gcd<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int gdc(int m,int n) /<span class="regexp">/前提：n＞m 条件-真-假</span></span><br><span class="line"><span class="regexp">&#123;return n%m==0?m:gdc(m,n%m)&#125; /</span><span class="regexp">/n与m和m与n%m公因数相同捏</span></span><br></pre></td></tr></table></figure></li>
+<li>爬楼梯<br>法一 找出基础方法 每层递归一直计数到底层<br>  实际上仍带有p[x]判定<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int n,p[x];</span><br><span class="line">int t(int x)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x]) <span class="keyword">return</span> p[x]; <span class="regexp">//</span>如果本层走法数已算出 直接返回走法</span><br><span class="line">	<span class="keyword">if</span>(x==<span class="number">1</span>) <span class="keyword">return</span> p[x]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x==<span class="number">2</span>) <span class="keyword">return</span> p[x]=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">return</span> p[x]=t(x-<span class="number">1</span>)+t(x-<span class="number">2</span>); <span class="regexp">//</span>每一层走法数=少一层全走法数+少两层全走法数</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(<span class="string">&quot;%d&quot;</span>,&amp;n)   /<span class="regexp">/在一直有输入的情况下持续循环 </span></span><br><span class="line"><span class="regexp">	   cout&lt;&lt;t(n)&lt;&lt;endl;</span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+法二  实际上是直接累加<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void t(int x)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">1</span>) ans++;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">2</span>) ans+=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">else</span> t(x-<span class="number">1</span>),t(x-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>汉诺塔问题<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int n,f[<span class="number">25</span>],ans,x;</span><br><span class="line">char a,b,c;</span><br><span class="line">char t(int n,char a,char b,char c)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&gt;<span class="number">1</span>)</span><br><span class="line">	 t(n-<span class="number">1</span>,a,c,b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;<span class="string">&quot;-&gt;&quot;</span>&lt;&lt;n&lt;&lt;<span class="string">&quot;-&gt;&quot;</span>&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">if</span>(n&gt;<span class="number">1</span>)</span><br><span class="line">	 t(n-<span class="number">1</span>,c,b,a);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">    t(n,a,b,c);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>c数简单递归  但是记忆<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">long long ans,x[<span class="number">20</span>];</span><br><span class="line">long long c(int n)</span><br><span class="line">&#123;</span><br><span class="line">	long long sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">0</span> |<span class="params"></span>| n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x[n]) <span class="keyword">return</span> x[n];</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		sum+=1ll*c(i)*c(n-i-<span class="number">1</span>);	</span><br><span class="line">	x[n]=sum;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="肖老师说"><a href="#肖老师说" class="headerlink" title="肖老师说"></a>肖老师说</h1><p>局部视角在于数数 整体视角在于坐标<br>注意分解问题<br>数学问题建议下标与平时习惯一致</p>
+<blockquote>
+<p>常量重在表达 变量重在类型<br>整型重在范围 浮型重在精度<br>函数重在接口 递归重在调用<br>内存重在管理 区分数组指针</p>
+</blockquote>
+<p>int sprintf(char<em>buf,char</em>format[,argument]…);<br>  例：<br>  int m;<br>  double x;<br>  char buf[32];<br>  scanf(“%lf%d”,&amp;x,&amp;m);<br>  sprintf(buf,”%%.%df\n”,m);<br>  printf(buf,sin(x));<br>  printf是按格式把输出送到屏幕上<br>  sprintf是按格式把输出送到buf对应的字符数组中<br>  sprintf常用于需要动态生成字符串的场合</p>
+<p>  int sscanf(const char *buf, char *format [, arg]…);<br>  例：<br>  int day, year, h, m, s;<br>  char mon[4], zone[6];<br>  char buf[] &#x3D; “12&#x2F;Nov&#x2F;2020:12:15:00 +0800”;<br>  sscanf(buf, “%d&#x2F;%3c&#x2F;%d:%d:%d:%d %s”, &amp;day, mon, &amp;year, &amp;h, &amp;m, &amp;s, zone);<br>  mon[3] &#x3D; ‘\0’; &#x2F;&#x2F; 什么作用？<br>  printf(“%d\n%s\n%d\n%d\n%d\n%d\n%s”, year, mon, day, h, m, s, zone);<br>  scanf 是按要求的格式从键盘输入数据到对应的地址（变量地址或数组）<br>  sscanf 是按要求的格式从 buf 读入数据（也是在&lt;stdio.h&gt;里定义）<br>  返回值也是成功读入的字段数，一般弃之不用</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Gamer
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://gamermmm.github.io/2023/%E5%AD%A6%E7%82%B9/C%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%A6/" title="C_Basics">https://gamermmm.github.io/2023/学点/C的一个学/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/codings/" rel="tag"># codings</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/uncategorized/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E8%A1%A5%E5%85%85/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%81%BC"><span class="nav-number">1.</span> <span class="nav-text">恼</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">基础知识&amp;语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">2.1.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cout"><span class="nav-number">2.1.1.</span> <span class="nav-text">cout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#printf%E7%94%A8%E6%B3%95%E5%B0%8F%E5%85%A8"><span class="nav-number">2.1.2.</span> <span class="nav-text">printf用法小全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">一些细碎的知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.2.2.</span> <span class="nav-text">基础语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">复合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80"><span class="nav-number">3.1.</span> <span class="nav-text">数组基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">3.1.1.</span> <span class="nav-text">一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">二分法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">3.1.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#string%E7%B1%BB"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">string类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">输入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cin%E8%BE%93%E5%85%A5"><span class="nav-number">3.1.2.3.1.</span> <span class="nav-text">cin输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%A1%8C%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-number">3.1.2.3.2.</span> <span class="nav-text">面向行的输入</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#getline"><span class="nav-number">3.1.2.3.2.1.</span> <span class="nav-text">getline()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#get"><span class="nav-number">3.1.2.3.2.2.</span> <span class="nav-text">get()</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-number">3.1.2.3.3.</span> <span class="nav-text">对比~</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%A2%E9%97%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">询问操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E4%B8%B2%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">3.1.2.4.0.1.</span> <span class="nav-text">查找子串出现的次数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.2.5.</span> <span class="nav-text">修改操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%AC%ACi%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%BB%A5%E5%90%8E%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">3.1.2.5.0.1.</span> <span class="nav-text">删除第i个字符以后的内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%AC%ACi%E4%BD%8D%E5%88%B0%E7%AC%ACj%E4%BD%8D"><span class="nav-number">3.1.2.5.0.2.</span> <span class="nav-text">删除一个字符串的第i位到第j位</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%86s%E6%8F%92%E5%85%A5%E5%88%B0str%E7%9A%84%E7%AC%ACi%E4%BD%8D%E4%B9%8B%E5%89%8D%EF%BC%8C%E5%90%8E%E8%BE%B9%E7%9A%84%E5%AD%97%E7%AC%A6%E5%90%91%E5%90%8E%E9%A1%BA%E7%A7%BB"><span class="nav-number">3.1.2.5.0.3.</span> <span class="nav-text">将s插入到str的第i位之前，后边的字符向后顺移</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%8E-str-%E7%9A%84%E7%AC%ACi%E4%BD%8D%E5%BC%80%E5%A7%8B%E7%94%A8s%E8%A6%86%E7%9B%96"><span class="nav-number">3.1.2.5.0.4.</span> <span class="nav-text">从 str 的第i位开始用s覆盖</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">4.1.</span> <span class="nav-text">map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9Amap"><span class="nav-number">4.1.1.</span> <span class="nav-text">普通map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E8%AE%BF%E9%97%AE"><span class="nav-number">4.1.2.</span> <span class="nav-text">元素访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E4%BF%AE%E6%94%B9"><span class="nav-number">4.1.3.</span> <span class="nav-text">元素修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unordered-map"><span class="nav-number">4.1.4.</span> <span class="nav-text">unordered_map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%93%8D%E4%BD%9C-1"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">修改操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">访问操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector-%E5%90%91%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">vector(向量类型)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.2.1.</span> <span class="nav-text">初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">4.3.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-1"><span class="nav-number">4.3.1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">4.3.2.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AA%E6%98%AF%E7%94%A8%E4%BA%8E%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">只是用于整数大小比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E5%9E%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">浮点型+字符串比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B1%E7%94%A8%E4%BD%93-Union"><span class="nav-number">4.4.</span> <span class="nav-text">共用体(Union)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">5.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.0.1.</span> <span class="nav-text">&amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">5.0.2.</span> <span class="nav-text">|</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-2"><span class="nav-number">5.0.3.</span> <span class="nav-text">^</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-3"><span class="nav-number">5.0.4.</span> <span class="nav-text">~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-4"><span class="nav-number">5.0.5.</span> <span class="nav-text">&lt; &gt;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.1.</span> <span class="nav-text">综合实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%9A%84%E7%BC%96%E7%A0%81"><span class="nav-number">5.1.0.1.</span> <span class="nav-text">数的编码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E9%92%88"><span class="nav-number">6.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">6.0.1.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E8%BF%87%E7%9A%84%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">7.</span> <span class="nav-text">错过的结构设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E8%A7%84%E5%88%99"><span class="nav-number">8.</span> <span class="nav-text">一些规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E4%B8%8D%E5%8F%98%E9%87%8F"><span class="nav-number">8.1.</span> <span class="nav-text">循环不变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%EF%BC%9A%E5%8C%BA%E9%97%B4%E5%AE%9A%E4%B9%89"><span class="nav-number">8.1.1.</span> <span class="nav-text">二分查找：区间定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E3%80%81%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">递归、搜索与回溯算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E4%B8%80"><span class="nav-number">9.1.</span> <span class="nav-text">框架一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E4%BA%8C"><span class="nav-number">9.2.</span> <span class="nav-text">框架二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">9.3.</span> <span class="nav-text">Examples</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%82%96%E8%80%81%E5%B8%88%E8%AF%B4"><span class="nav-number">10.</span> <span class="nav-text">肖老师说</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Gamer</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/something/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-shield-dog"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gamer.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.1/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : '[object Object]',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

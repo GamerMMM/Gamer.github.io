@@ -23,15 +23,15 @@
     var CONFIG = {"hostname":"gamermmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="个体与集成 集成学习(ensemble learning)通过构建数个个体学习器来完成学习任务，每个个体学习器都是经过训练的算法； 集成的个体算法类型相同的（均为决策树或者均为神经网络等等）被称为“同质”(homogeneous)，反之为“异质”(heterogenous)。 同质中的个体学习器称为“基学习器”(base learner)，相应的算法称为“基学习算法”(base learning">
+  <meta name="description" content="相关代码与课后习题见我的GitHub 个体与集成 集成学习(ensemble learning)通过构建数个个体学习器来完成学习任务，每个个体学习器都是经过训练的算法； 集成的个体算法类型相同的（均为决策树或者均为神经网络等等）被称为“同质”(homogeneous)，反之为“异质”(heterogenous)。 同质中的个体学习器称为“基学习器”(base learner)，相应的算法称为“基学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集成学习">
 <meta property="og:url" content="https://gamermmm.github.io/2024/%E5%AD%A6%E7%82%B9/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/">
 <meta property="og:site_name" content="Gamer&#39;s Show">
-<meta property="og:description" content="个体与集成 集成学习(ensemble learning)通过构建数个个体学习器来完成学习任务，每个个体学习器都是经过训练的算法； 集成的个体算法类型相同的（均为决策树或者均为神经网络等等）被称为“同质”(homogeneous)，反之为“异质”(heterogenous)。 同质中的个体学习器称为“基学习器”(base learner)，相应的算法称为“基学习算法”(base learning">
+<meta property="og:description" content="相关代码与课后习题见我的GitHub 个体与集成 集成学习(ensemble learning)通过构建数个个体学习器来完成学习任务，每个个体学习器都是经过训练的算法； 集成的个体算法类型相同的（均为决策树或者均为神经网络等等）被称为“同质”(homogeneous)，反之为“异质”(heterogenous)。 同质中的个体学习器称为“基学习器”(base learner)，相应的算法称为“基学">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-02T02:01:49.000Z">
-<meta property="article:modified_time" content="2024-03-04T03:47:38.459Z">
+<meta property="article:modified_time" content="2024-03-06T05:12:24.613Z">
 <meta property="article:author" content="Gamer">
 <meta property="article:tag" content="Machine learning">
 <meta name="twitter:card" content="summary">
@@ -137,6 +137,16 @@
     <a href="/archives/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Archives</a>
 
   </li>
+        
+            
+  <li class="menu-item menu-item-codingnotes">
+
+    <a href="/yourdiy/" rel="section"><i class="fa fa-book fa-fw"></i>CodingNotes</a>
+
+  </li>
+
+
+      
   </ul>
 </nav>
 
@@ -197,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-03-04 11:47:38" itemprop="dateModified" datetime="2024-03-04T11:47:38+08:00">2024-03-04</time>
+                <time title="Modified: 2024-03-06 13:12:24" itemprop="dateModified" datetime="2024-03-06T13:12:24+08:00">2024-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +237,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="个体与集成"><a href="#个体与集成" class="headerlink" title="个体与集成"></a>个体与集成</h1><ol>
+        <p>相关代码与课后习题见<a href="">我的GitHub</a></p>
+<h1 id="个体与集成"><a href="#个体与集成" class="headerlink" title="个体与集成"></a>个体与集成</h1><ol>
 <li>集成学习(ensemble learning)通过构建数个个体学习器来完成学习任务，每个个体学习器都是经过训练的算法；</li>
 <li>集成的个体算法类型相同的（均为决策树或者均为神经网络等等）被称为“同质”(homogeneous)，反之为“异质”(heterogenous)。<ul>
 <li>同质中的个体学习器称为“基学习器”(base learner)，相应的算法称为“基学习算法”(base learning algorithm)</li>
@@ -250,16 +261,80 @@
 <li>并行化： 不存在强依赖关系，可以同时生成；Bagging &amp; Random Forest</li>
 </ol>
 <h2 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h2><p>可以将弱学习器提升为强学习器</p>
-<h3 id="workflow"><a href="#workflow" class="headerlink" title="workflow"></a>workflow</h3><p>前提：base间强依赖 &amp; 串行序列化</p>
+<h3 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h3><p>前提：base间强依赖 &amp; 串行序列化</p>
 <ol>
 <li>训练一个base</li>
 <li>根据base的表现对训练样本分布进行调整，错误样本关注增加</li>
 <li>基于调整后的样本训练一个base，知道base数为预定超参数n</li>
 </ol>
-<h3 id="AddBoost"><a href="#AddBoost" class="headerlink" title="AddBoost"></a>AddBoost</h3><h2 id="Bagging与随机森林"><a href="#Bagging与随机森林" class="headerlink" title="Bagging与随机森林"></a>Bagging与随机森林</h2><ol>
-<li>不存在强依赖关系&amp;同时生成的并行式关系</li>
+<h3 id="Example-AdaBoost"><a href="#Example-AdaBoost" class="headerlink" title="Example:AdaBoost"></a>Example:AdaBoost</h3><p>加权模型，其实就是通过改变base的线性组合的系数来实现最小化损失函数$$ H(x)&#x3D;\sum^T_{t&#x3D;1}\alpha_th_t(x)$$</p>
+<ol>
+<li>初始化样本权值分布，一般初始化每个样本权值相等</li>
+<li>基于分布从数据集中训练出分类器$h_t$</li>
+<li>估计分类器的误差$\epsilon_t$;<ul>
+<li>这里设定如果误差大于0.5，也就是二分类问题的准确度低于随机猜测正确的概率，break舍去</li>
+<li>实际操作中可以自行设定对base精度的要求</li>
+</ul>
+</li>
+<li>确定分类器的权重$$\alpha_t&#x3D;\frac{1}{2}ln(\frac{1-\epsilon_t}{\epsilon_t})$$</li>
+<li>更新样本分布，其中$Z_t$是规范化因子，确保最终可以得到一个规范的分布$$ D_{t+1}&#x3D;\frac{D_t(x)}{Z_t}×\begin{cases}<br>exp(-\alpha_t), h_t(x)&#x3D;f(x) \<br>exp(\alpha_t), h_t(x)\ne f(x)<br>\end{cases} &#x3D;\frac{D_t(x)exp(-\alpha_t)f(x)h_t(x)}{Z_t}$$</li>
+<li>最终输出：$$H(x)&#x3D;sign(\sum^T_{t&#x3D;1}\alpha_th_t(x))$$</li>
 </ol>
-
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li>通过re-weighting对特定的数据分布进行学习，对无法接受带权样本的base，可以re-sampling处理（在训练过程中根据样本分布对训练集进行重新采样，用重采样后的样本对基学习器训练）</li>
+<li>每一轮都会检查base被保留的条件，不符合的舍弃</li>
+<li>从偏差-方差分解的角度来看，Boosting主要关注<strong>降低偏差</strong>，因此Boosting能基于<strong>泛化程度弱</strong>的学习器构建强集成</li>
+</ol>
+<h2 id="Bagging与随机森林"><a href="#Bagging与随机森林" class="headerlink" title="Bagging与随机森林"></a>Bagging与随机森林</h2><p>不存在强依赖关系&amp;同时生成的并行式关系</p>
+<h3 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h3><h4 id="WorkFlow-1"><a href="#WorkFlow-1" class="headerlink" title="WorkFlow"></a>WorkFlow</h4><p>直接原理：自助采样法bootstrap sampling</p>
+<ol>
+<li>给定m个样本的数据集，有放回的随机抽取，m次随机采样后大概会有63.2%的原始数据出现在新样本集中，以此类推采样出T个类似采样集<ul>
+<li>可以预留36.8%的数据作为验证集对泛化性能进行“包外估计”<ul>
+<li>对于决策树base，可以辅助剪枝</li>
+<li>对于神经网络base，可以辅助早期停止，降低过拟合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对分类任务进行简单投票法，票数相同时随机选择一个</li>
+</ol>
+<h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><p>从偏差-方差角度看，更关注<strong>降低方差</strong>，因此在不剪枝决策树、神经网络等<strong>易受样本扰动的学习器</strong>上效果更明显。</p>
+<h3 id="随机森林Random-Forest"><a href="#随机森林Random-Forest" class="headerlink" title="随机森林Random Forest"></a>随机森林Random Forest</h3><p>RF实质上是Bagging的扩展变体，以决策树为base构建Bagging集成，引入了随机属性选择。</p>
+<h4 id="WorkFlow-2"><a href="#WorkFlow-2" class="headerlink" title="WorkFlow"></a>WorkFlow</h4><p>总体就是对最优属性的选择，所以属性取值不同时的分叉不同，像一棵树。</p>
+<ol>
+<li>对决策树的每个结点，从该节点d个属性中随机选择一个包含k个属性的子集，然后从这个子集中选择一个最优属性用于划分。一般来说选择$k&#x3D;log_2d$</li>
+<li>离散性质通过取值进行分叉，连续性质通过拟合度分叉</li>
+</ol>
+<h4 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h4><ol>
+<li>简单&amp;计算开销小，训练效率高。</li>
+<li>base的多样性来自样本+属性的扰动，最终集成泛化性能可以通过base差异度的提升来提升。</li>
+<li>起始性能不好（所以可以增加学习轮次和base）</li>
+</ol>
+<h4 id="note"><a href="#note" class="headerlink" title="note"></a>note</h4><p>RF是一个“随机型”的决策树，所以说当你的数据集比较少或者说训练轮次不够的时候，验证集精度会有比较大的差距，我用了一个RF+linear来拟合连续性质进行二分类的样例最大会有20%的精度误差，而数据集的属性又比较多，40选15的时候可以有最优达到90%，但是极其不稳定，笨人觉得或许可以直接存起来高精度的RF结果然后给对应的属性加权？不过还没有继续跑ing（痛苦的回忆）</p>
+<h1 id="结合策略"><a href="#结合策略" class="headerlink" title="结合策略"></a>结合策略</h1><p>学习器结合三大优势：</p>
+<ol>
+<li>统计：学习任务假设空间大时可能多假设同性能，此时结合之后会更稳定</li>
+<li>计算：算法局部极小点降低泛化性能，多次运行结合后可以降低局部极小出现的概率</li>
+<li>表示：可以更好地吻合真实假设，使假设空间扩大</li>
+</ol>
+<h2 id="平均法"><a href="#平均法" class="headerlink" title="平均法"></a>平均法</h2><p>根据性能加权，但是必须使用非负权重才能优于个体学习器；性能相近的时候简单平均就可以。</p>
+<h2 id="投票法"><a href="#投票法" class="headerlink" title="投票法"></a>投票法</h2><ol>
+<li>用于分类任务，可以超过半数也可以选最多；</li>
+<li>类标记投标为硬投票hard voting，类概率标记投票为软投票soft voting。虽然分类概率不准确，但是往往类概率投票准确度会更高。<ul>
+<li><strong>如果base类型不同，概率不能直接比较</strong>，一般就是hard voting了。</li>
+</ul>
+</li>
+</ol>
+<h2 id="学习法"><a href="#学习法" class="headerlink" title="学习法"></a>学习法</h2><p>训练数据很多时，用另一个学习器来结合，把base称为初级学习器，用于结合的学习器称为次级学习器或者元学习器meta-learner</p>
+<h3 id="Example：Stack算法"><a href="#Example：Stack算法" class="headerlink" title="Example：Stack算法"></a>Example：Stack算法</h3><ol>
+<li>使用初级学习算法产生初级学习器（可以是异质base）</li>
+<li>使用初级学习器的输出产生次级训练集，用于训练次级学习器，此处初级样本的标记仍被当作样例标记<ul>
+<li>这一步有比较大的过拟合风险，一般使用留一法或者交叉验证，<strong>用训练初级学习器未使用的样本</strong>产生次级学习器的训练样本</li>
+</ul>
+</li>
+<li>训练次级学习器并输出T个一一对应T个初级学习器的值<br><strong>次级学习器的输入属性表示</strong>和该算法对stacking集成的泛化性能影响很大。研究表明<strong>初级学习器输出类概率</strong>作为次级学习器输入时，用多响应线性回归MLR作为次级学习算法效果更好，使用不同的属性集更佳</li>
+</ol>
+<h1 id="多样性"><a href="#多样性" class="headerlink" title="多样性"></a>多样性</h1><h2 id="误差-分歧分解"><a href="#误差-分歧分解" class="headerlink" title="误差-分歧分解"></a>误差-分歧分解</h2>
     </div>
 
     
@@ -359,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AA%E4%BD%93%E4%B8%8E%E9%9B%86%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">个体与集成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%A0%B8%E5%BF%83"><span class="nav-number">1.1.</span> <span class="nav-text">研究核心</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">集成学习方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">2.1.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workflow"><span class="nav-number">2.1.1.</span> <span class="nav-text">workflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AddBoost"><span class="nav-number">2.1.2.</span> <span class="nav-text">AddBoost</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="nav-number">2.2.</span> <span class="nav-text">Bagging与随机森林</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AA%E4%BD%93%E4%B8%8E%E9%9B%86%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">个体与集成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%A0%B8%E5%BF%83"><span class="nav-number">1.1.</span> <span class="nav-text">研究核心</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">集成学习方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Boosting"><span class="nav-number">2.1.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WorkFlow"><span class="nav-number">2.1.1.</span> <span class="nav-text">WorkFlow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-AdaBoost"><span class="nav-number">2.1.2.</span> <span class="nav-text">Example:AdaBoost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.1.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="nav-number">2.2.</span> <span class="nav-text">Bagging与随机森林</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bagging"><span class="nav-number">2.2.1.</span> <span class="nav-text">Bagging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WorkFlow-1"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">WorkFlow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97Random-Forest"><span class="nav-number">2.2.2.</span> <span class="nav-text">随机森林Random Forest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WorkFlow-2"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">WorkFlow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#note"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">note</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E7%AD%96%E7%95%A5"><span class="nav-number">3.</span> <span class="nav-text">结合策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E5%9D%87%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">平均法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%95%E7%A5%A8%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">投票法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">学习法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example%EF%BC%9AStack%E7%AE%97%E6%B3%95"><span class="nav-number">3.3.1.</span> <span class="nav-text">Example：Stack算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">多样性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE-%E5%88%86%E6%AD%A7%E5%88%86%E8%A7%A3"><span class="nav-number">4.1.</span> <span class="nav-text">误差-分歧分解</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -373,7 +448,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -386,7 +461,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
